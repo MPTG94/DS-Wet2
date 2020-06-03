@@ -1,0 +1,15 @@
+init done.
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: FAILURE
+RemoveArtist: FAILURE
+RemoveArtist: INVALID_INPUT
+RemoveArtist: SUCCESS
+AddArtist: SUCCESS
+AddSong: SUCCESS
+AddToSongCount: SUCCESS
+GetArtistBestSong: 4
+GetRecommendedSongInPlace: Artist 456 Song 1
+quit done.

@@ -1,0 +1,15 @@
+Init
+AddArtist 123
+AddArtist 456
+AddSong 123 7
+AddSong 123 4
+AddSong 789 10 # Failure - Artist does not exist
+RemoveArtist 123 # Failure - Artist has songs
+RemoveArtist 0 # Invalid Input
+RemoveArtist 456
+AddArtist 456
+AddSong 456 1
+AddToSongCount 123 4 5
+GetArtistBestSong 123 # Song 4 has 5 streams
+GetRecommendedSongInPlace 3 # The songs are ranked (123,4) > (123,7) > (456,1)
+Quit

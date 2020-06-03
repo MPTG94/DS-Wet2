@@ -5,11 +5,29 @@
 #include "MusicManager.h"
 
 StatusType MusicManager::AddArtist(int artistID) {
-    return INVALID_INPUT;
+
+    Artist *nArtist = new Artist(artistID);
+    if(artistHashTable.Insert(artistID, nArtist) == FAILURE) {
+        // The artist already exist
+        delete  nArtist;
+        return FAILURE;
+    }
+    return SUCCESS;
 }
 
 StatusType MusicManager::RemoveArtist(int artistID) {
-    return INVALID_INPUT;
+
+    Artist *rArtist = artistHashTable.FindNode(artistID)->getData();
+    if(rArtist== nullptr || rArtist->getNumberOfSongs()!=0) {
+        // The artist doesn't exist or
+        // The artist exist but can't be removed because he has songs
+        return FAILURE;
+    }
+
+    if(artistHashTable.Remove(artistID) != SUCCESS){
+        return FAILURE;
+    }
+    return SUCCESS;
 }
 
 StatusType MusicManager::AddSong(int artistID, int songID) {

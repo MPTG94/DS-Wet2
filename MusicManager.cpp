@@ -4,7 +4,7 @@
 
 #include "MusicManager.h"
 
-MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTree(RankTree<ThreeParamKey, SongContainer>()), numberOfSongs(0),
+MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTree(RankTree<ThreeParamKey, int>()), numberOfSongs(0),
                                numberOfArtists(0) {
 
 }
@@ -62,37 +62,107 @@ StatusType MusicManager::RemoveSong(int artistID, int songID) {
     }
 
     Artist *artist = artistHashTable.FindNode(artistID)->getData();
-    TreeNode<Song>* songNode = artist->getSongsByIdTree().Find(songID);
+    TreeNode<Song> *songNode = artist->getSongsByIdTree().Find(songID);
     if (!songNode) {
         // The song doesn't exist
         return FAILURE;
     }
 
-    Song* song = songNode->getData();
+    Song *song = songNode->getData();
     ThreeParamKey songKey = ThreeParamKey(song->getNumberOfPlays(), songID, artistID);
     songRankTree.Remove(songKey);
 
-    Song* bestSong = artist->getBestSong();
+    Song *bestSong = artist->getBestSong();
+    TwoParamKey songTwoKey = TwoParamKey(bestSong->getNumberOfPlays(), songID);
     if (bestSong->getSongId() == songID) {
-        if (artist->getNumberOfSongs() == 1) {
-            artist->setBestSong(nullptr);
+        if (artist->getNumberOfSongs() <= 2) {
+            // The tree has either 1 or two nodes
+            if (artist->getNumberOfSongs() == 1) {
+                // The song we are deleting was the only song for this artist, marking best song as empty
+                artist->setBestSong(nullptr);
+            } else {
+                RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
+                if (bestSongFromPlaysNode->getLeft()) {
+                    artist->setBestSong(bestSongFromPlaysNode->getLeft()->getData());
+                } else {
+                    artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
+                }
+            }
         } else {
-            TreeNode<Song>*  artist->getSongsByPlaysTree().Find(bestSong->getNumberOfPlays());
-            artist->setBestSong(songNode->getParent()->getData());
+            // The artist has other songs so now a new song needs to be marked as the artists' best song
+            RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
+            artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
         }
     }
+
+    artist->getSongsByIdTree().Remove(songID);
+    artist->getSongsByPlaysTree().Remove(songTwoKey);
+    int oldNumberOfSongsForArtist = artist->getNumberOfSongs();
+    artist->setNumberOfSongs(oldNumberOfSongsForArtist - 1);
+    numberOfSongs--;
+    return SUCCESS;
 }
 
 StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
-    return INVALID_INPUT;
+    if (numberOfArtists <= 0 || artistHashTable.Find(artistID) != SUCCESS) {
+        return FAILURE;
+    }
+
+    Artist *artist = artistHashTable.FindNode(artistID)->getData();
+    TreeNode<Song> *songNode = artist->getSongsByIdTree().Find(songID);
+    if (!songNode) {
+        // The song doesn't exist
+        return FAILURE;
+    }
+
+    Song *song = songNode->getData();
+    int oldNumberOfPlays = song->getNumberOfPlays();
+    song->setNumberOfPlays(oldNumberOfPlays + count);
+    TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
+    artist->getSongsByPlaysTree().Remove(oldTwoKey);
+    TwoParamKey newTwoKey = TwoParamKey(oldNumberOfPlays + count, songID);
+    Song *nSongPlays = new Song(songID, artistID, oldNumberOfPlays + count, nullptr);
+    if (!nSongPlays) {
+        song->setNumberOfPlays(oldNumberOfPlays);
+        return ALLOCATION_ERROR;
+    }
+    artist->getSongsByPlaysTree().Insert(newTwoKey, nSongPlays);
+    if (!artist->getSongsByPlaysTree().Find(newTwoKey)) {
+        song->setNumberOfPlays(oldNumberOfPlays);
+        delete nSongPlays;
+        return ALLOCATION_ERROR;
+    }
+
+    ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
+    songRankTree.Remove(oldThreeKey);
+    ThreeParamKey newThreeKey = ThreeParamKey(oldNumberOfPlays + count, songID, artistID);
+    songRankTree.Insert(newThreeKey);
+    return SUCCESS;
 }
 
 StatusType MusicManager::GetArtistBestSong(int artistID, int *songID) {
-    return INVALID_INPUT;
+    if (numberOfArtists <= 0 || artistHashTable.Find(artistID) != SUCCESS) {
+        return FAILURE;
+    }
+
+    Artist *artist = artistHashTable.FindNode(artistID)->getData();
+    if (artist->getNumberOfSongs() == 0) {
+        return FAILURE;
+    }
+
+    *songID = artist->getBestSong()->getSongId();
+    return SUCCESS;
 }
 
 StatusType MusicManager::GetRecommendedSongInPlace(int rank, int *artistID, int *songID) {
-    return INVALID_INPUT;
+    if (numberOfArtists <= 0 || numberOfSongs < rank) {
+        return FAILURE;
+    }
+    ThreeParamKey found = songRankTree.FindByRank(rank);
+    *artistID = found.getArtistId();
+    *songID = found.getSongId();
+
+    return SUCCESS;
 }
 
 StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artist) {
@@ -110,8 +180,9 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
         artist->getSongsByIdTree().Remove(songID);
         return ALLOCATION_ERROR;
     }
-    artist->getSongsByPlaysTree().Insert(songID, nSongPlays);
-    if (!artist->getSongsByPlaysTree().Find(songID)) {
+    TwoParamKey songKey = TwoParamKey(0, songID);
+    artist->getSongsByPlaysTree().Insert(songKey, nSongPlays);
+    if (!artist->getSongsByPlaysTree().Find(songKey)) {
         artist->getSongsByIdTree().Remove(songID);
         return ALLOCATION_ERROR;
     }
@@ -130,7 +201,7 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
 
     if (AddSongToRankTree(artistID, songID, nSong) == ALLOCATION_ERROR) {
         artist->getSongsByIdTree().Remove(songID);
-        artist->getSongsByPlaysTree().Remove(songID);
+        artist->getSongsByPlaysTree().Remove(songKey);
         return ALLOCATION_ERROR;
     }
 

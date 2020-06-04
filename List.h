@@ -173,6 +173,7 @@ StatusType List<T>::Remove(int key) {
                     head = head->getNext();
                     head->setPrevious(nullptr);
                     delete temp;
+                    return SUCCESS;
                 } else {
                     // The head is the only node in the list
                     head = nullptr;

@@ -8,14 +8,15 @@
 
 #include "Tree.h"
 #include "Song.h"
+#include "TwoParamKey.h"
 
 class Artist {
 private:
     int artistID;
     int numberOfSongs;
-    Song* bestSong;
+    Song *bestSong;
     Tree<Song> songsByIdTree;
-    Tree<Song> songsByPlaysTree;
+    RankTree<TwoParamKey, Song> songsByPlaysTree;
 
 public:
     explicit Artist(int artistID);
@@ -28,7 +29,7 @@ public:
 
     Tree<Song> &getSongsByIdTree();
 
-    Tree<Song> &getSongsByPlaysTree();
+    RankTree<TwoParamKey, Song> &getSongsByPlaysTree();
 
     void setArtistId(int artistId);
 

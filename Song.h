@@ -18,7 +18,7 @@ private:
     RankTreeNode<ThreeParamKey, int> *ptrToRankedSong;
 
 public:
-    Song(int songID, int artistID, int numberOfPlays = 0, RankTreeNode<ThreeParamKey, int>* ptrToRanked = nullptr);
+    Song(int songID, int artistID, int numberOfPlays = 0, RankTreeNode<ThreeParamKey, int> *ptrToRanked = nullptr);
 
     int getSongId() const;
 

@@ -6,7 +6,7 @@
 
 Artist::Artist(int artistID) : artistID(artistID), numberOfSongs(0), bestSong(nullptr) {
     songsByIdTree = Tree<Song>();
-    songsByPlaysTree = Tree<Song>();
+    songsByPlaysTree = RankTree<TwoParamKey, Song>();
 }
 
 int Artist::getArtistId() const {
@@ -25,7 +25,7 @@ Tree<Song> &Artist::getSongsByIdTree() {
     return songsByIdTree;
 }
 
-Tree<Song> &Artist::getSongsByPlaysTree() {
+RankTree<TwoParamKey, Song> &Artist::getSongsByPlaysTree() {
     return songsByPlaysTree;
 }
 

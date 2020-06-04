@@ -78,7 +78,7 @@ StatusType HashTable<T>::Insert(int key, T *data) {
 template<class T>
 StatusType HashTable<T>::Find(int key) {
     int index = HashFunction(key);
-    if (hashArray[index].Find(key) == SUCCESS) {
+    if (hashArray[index]->Find(key)) {
         return SUCCESS;
     }
     return FAILURE;
@@ -87,13 +87,13 @@ StatusType HashTable<T>::Find(int key) {
 template<class T>
 ListNode<T> *HashTable<T>::FindNode(int key) {
     int index = HashFunction(key);
-    return hashArray[index].FindNode(key);
+    return hashArray[index]->FindNode(key);
 }
 
 template<class T>
 StatusType HashTable<T>::Remove(int key) {
     int index = HashFunction(key);
-    if (hashArray[index]->Find(key) == FAILURE) {
+    if (!hashArray[index]->Find(key)) {
         // The key doesn't exist in the hash table
         return FAILURE;
     }

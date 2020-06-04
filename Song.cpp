@@ -5,8 +5,8 @@
 #include "Song.h"
 
 Song::Song(int songID, int artistID, int numberOfPlays, RankTreeNode<ThreeParamKey, int> *ptrToRanked) : songID(songID), artistID(artistID),
-                                                                                                                   numberOfPlays(numberOfPlays),
-                                                                                                                   ptrToRankedSong(ptrToRanked) {
+                                                                                                         numberOfPlays(numberOfPlays),
+                                                                                                         ptrToRankedSong(ptrToRanked) {
 
 }
 

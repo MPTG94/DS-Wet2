@@ -1,0 +1,114 @@
+Init
+AddArtist 1
+AddArtist 2
+AddArtist 3
+AddArtist 4
+AddArtist 5
+AddSong 1 1
+AddSong 1 2
+AddSong 1 3
+AddSong 2 1
+AddSong 2 2
+AddSong 2 3
+GetArtistBestSong 2
+GetArtistBestSong 3
+AddSong 3 1
+GetArtistBestSong 3
+RemoveArtist 3
+GetRecommendedSongInPlace 1
+GetRecommendedSongInPlace 4
+GetRecommendedSongInPlace 7
+GetRecommendedSongInPlace 8
+GetRecommendedSongInPlace 9
+GetRecommendedSongInPlace 12
+AddToSongCount 3 1 10
+AddToSongCount 3 2 10
+AddToSongCount 2 4 10
+AddToSongCount 2 3 9
+AddToSongCount 2 2 8
+AddToSongCount 2 1 10
+AddToSongCount 1 3 10
+AddToSongCount 1 2 5
+GetArtistBestSong 2
+GetArtistBestSong 1
+GetRecommendedSongInPlace 1
+GetRecommendedSongInPlace 2
+GetRecommendedSongInPlace 3
+GetRecommendedSongInPlace 4
+GetRecommendedSongInPlace 5
+GetRecommendedSongInPlace 6
+GetRecommendedSongInPlace 7
+GetRecommendedSongInPlace 8
+GetRecommendedSongInPlace 9
+GetRecommendedSongInPlace 12
+RemoveArtist 3
+RemoveSong 3 1
+AddToSongCount 3 1 9
+GetArtistBestSong 3 1
+RemoveArtist 3
+GetRecommendedSongInPlace 1
+GetRecommendedSongInPlace 2
+GetRecommendedSongInPlace 3
+GetRecommendedSongInPlace 4
+GetRecommendedSongInPlace 5
+GetRecommendedSongInPlace 6
+GetRecommendedSongInPlace 7
+GetRecommendedSongInPlace 8
+GetRecommendedSongInPlace 12
+AddArtist 15
+AddArtist 12
+AddArtist 13
+AddArtist 14
+AddArtist 11
+AddArtist 10
+AddArtist 23
+AddArtist 32
+AddArtist 44
+AddArtist 56
+AddArtist 17
+AddArtist 26
+AddArtist 34
+AddArtist 40
+AddArtist 52
+GetRecommendedSongInPlace 1
+GetRecommendedSongInPlace 2
+GetRecommendedSongInPlace 3
+GetRecommendedSongInPlace 4
+GetRecommendedSongInPlace 5
+GetRecommendedSongInPlace 6
+GetRecommendedSongInPlace 7
+GetRecommendedSongInPlace 8
+GetRecommendedSongInPlace 12
+AddSong 15 12
+AddSong 12 12
+AddToSongCount 15 12 10
+AddToSongCount 12 12 10
+RemoveSong 15 12
+RemoveSong 12 12
+RemoveArtist 15
+RemoveArtist 12
+RemoveArtist 13
+RemoveArtist 14
+RemoveArtist 11
+RemoveArtist 10
+RemoveArtist 23
+RemoveArtist 32
+RemoveArtist 44
+RemoveArtist 56
+RemoveArtist 17
+RemoveArtist 26
+RemoveArtist 34
+RemoveArtist 40
+RemoveArtist 52
+GetRecommendedSongInPlace 1
+GetRecommendedSongInPlace 2
+GetRecommendedSongInPlace 3
+GetRecommendedSongInPlace 4
+GetRecommendedSongInPlace 5
+GetRecommendedSongInPlace 6
+GetRecommendedSongInPlace 7
+GetRecommendedSongInPlace 8
+GetRecommendedSongInPlace 12
+GetArtistBestSong 1
+GetArtistBestSong 2
+Quit

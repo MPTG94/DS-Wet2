@@ -23,6 +23,9 @@ StatusType MusicManager::AddArtist(int artistID) {
 
 StatusType MusicManager::RemoveArtist(int artistID) {
 
+    if(artistHashTable.FindNode(artistID)== nullptr){
+        return FAILURE;
+    }
     Artist *rArtist = artistHashTable.FindNode(artistID)->getData();
     if (rArtist == nullptr || rArtist->getNumberOfSongs() != 0) {
         // The artist doesn't exist or

@@ -1,0 +1,89 @@
+Init
+AddArtist 0
+AddArtist 1
+AddArtist 1
+AddArtist 100
+AddArtist 2 
+AddArtist 99
+AddArtist 3 
+AddArtist 98
+AddArtist 4 
+AddArtist 97
+AddArtist 5 
+AddArtist 6 
+AddArtist 96
+AddArtist 95
+AddArtist 7 
+AddArtist 94
+AddArtist 8 
+AddArtist 93
+AddArtist 9 
+AddArtist 92
+AddArtist 91
+AddArtist 10
+AddSong 2 0
+AddSong 2 1
+AddSong 2 1
+RemoveArtist 2
+RemoveArtist 1
+RemoveArtist 3
+RemoveArtist 4
+RemoveArtist 5
+RemoveArtist 6
+RemoveArtist 7
+RemoveArtist 8
+RemoveArtist 9
+RemoveArtist 10
+RemoveArtist 1
+RemoveArtist 0
+RemoveArtist -1
+AddArtist 0
+AddArtist 1
+AddArtist 1
+AddArtist 100
+AddArtist 99
+AddArtist 3 
+AddArtist 98
+AddArtist 4 
+AddArtist 97
+AddArtist 5 
+AddArtist 6 
+AddArtist 96
+AddArtist 95
+AddArtist 7 
+AddArtist 94
+AddArtist 8 
+AddArtist 93
+AddArtist 9 
+AddArtist 92
+AddArtist 91
+AddArtist 10
+AddSong 2 0
+AddSong 2 1
+RemoveSong 2 0
+RemoveSong 2 1
+RemoveArtist 2
+RemoveArtist 1
+RemoveArtist 100
+RemoveArtist 99
+RemoveArtist 3 
+RemoveArtist 98
+RemoveArtist 4 
+RemoveArtist 97
+RemoveArtist 5 
+RemoveArtist 6 
+RemoveArtist 96
+RemoveArtist 95
+RemoveArtist 7 
+RemoveArtist 94
+RemoveArtist 8 
+RemoveArtist 93
+RemoveArtist 9 
+RemoveArtist 92
+RemoveArtist 91
+RemoveArtist 10
+AddSong 2 0
+AddSong 2 1
+RemoveSong 2 0
+RemoveSong 2 1
+Quit

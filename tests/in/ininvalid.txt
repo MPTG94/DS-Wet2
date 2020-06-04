@@ -1,0 +1,36 @@
+Init
+AddArtist 0
+AddArtist -10
+RemoveArtist 0
+RemoveArtist -10
+AddSong 1 0
+AddSong 0 1
+AddSong 0 0
+AddSong -10 1
+AddSong 1 -10
+AddSong -10 -10
+RemoveSong 1 0
+RemoveSong 0 1
+RemoveSong 0 0
+RemoveSong -10 1
+RemoveSong 1 -10
+RemoveSong -10 -10
+AddToSongCount 0 0 0
+AddToSongCount 1 0 0
+AddToSongCount 0 1 0
+AddToSongCount 0 0 1
+AddToSongCount 1 1 0
+AddToSongCount 0 1 1
+AddToSongCount 1 0 1
+AddToSongCount -10 1 1
+AddToSongCount 1 -10 1
+AddToSongCount 1 1 -10
+AddToSongCount 1 -10 -10
+AddToSongCount -10 1 -10
+AddToSongCount -10 -10 1
+AddToSongCount -10 -10 -10
+GetArtistBestSong 0
+GetArtistBestSong -10
+GetRecommendedSongInPlace 0
+GetRecommendedSongInPlace -10
+Quit

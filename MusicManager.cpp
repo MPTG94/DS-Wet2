@@ -139,6 +139,16 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
     songRankTree.Remove(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(oldNumberOfPlays + count, songID, artistID);
     songRankTree.Insert(newThreeKey);
+    if(artist->getBestSong()->getNumberOfPlays() <= oldNumberOfPlays+count){
+        if (artist->getBestSong()->getNumberOfPlays() < oldNumberOfPlays+count){
+            artist->setBestSong(song);
+        }
+        else{
+            if(artist->getBestSong()->getSongId() > songID){
+                artist->setBestSong(song);
+            }
+        }
+    }
     return SUCCESS;
 }
 

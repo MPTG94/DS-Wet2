@@ -14,8 +14,8 @@ private:
     int artistID;
     int numberOfSongs;
     Song* bestSong;
-    Tree<Song> *songsByIdTree;
-    Tree<Song> *songsByPlaysTree;
+    Tree<Song> songsByIdTree;
+    Tree<Song> songsByPlaysTree;
 
 public:
     explicit Artist(int artistID);
@@ -26,9 +26,9 @@ public:
 
     Song *getBestSong() const;
 
-    Tree<Song> *getSongsByIdTree() const;
+    Tree<Song> &getSongsByIdTree();
 
-    Tree<Song> *getSongsByPlaysTree() const;
+    Tree<Song> &getSongsByPlaysTree();
 
     void setArtistId(int artistId);
 
@@ -36,11 +36,7 @@ public:
 
     void setBestSong(Song *bestSong);
 
-    void setSongsByIdTree(Tree<Song> *songsByIdTree);
-
-    void setSongsByPlaysTree(Tree<Song> *songsByPlaysTree);
-
-    ~Artist();
+    ~Artist() = default;
 
 
 };

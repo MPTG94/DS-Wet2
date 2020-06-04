@@ -4,16 +4,16 @@
 
 #include "ThreeParamKey.h"
 
-ThreeParamKey::ThreeParamKey() : numberOfPlays(0), songId(1), artistId(1) {
+ThreeParamKey::ThreeParamKey() : numberOfPlays(0), songID(1), artistID(1) {
 
 }
 
-ThreeParamKey::ThreeParamKey(int numberOfPlays, int songId, int artistId) : numberOfPlays(numberOfPlays), songId(songId), artistId(artistId) {
+ThreeParamKey::ThreeParamKey(int numberOfPlays, int songId, int artistId) : numberOfPlays(numberOfPlays), songID(songId), artistID(artistId) {
 
 }
 
 bool ThreeParamKey::operator==(const ThreeParamKey &other) {
-    return (numberOfPlays == other.numberOfPlays) && (songId == other.songId) && (artistId == other.artistId);
+    return (numberOfPlays == other.numberOfPlays) && (songID == other.songID) && (artistID == other.artistID);
 }
 
 bool ThreeParamKey::operator!=(const ThreeParamKey &other) {
@@ -22,10 +22,10 @@ bool ThreeParamKey::operator!=(const ThreeParamKey &other) {
 
 bool ThreeParamKey::operator>(const ThreeParamKey &other) {
     if (numberOfPlays == other.numberOfPlays) {
-        if (artistId == other.artistId) {
-            return (songId < other.songId);
+        if (artistID == other.artistID) {
+            return (songID < other.songID);
         } else {
-            return (artistId < other.artistId);
+            return (artistID < other.artistID);
         }
     } else {
         return (numberOfPlays > other.numberOfPlays);
@@ -38,10 +38,10 @@ bool ThreeParamKey::operator>=(const ThreeParamKey &other) {
 
 bool ThreeParamKey::operator<(const ThreeParamKey &other) {
     if (numberOfPlays == other.numberOfPlays) {
-        if (artistId == other.artistId) {
-            return (songId > other.songId);
+        if (artistID == other.artistID) {
+            return (songID > other.songID);
         } else {
-            return (artistId > other.artistId);
+            return (artistID > other.artistID);
         }
     } else {
         return (numberOfPlays < other.numberOfPlays);
@@ -61,17 +61,17 @@ void ThreeParamKey::setNumberOfPlays(int nNumPlays) {
 }
 
 int ThreeParamKey::getSongId() const {
-    return songId;
+    return songID;
 }
 
-void ThreeParamKey::setSongId(int nSongId) {
-    ThreeParamKey::songId = nSongId;
+void ThreeParamKey::setSongId(int nSongID) {
+    ThreeParamKey::songID = nSongID;
 }
 
 int ThreeParamKey::getArtistId() const {
-    return artistId;
+    return artistID;
 }
 
-void ThreeParamKey::setArtistId(int nArtistId) {
-    ThreeParamKey::artistId = nArtistId;
+void ThreeParamKey::setArtistId(int nArtistID) {
+    ThreeParamKey::artistID = nArtistID;
 }

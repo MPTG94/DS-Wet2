@@ -11,12 +11,11 @@
 #include "Artist.h"
 #include "RankTree.h"
 #include "ThreeParamKey.h"
-#include "SongContainer.h"
 
 class MusicManager {
 private:
     HashTable<Artist> artistHashTable;
-    RankTree<ThreeParamKey, SongContainer> songRankTree;
+    RankTree<ThreeParamKey, int> songRankTree;
     int numberOfSongs;
     int numberOfArtists;
 public:
@@ -36,7 +35,11 @@ public:
 
     StatusType GetRecommendedSongInPlace(int rank, int *artistID, int *songID);
 
-    ~MusicManager();
+    ~MusicManager() = default;
+
+    StatusType AddSongToArtist(int artistID, int songID, Artist *artist);
+
+    StatusType AddSongToRankTree(int artistID, int songID, Song *nSong);
 };
 
 

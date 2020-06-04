@@ -9,15 +9,34 @@
 #include "Tree.h"
 #include "RankTree.h"
 #include "ThreeParamKey.h"
-#include "SongContainer.h"
 
 class Song {
 private:
     int songID;
     int artistID;
     int numberOfPlays;
-    RankTreeNode<ThreeParamKey, SongContainer>* ptrToRankedSong;
-    Song* ptrToSongInTree;
+    RankTreeNode<ThreeParamKey, int> *ptrToRankedSong;
+
+public:
+    Song(int songID, int artistID, int numberOfPlays = 0, RankTreeNode<ThreeParamKey, int>* ptrToRanked = nullptr);
+
+    int getSongId() const;
+
+    void setSongId(int nSongID);
+
+    int getArtistId() const;
+
+    void setArtistId(int nArtistID);
+
+    int getNumberOfPlays() const;
+
+    void setNumberOfPlays(int nNumberOfPlays);
+
+    RankTreeNode<ThreeParamKey, int> *getPtrToRankedSong() const;
+
+    void setPtrToRankedSong(RankTreeNode<ThreeParamKey, int> *nPtr);
+
+    ~Song() = default;
 };
 
 

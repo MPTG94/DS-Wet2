@@ -4,11 +4,9 @@
 
 #include "Artist.h"
 
-Artist::Artist(int artistID) : artistID(artistID), numberOfSongs(0), bestSong(nullptr){
-
-    songsByIdTree = new Tree<Song>(0);
-
-    songsByPlaysTree = new Tree<Song>(0);
+Artist::Artist(int artistID) : artistID(artistID), numberOfSongs(0), bestSong(nullptr) {
+    songsByIdTree = Tree<Song>();
+    songsByPlaysTree = Tree<Song>();
 }
 
 int Artist::getArtistId() const {
@@ -23,11 +21,11 @@ Song *Artist::getBestSong() const {
     return bestSong;
 }
 
-Tree<Song> *Artist::getSongsByIdTree() const {
+Tree<Song> &Artist::getSongsByIdTree() {
     return songsByIdTree;
 }
 
-Tree<Song> *Artist::getSongsByPlaysTree() const {
+Tree<Song> &Artist::getSongsByPlaysTree() {
     return songsByPlaysTree;
 }
 
@@ -41,17 +39,5 @@ void Artist::setNumberOfSongs(int NumberOfSongs) {
 
 void Artist::setBestSong(Song *BestSong) {
     Artist::bestSong = BestSong;
-}
-
-void Artist::setSongsByIdTree(Tree<Song> *SongsByIdTree) {
-    Artist::songsByIdTree = SongsByIdTree;
-}
-
-void Artist::setSongsByPlaysTree(Tree<Song> *SongsByPlaysTree) {
-    Artist::songsByPlaysTree = SongsByPlaysTree;
-}
-
-Artist::~Artist() {
-
 }
 

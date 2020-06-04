@@ -9,8 +9,8 @@
 class ThreeParamKey {
 private:
     int numberOfPlays = 0;
-    int songId = 1;
-    int artistId = 1;
+    int songID = 1;
+    int artistID = 1;
 
 public:
     ThreeParamKey();
@@ -23,11 +23,11 @@ public:
 
     int getSongId() const;
 
-    void setSongId(int nSongId);
+    void setSongId(int nSongID);
 
     int getArtistId() const;
 
-    void setArtistId(int nArtistId);
+    void setArtistId(int nArtistID);
 
     bool operator==(const ThreeParamKey &other);
 

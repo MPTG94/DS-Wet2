@@ -22,7 +22,7 @@ StatusType MusicManager::AddArtist(int artistID) {
 }
 
 StatusType MusicManager::RemoveArtist(int artistID) {
-    if(numberOfArtists <=0 || artistHashTable.FindNode(artistID)== nullptr){
+    if (numberOfArtists <= 0 || artistHashTable.FindNode(artistID) == nullptr) {
         return FAILURE;
     }
     Artist *rArtist = artistHashTable.FindNode(artistID)->getData();
@@ -139,12 +139,11 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
     songRankTree.Remove(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(oldNumberOfPlays + count, songID, artistID);
     songRankTree.Insert(newThreeKey);
-    if(artist->getBestSong()->getNumberOfPlays() <= oldNumberOfPlays+count){
-        if (artist->getBestSong()->getNumberOfPlays() < oldNumberOfPlays+count){
+    if (artist->getBestSong()->getNumberOfPlays() <= oldNumberOfPlays + count) {
+        if (artist->getBestSong()->getNumberOfPlays() < oldNumberOfPlays + count) {
             artist->setBestSong(song);
-        }
-        else{
-            if(artist->getBestSong()->getSongId() > songID){
+        } else {
+            if (artist->getBestSong()->getSongId() > songID) {
                 artist->setBestSong(song);
             }
         }

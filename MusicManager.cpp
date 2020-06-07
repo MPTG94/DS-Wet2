@@ -169,6 +169,7 @@ StatusType MusicManager::GetRecommendedSongInPlace(int rank, int *artistID, int 
     if (numberOfArtists <= 0 || numberOfSongs < rank) {
         return FAILURE;
     }
+    //songRankTree.PrintTreeWithRanks();
     ThreeParamKey found = songRankTree.FindByRank(rank);
     *artistID = found.getArtistId();
     *songID = found.getSongId();

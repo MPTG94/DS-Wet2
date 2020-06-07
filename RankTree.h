@@ -7,6 +7,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 
 using std::max;
 using std::ceil;
@@ -59,6 +60,8 @@ public:
     int getRank();
 
     static K FindNodeByRank(RankTreeNode<K, T> *root, int searchRank);
+
+    void PrintTreeInOrderWithRanks();
 
     int getNodeBalanceFactor();
 
@@ -322,6 +325,14 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::LeftRotate() {
     }
     this->parent = newRoot;
     // Updating node heights after switches
+    if (newRoot->left) {
+        newRoot->left->updateNodeHeight();
+        newRoot->left->updateNodeRank();
+    }
+    if (newRoot->right){
+        newRoot->right->updateNodeHeight();
+        newRoot->right->updateNodeRank();
+    }
     updateRebalancedNodeHeights(this, newRoot);
     return newRoot;
 }
@@ -421,6 +432,14 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::RightRotate() {
 
     this->parent = newRoot;
     // Updating node heights after switches
+    if (newRoot->left) {
+        newRoot->left->updateNodeHeight();
+        newRoot->left->updateNodeRank();
+    }
+    if (newRoot->right){
+        newRoot->right->updateNodeHeight();
+        newRoot->right->updateNodeRank();
+    }
     updateRebalancedNodeHeights(this, newRoot);
     return newRoot;
 }
@@ -905,6 +924,18 @@ K RankTreeNode<K, T>::FindNodeByRank(RankTreeNode<K, T> *root, int searchRank) {
     }
 }
 
+template<class K, class T>
+void RankTreeNode<K, T>::PrintTreeInOrderWithRanks() {
+    if (left) {
+        left->PrintTreeInOrderWithRanks();
+    }
+    std::cout << "Key is: " << key << " Rank is: " << rank << std::endl;
+
+    if (right) {
+        right->PrintTreeInOrderWithRanks();
+    }
+}
+
 
 /**
  * Generic Template Class for an AVL Tree
@@ -937,6 +968,8 @@ public:
     void Insert(K key, T *data = nullptr);
 
     RankTreeNode<K, T> *InsertGetBack(K key, T *data);
+
+    void PrintTreeWithRanks();
 
     void Remove(K key);
 
@@ -1153,6 +1186,13 @@ RankTree<K, T>::RankTree(int numberOfNodes) {
 template<class K, class T>
 K RankTree<K, T>::FindByRank(int searchRank) {
     return RankTreeNode<K, T>::FindNodeByRank(root, searchRank);
+}
+
+template<class K, class T>
+void RankTree<K, T>::PrintTreeWithRanks() {
+    if (root) {
+        root->PrintTreeInOrderWithRanks();
+    }
 }
 
 #endif //WET2_RANKTREE_H

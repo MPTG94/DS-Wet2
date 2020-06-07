@@ -75,3 +75,8 @@ int ThreeParamKey::getArtistId() const {
 void ThreeParamKey::setArtistId(int nArtistID) {
     ThreeParamKey::artistID = nArtistID;
 }
+
+std::ostream &operator<<(std::ostream &os, const ThreeParamKey &key) {
+    os << "numPlays: " << key.numberOfPlays << " artistID: " << key.artistID << " songID: " << key.songID << std::endl;
+    return os;
+}

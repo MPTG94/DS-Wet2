@@ -272,6 +272,12 @@ TreeNode<T> *TreeNode<T>::LeftRotate() {
     }
     this->parent = newRoot;
     // Updating node heights after switches
+    if (newRoot->left) {
+        newRoot->left->updateNodeHeight();
+    }
+    if (newRoot->right){
+        newRoot->right->updateNodeHeight();
+    }
     updateRebalancedNodeHeights(this, newRoot);
     return newRoot;
 }
@@ -369,6 +375,12 @@ TreeNode<T> *TreeNode<T>::RightRotate() {
 
     this->parent = newRoot;
     // Updating node heights after switches
+    if (newRoot->left) {
+        newRoot->left->updateNodeHeight();
+    }
+    if (newRoot->right){
+        newRoot->right->updateNodeHeight();
+    }
     updateRebalancedNodeHeights(this, newRoot);
     return newRoot;
 }

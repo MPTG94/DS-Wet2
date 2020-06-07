@@ -6,6 +6,8 @@
 #define WET2_THREEPARAMKEY_H
 
 
+#include <ostream>
+
 class ThreeParamKey {
 private:
     int numberOfPlays = 0;
@@ -40,6 +42,8 @@ public:
     bool operator<(const ThreeParamKey &other);
 
     bool operator<=(const ThreeParamKey &other);
+
+    friend std::ostream &operator<<(std::ostream &os, const ThreeParamKey &key);
 };
 
 

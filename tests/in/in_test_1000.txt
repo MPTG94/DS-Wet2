@@ -1,0 +1,1002 @@
+Quit
+Quit
+RemoveArtist 25
+GetArtistBestSong 19
+AddToSongCount 20 34 4
+AddToSongCount 55 9 56
+Init
+GetArtistBestSong -1
+RemoveSong 40 49
+RemoveArtist 12
+AddToSongCount 27 45 57
+GetArtistBestSong 0
+GetArtistBestSong 43
+RemoveArtist -1
+AddToSongCount 42 47 66
+Quit
+AddToSongCount 36 10 56
+RemoveArtist 5
+GetRecommendedSongInPlace 41
+RemoveArtist 3
+GetArtistBestSong 19
+AddSong 46 55
+RemoveSong 21 60
+GetRecommendedSongInPlace 31
+AddSong 40 49
+GetArtistBestSong 19
+AddSong 19 36
+GetArtistBestSong 67
+Init
+RemoveSong -3 23
+RemoveArtist 16
+Init
+AddToSongCount 38 22 1
+RemoveArtist 35
+AddSong 65 70
+RemoveArtist 22
+AddToSongCount 42 9 12
+GetArtistBestSong 17
+AddToSongCount 34 22 11
+GetArtistBestSong 56
+AddToSongCount 23 5 55
+RemoveSong 50 16
+AddToSongCount 7 5 33
+Init
+RemoveSong 49 70
+AddSong 34 69
+RemoveArtist 61
+RemoveSong 26 70
+AddSong 43 7
+RemoveArtist 60
+RemoveArtist -3
+Quit
+Quit
+AddSong 20 63
+AddArtist 0
+GetArtistBestSong 5
+GetArtistBestSong 41
+GetRecommendedSongInPlace 51
+Init
+GetArtistBestSong 1
+AddArtist 23
+Quit
+GetRecommendedSongInPlace -1
+AddToSongCount 69 12 10
+GetRecommendedSongInPlace 14
+Quit
+RemoveSong 2 35
+Quit
+AddSong 37 15
+Quit
+RemoveArtist 45
+GetRecommendedSongInPlace 42
+GetArtistBestSong 39
+AddToSongCount 13 0 29
+Quit
+AddSong 70 26
+Quit
+GetRecommendedSongInPlace 68
+RemoveSong 52 42
+RemoveSong 60 63
+AddSong 66 41
+AddToSongCount 62 8 68
+AddArtist 49
+RemoveSong 29 0
+AddToSongCount 57 52 67
+RemoveArtist 56
+AddSong 70 29
+AddToSongCount 28 -2 60
+GetRecommendedSongInPlace 38
+RemoveSong 26 29
+AddSong 59 12
+RemoveArtist 46
+AddSong 19 3
+RemoveArtist 21
+AddSong 50 68
+Init
+Init
+RemoveArtist 2
+GetArtistBestSong 33
+RemoveArtist 56
+Init
+GetRecommendedSongInPlace 42
+AddArtist 44
+RemoveArtist 30
+AddToSongCount 11 27 64
+RemoveArtist -2
+AddArtist 65
+GetArtistBestSong 64
+AddArtist 60
+GetArtistBestSong 68
+AddArtist 58
+GetRecommendedSongInPlace 56
+GetRecommendedSongInPlace 8
+AddArtist 60
+AddToSongCount 3 13 -3
+AddSong 0 14
+AddArtist 50
+AddSong 45 45
+AddSong 41 18
+RemoveArtist 40
+AddToSongCount 19 53 45
+GetRecommendedSongInPlace 36
+AddToSongCount 30 8 63
+AddSong 49 54
+RemoveSong 30 10
+GetArtistBestSong 14
+AddToSongCount 62 47 47
+RemoveSong 13 63
+AddToSongCount 32 45 31
+AddToSongCount 33 60 55
+AddArtist 68
+GetArtistBestSong 26
+AddArtist 67
+AddSong 38 0
+AddSong 34 52
+GetArtistBestSong 1
+GetArtistBestSong 34
+AddSong 20 63
+AddSong 58 43
+GetArtistBestSong 50
+GetArtistBestSong 32
+AddToSongCount 42 49 18
+AddToSongCount -3 12 12
+AddSong 30 50
+RemoveSong 64 8
+AddSong 59 -3
+GetRecommendedSongInPlace 4
+AddArtist 28
+AddArtist 14
+AddArtist 68
+AddSong 52 55
+AddToSongCount 27 54 20
+AddArtist 58
+RemoveSong 51 50
+AddArtist 2
+GetArtistBestSong 64
+AddArtist -1
+GetRecommendedSongInPlace 55
+AddArtist 46
+RemoveArtist 2
+AddArtist 20
+AddArtist 34
+AddToSongCount 34 12 46
+RemoveSong -3 37
+GetArtistBestSong 15
+GetRecommendedSongInPlace 52
+GetRecommendedSongInPlace 5
+AddSong 7 47
+AddArtist 13
+GetArtistBestSong 4
+RemoveArtist 12
+AddArtist 53
+AddToSongCount 6 51 47
+RemoveSong 65 18
+AddSong 50 26
+AddToSongCount 27 63 54
+AddArtist 40
+RemoveArtist 57
+RemoveArtist 62
+GetArtistBestSong 28
+GetRecommendedSongInPlace 32
+AddArtist 11
+GetArtistBestSong 1
+GetRecommendedSongInPlace 46
+AddToSongCount 40 29 47
+RemoveSong 11 59
+GetRecommendedSongInPlace 28
+AddArtist 30
+AddSong 21 15
+AddArtist 64
+AddToSongCount 14 57 65
+GetArtistBestSong 9
+GetRecommendedSongInPlace 7
+RemoveArtist 64
+AddToSongCount 9 49 3
+GetArtistBestSong 63
+AddToSongCount 35 28 59
+RemoveSong 61 54
+RemoveArtist 50
+RemoveArtist 57
+GetRecommendedSongInPlace 47
+RemoveSong 38 26
+AddArtist 24
+AddToSongCount 47 6 31
+RemoveArtist 42
+RemoveArtist 52
+RemoveArtist 39
+AddToSongCount 5 18 60
+GetArtistBestSong 42
+AddToSongCount 69 22 23
+AddToSongCount 51 19 21
+RemoveArtist 61
+AddArtist 51
+RemoveArtist 63
+RemoveArtist 54
+AddToSongCount 40 26 63
+GetArtistBestSong 52
+GetArtistBestSong 0
+GetRecommendedSongInPlace 38
+GetArtistBestSong 25
+GetRecommendedSongInPlace 48
+AddArtist -1
+AddArtist 19
+AddSong 52 25
+AddArtist 33
+GetArtistBestSong 12
+RemoveArtist 10
+RemoveArtist 5
+RemoveArtist 25
+RemoveArtist 50
+GetArtistBestSong 11
+RemoveArtist 15
+RemoveArtist 38
+GetRecommendedSongInPlace 44
+AddArtist 70
+AddArtist 9
+AddArtist 23
+AddSong 16 64
+GetRecommendedSongInPlace 54
+RemoveArtist 19
+GetArtistBestSong 46
+AddToSongCount 39 4 55
+AddSong 9 1
+GetRecommendedSongInPlace 63
+AddArtist 22
+AddToSongCount 17 42 54
+RemoveArtist 17
+RemoveSong 65 42
+RemoveSong 45 18
+GetArtistBestSong 50
+RemoveSong 51 5
+RemoveSong 60 17
+RemoveArtist 52
+GetRecommendedSongInPlace 32
+AddToSongCount 66 25 15
+AddArtist 57
+RemoveSong 52 19
+GetArtistBestSong 14
+AddToSongCount 44 32 31
+RemoveArtist 39
+GetRecommendedSongInPlace 8
+AddToSongCount 61 35 17
+AddArtist 3
+GetArtistBestSong 68
+RemoveArtist 57
+RemoveArtist 16
+AddSong 60 -3
+AddSong 52 30
+AddArtist -3
+AddToSongCount 26 4 45
+AddSong 33 64
+AddSong 4 23
+AddArtist 14
+RemoveSong 21 -1
+AddArtist 14
+GetRecommendedSongInPlace 64
+RemoveArtist 36
+AddSong 31 58
+RemoveSong 66 26
+AddToSongCount 54 61 12
+AddArtist 17
+GetRecommendedSongInPlace 41
+RemoveSong 24 70
+RemoveSong 63 49
+AddArtist 10
+GetArtistBestSong 20
+AddSong 15 3
+GetRecommendedSongInPlace 39
+AddSong 20 67
+AddArtist 13
+AddSong 6 2
+AddSong 43 9
+AddToSongCount -1 19 56
+AddToSongCount 57 58 13
+AddToSongCount 21 61 67
+GetArtistBestSong 53
+GetArtistBestSong 70
+RemoveArtist 3
+AddSong 8 4
+AddSong 68 62
+AddArtist 25
+AddArtist 5
+AddSong 20 25
+AddToSongCount 3 36 21
+AddToSongCount 34 16 31
+AddToSongCount 65 10 15
+RemoveArtist 39
+GetArtistBestSong 37
+AddSong 25 17
+GetRecommendedSongInPlace 51
+AddToSongCount 6 43 6
+GetArtistBestSong 18
+AddArtist 9
+AddSong 36 53
+AddArtist 19
+RemoveSong 5 16
+GetRecommendedSongInPlace 6
+RemoveArtist 66
+GetArtistBestSong 21
+GetArtistBestSong 13
+AddArtist 62
+GetArtistBestSong 60
+AddToSongCount 17 69 43
+AddToSongCount 33 26 8
+GetArtistBestSong 61
+AddToSongCount 51 20 68
+GetArtistBestSong 13
+GetRecommendedSongInPlace 18
+AddArtist 30
+AddSong 33 31
+RemoveSong 22 56
+GetRecommendedSongInPlace 47
+RemoveArtist 42
+GetArtistBestSong 37
+AddArtist 51
+AddSong 4 45
+GetArtistBestSong 49
+AddSong 34 53
+AddSong 40 38
+GetRecommendedSongInPlace 31
+GetRecommendedSongInPlace 56
+AddSong 2 9
+AddArtist 66
+RemoveArtist 6
+RemoveArtist 60
+AddSong 52 67
+RemoveSong 62 17
+GetArtistBestSong 13
+AddToSongCount 10 68 66
+RemoveArtist 64
+AddSong 70 22
+GetArtistBestSong 34
+RemoveArtist 44
+AddToSongCount 27 61 8
+AddToSongCount 36 22 10
+RemoveSong 54 55
+AddToSongCount 0 50 8
+AddSong 29 48
+RemoveArtist 35
+RemoveSong 4 58
+GetArtistBestSong 57
+AddToSongCount 66 -2 24
+RemoveSong 2 23
+RemoveSong 60 36
+AddArtist 50
+AddArtist 63
+AddArtist -2
+RemoveSong -3 47
+GetRecommendedSongInPlace 9
+AddToSongCount 19 6 67
+AddSong 18 13
+RemoveSong 2 60
+RemoveArtist 20
+GetArtistBestSong 12
+GetRecommendedSongInPlace 47
+AddToSongCount 22 46 62
+AddToSongCount -3 -3 61
+RemoveSong 1 29
+RemoveSong 32 20
+AddSong 64 15
+AddSong 11 69
+GetArtistBestSong 55
+AddToSongCount 19 20 1
+AddToSongCount 60 69 -1
+GetRecommendedSongInPlace 10
+GetArtistBestSong 44
+AddArtist 52
+AddSong 29 60
+AddToSongCount 2 28 15
+AddSong 44 21
+GetArtistBestSong 35
+RemoveSong 34 65
+AddToSongCount 26 64 3
+RemoveArtist 36
+GetArtistBestSong 59
+RemoveSong 25 -2
+AddSong 9 58
+AddToSongCount 61 39 52
+AddToSongCount 43 67 7
+GetArtistBestSong 45
+AddSong -3 65
+AddSong 10 36
+GetArtistBestSong 44
+GetArtistBestSong 9
+RemoveArtist 21
+GetArtistBestSong 38
+RemoveSong 9 65
+AddToSongCount 13 45 46
+AddSong 50 18
+AddArtist 65
+AddToSongCount 18 -3 6
+GetRecommendedSongInPlace 26
+AddArtist 10
+AddArtist 56
+GetRecommendedSongInPlace -2
+RemoveSong 27 25
+GetArtistBestSong 60
+AddArtist 46
+GetRecommendedSongInPlace -1
+GetRecommendedSongInPlace 50
+RemoveArtist 55
+AddSong 47 47
+RemoveArtist 44
+AddSong 68 39
+RemoveSong 33 59
+GetArtistBestSong 60
+GetRecommendedSongInPlace 48
+GetRecommendedSongInPlace 70
+RemoveArtist 26
+RemoveArtist 16
+RemoveSong 54 63
+RemoveArtist 8
+GetRecommendedSongInPlace 15
+AddArtist 53
+AddSong 39 62
+RemoveArtist 7
+AddToSongCount 63 25 13
+GetArtistBestSong 41
+GetRecommendedSongInPlace 42
+RemoveSong 55 70
+AddToSongCount 36 13 13
+AddArtist 18
+RemoveArtist 31
+GetArtistBestSong 59
+GetRecommendedSongInPlace 37
+AddToSongCount 64 56 2
+RemoveSong 34 26
+AddArtist 34
+GetRecommendedSongInPlace 59
+AddArtist 38
+GetArtistBestSong 11
+RemoveSong 51 34
+AddSong 46 0
+AddSong 3 23
+GetRecommendedSongInPlace 43
+AddSong 57 18
+AddToSongCount 26 16 64
+RemoveSong 66 41
+GetRecommendedSongInPlace 57
+AddArtist 1
+AddSong 20 54
+RemoveSong 5 65
+RemoveArtist 19
+AddSong 43 27
+GetArtistBestSong 67
+AddArtist 28
+GetRecommendedSongInPlace 21
+AddArtist 60
+AddArtist 38
+RemoveSong 55 39
+GetArtistBestSong 64
+AddSong 68 15
+AddArtist 26
+AddToSongCount 62 5 55
+RemoveSong 46 65
+RemoveArtist 52
+AddToSongCount 5 56 64
+RemoveSong 4 4
+GetRecommendedSongInPlace 47
+RemoveSong 68 43
+AddArtist 46
+AddSong 13 51
+RemoveArtist 10
+AddArtist 14
+RemoveSong 60 60
+AddToSongCount 23 36 15
+RemoveArtist 31
+RemoveSong 28 18
+RemoveSong 18 70
+AddToSongCount 33 28 8
+RemoveArtist 39
+RemoveSong 45 32
+AddSong 18 14
+AddArtist 11
+AddArtist 26
+AddArtist 25
+RemoveSong 18 47
+GetArtistBestSong 64
+AddSong 12 11
+AddToSongCount 70 38 15
+AddArtist 68
+RemoveArtist 66
+RemoveSong 1 52
+RemoveSong 3 67
+GetRecommendedSongInPlace 25
+AddArtist 47
+AddToSongCount 56 4 60
+AddSong 6 22
+RemoveArtist 61
+AddToSongCount 14 63 65
+GetArtistBestSong 52
+AddToSongCount 67 43 17
+GetArtistBestSong 61
+GetRecommendedSongInPlace 20
+AddToSongCount 12 55 23
+GetArtistBestSong 53
+GetRecommendedSongInPlace 70
+AddSong 28 54
+AddArtist 54
+RemoveSong 69 28
+GetRecommendedSongInPlace 16
+RemoveSong 52 2
+RemoveArtist -2
+RemoveSong 42 22
+RemoveArtist 1
+RemoveArtist 57
+RemoveArtist 49
+RemoveArtist -3
+AddArtist 14
+AddSong 58 13
+GetArtistBestSong 46
+RemoveSong 33 69
+RemoveSong 4 58
+AddToSongCount 61 21 52
+GetArtistBestSong 67
+GetRecommendedSongInPlace 45
+GetArtistBestSong 40
+GetRecommendedSongInPlace 27
+GetRecommendedSongInPlace 51
+AddArtist 64
+AddToSongCount 2 -2 7
+AddArtist 39
+AddSong 14 41
+GetArtistBestSong 0
+AddSong 53 21
+AddSong 57 57
+AddArtist 48
+RemoveSong 68 68
+GetRecommendedSongInPlace 60
+AddArtist 60
+AddSong -3 14
+RemoveArtist 5
+GetRecommendedSongInPlace 18
+AddToSongCount 43 29 57
+GetArtistBestSong 55
+AddSong 47 21
+AddToSongCount 18 67 30
+RemoveSong 25 32
+GetArtistBestSong -2
+RemoveSong 2 9
+AddArtist 59
+AddToSongCount 63 49 61
+AddArtist 41
+AddToSongCount 2 18 54
+AddSong 21 64
+AddSong 54 25
+GetArtistBestSong 3
+AddArtist 67
+AddSong 39 67
+GetRecommendedSongInPlace 49
+AddToSongCount 10 24 45
+GetArtistBestSong 42
+GetRecommendedSongInPlace 46
+RemoveArtist 70
+RemoveArtist 45
+RemoveArtist 59
+RemoveArtist 55
+RemoveArtist 40
+RemoveSong 7 43
+GetRecommendedSongInPlace 50
+GetArtistBestSong 37
+RemoveSong 61 40
+AddSong 7 47
+GetArtistBestSong 37
+GetArtistBestSong 26
+RemoveSong 21 6
+RemoveArtist 10
+RemoveSong 65 32
+GetRecommendedSongInPlace 16
+RemoveArtist 61
+GetArtistBestSong 38
+RemoveArtist 8
+AddToSongCount 57 35 55
+RemoveArtist 67
+AddArtist 43
+AddSong 26 62
+GetRecommendedSongInPlace 6
+AddSong 26 23
+RemoveArtist 69
+AddArtist 0
+RemoveSong 23 40
+RemoveArtist 38
+GetArtistBestSong 53
+AddToSongCount 69 1 64
+AddArtist 20
+GetRecommendedSongInPlace 24
+GetArtistBestSong 27
+AddSong 57 12
+RemoveSong 45 46
+AddSong 22 21
+GetArtistBestSong 59
+RemoveSong 11 9
+GetArtistBestSong 15
+GetArtistBestSong 24
+GetRecommendedSongInPlace 18
+RemoveArtist 18
+AddToSongCount 48 23 55
+AddToSongCount 42 45 19
+AddToSongCount 64 31 4
+AddSong 70 60
+AddArtist 15
+AddToSongCount 4 61 14
+GetRecommendedSongInPlace 29
+GetArtistBestSong 60
+AddToSongCount 67 59 45
+AddToSongCount 3 67 45
+GetRecommendedSongInPlace 49
+RemoveArtist 30
+RemoveSong 49 31
+AddToSongCount 33 34 21
+GetRecommendedSongInPlace 66
+RemoveSong 55 45
+AddSong 51 44
+GetArtistBestSong 66
+GetRecommendedSongInPlace 41
+AddSong 18 29
+RemoveArtist 33
+GetArtistBestSong 62
+GetArtistBestSong 17
+RemoveArtist 10
+GetArtistBestSong 6
+RemoveArtist 56
+GetRecommendedSongInPlace 9
+AddSong 61 20
+GetArtistBestSong 7
+RemoveArtist 32
+AddSong 25 45
+AddArtist 1
+AddToSongCount 63 14 66
+AddSong 69 3
+GetArtistBestSong 7
+AddToSongCount 47 5 33
+RemoveArtist 8
+RemoveArtist 8
+GetRecommendedSongInPlace 68
+AddSong 53 12
+AddSong 12 11
+RemoveSong 27 7
+GetArtistBestSong 59
+AddArtist 49
+AddToSongCount 12 16 7
+AddArtist 24
+AddArtist 2
+RemoveArtist 39
+GetArtistBestSong 14
+RemoveSong 20 20
+RemoveSong 7 51
+RemoveSong 57 49
+RemoveSong 22 13
+AddToSongCount 3 35 70
+AddToSongCount 36 21 32
+AddSong 4 64
+AddArtist 27
+AddArtist 65
+AddArtist 46
+GetArtistBestSong 19
+RemoveSong 41 54
+AddSong 63 35
+AddToSongCount 36 32 18
+RemoveArtist 5
+GetArtistBestSong 43
+AddArtist 9
+GetArtistBestSong 39
+GetArtistBestSong 56
+AddArtist 36
+GetArtistBestSong 56
+AddToSongCount 67 4 69
+GetArtistBestSong 35
+AddSong 10 10
+AddArtist 54
+AddArtist 37
+GetArtistBestSong 53
+RemoveArtist 45
+GetArtistBestSong 8
+RemoveArtist -1
+AddArtist 10
+RemoveArtist 26
+AddSong 41 15
+AddToSongCount 65 66 45
+AddSong 39 64
+GetArtistBestSong 38
+AddArtist 70
+RemoveSong 18 19
+AddSong 61 69
+GetRecommendedSongInPlace 34
+RemoveArtist 60
+RemoveArtist 32
+GetArtistBestSong -2
+AddSong 66 24
+RemoveSong 26 48
+GetArtistBestSong 33
+RemoveArtist 44
+AddArtist 43
+AddSong -1 51
+AddSong 46 41
+GetRecommendedSongInPlace 23
+AddToSongCount 26 52 51
+AddArtist 65
+AddSong 47 21
+AddSong 28 28
+AddArtist 47
+AddToSongCount 43 55 41
+GetArtistBestSong 55
+AddSong 21 4
+RemoveArtist 7
+RemoveSong 9 32
+AddToSongCount 23 54 31
+AddArtist 57
+AddToSongCount 69 31 -1
+AddArtist 51
+GetArtistBestSong 60
+AddArtist 10
+RemoveSong 13 26
+GetArtistBestSong 66
+GetArtistBestSong 20
+AddSong 60 22
+RemoveArtist 30
+RemoveArtist 0
+RemoveSong 37 4
+RemoveSong 57 67
+GetArtistBestSong 8
+RemoveSong 23 35
+RemoveSong 43 39
+RemoveSong 11 20
+GetRecommendedSongInPlace 11
+AddSong 4 43
+AddSong 41 46
+AddSong 11 13
+AddSong 4 50
+RemoveArtist 64
+AddArtist 21
+AddArtist 58
+AddArtist 23
+GetRecommendedSongInPlace 2
+AddToSongCount 0 -1 35
+AddArtist -1
+RemoveSong 38 69
+RemoveSong 49 0
+RemoveSong 46 17
+GetRecommendedSongInPlace 67
+RemoveArtist 33
+GetRecommendedSongInPlace 39
+AddArtist 10
+GetRecommendedSongInPlace 37
+RemoveSong 43 22
+AddArtist 8
+AddToSongCount 8 24 37
+AddSong 26 68
+GetRecommendedSongInPlace 43
+AddArtist 52
+AddArtist 49
+GetRecommendedSongInPlace 44
+AddSong 29 30
+RemoveSong 2 63
+AddArtist 14
+GetArtistBestSong 50
+AddArtist 41
+GetArtistBestSong 59
+RemoveArtist 33
+RemoveSong 45 70
+GetArtistBestSong 10
+AddToSongCount 33 61 47
+GetArtistBestSong 70
+GetArtistBestSong 65
+RemoveSong 36 39
+GetArtistBestSong 64
+RemoveSong 34 0
+AddArtist 37
+GetArtistBestSong 67
+RemoveSong 1 35
+RemoveArtist 69
+RemoveSong 67 19
+RemoveArtist 66
+GetRecommendedSongInPlace 15
+RemoveArtist 37
+AddToSongCount 15 43 23
+GetRecommendedSongInPlace 26
+GetArtistBestSong 67
+AddSong 32 59
+RemoveArtist 69
+AddToSongCount 58 16 48
+RemoveArtist 7
+RemoveArtist 57
+AddArtist 21
+AddSong 8 28
+RemoveSong 10 52
+AddArtist 18
+RemoveArtist 42
+RemoveArtist 3
+AddToSongCount 52 2 46
+AddSong 70 69
+GetArtistBestSong 55
+AddArtist 39
+AddArtist 39
+AddToSongCount 26 70 68
+RemoveSong 12 6
+AddSong 12 15
+GetArtistBestSong 27
+GetRecommendedSongInPlace 6
+AddArtist 40
+RemoveSong 49 9
+RemoveSong 18 4
+AddArtist 25
+AddSong 55 18
+AddToSongCount 24 50 20
+GetArtistBestSong 26
+RemoveArtist 48
+AddSong 37 62
+GetRecommendedSongInPlace 69
+AddSong 68 57
+GetRecommendedSongInPlace 21
+AddSong 13 70
+AddToSongCount 0 69 43
+AddSong 60 58
+GetArtistBestSong 35
+GetRecommendedSongInPlace 32
+AddToSongCount 2 52 27
+GetArtistBestSong 35
+RemoveSong 33 24
+AddArtist 49
+GetArtistBestSong 52
+RemoveArtist 4
+AddArtist 45
+AddSong 14 63
+RemoveSong 3 64
+GetRecommendedSongInPlace 4
+RemoveArtist 61
+RemoveSong 39 41
+GetArtistBestSong 57
+AddArtist 51
+GetRecommendedSongInPlace 12
+AddArtist 26
+GetRecommendedSongInPlace 5
+AddToSongCount 6 25 35
+RemoveArtist 70
+AddSong 43 6
+AddArtist 35
+RemoveSong 34 67
+GetRecommendedSongInPlace 26
+RemoveArtist 30
+RemoveArtist 16
+RemoveArtist 4
+RemoveArtist 37
+RemoveSong 56 27
+AddArtist 41
+AddToSongCount 30 17 26
+RemoveSong 26 28
+AddSong 20 -1
+RemoveSong 3 -1
+RemoveArtist 15
+AddSong 35 69
+AddArtist 46
+GetRecommendedSongInPlace 51
+GetArtistBestSong 50
+GetArtistBestSong 62
+RemoveArtist 62
+GetRecommendedSongInPlace 18
+RemoveSong 66 30
+AddToSongCount 52 61 70
+GetRecommendedSongInPlace 21
+AddArtist 27
+AddSong 61 33
+GetArtistBestSong 44
+RemoveArtist 65
+RemoveSong 2 61
+RemoveSong 0 52
+AddSong 62 2
+RemoveSong 57 59
+RemoveArtist 8
+AddToSongCount 33 64 9
+GetRecommendedSongInPlace 42
+AddToSongCount 67 21 26
+GetArtistBestSong 7
+GetArtistBestSong 1
+AddArtist 48
+AddSong 6 40
+AddToSongCount 22 61 51
+AddSong 66 28
+AddArtist 16
+RemoveSong 59 20
+AddArtist 48
+GetArtistBestSong 48
+AddToSongCount 55 31 28
+RemoveArtist 23
+Init
+AddArtist 0
+AddSong 12 50
+Init
+AddSong 40 8
+Quit
+AddSong 12 29
+RemoveSong 50 -1
+AddSong 38 19
+RemoveSong 67 49
+Quit
+AddSong 49 63
+Quit
+AddToSongCount 55 55 1
+AddSong 14 47
+AddToSongCount 62 -2 27
+AddArtist 8
+GetArtistBestSong 41
+AddSong 6 59
+Init
+Init
+AddArtist 56
+GetRecommendedSongInPlace 42
+AddToSongCount 19 25 -3
+AddSong -3 0
+GetRecommendedSongInPlace -3
+AddSong 31 21
+AddArtist 65
+GetArtistBestSong 6
+RemoveSong 60 42
+GetArtistBestSong 35
+AddSong 59 56
+AddArtist 10
+Init
+Init
+Init
+AddSong 48 52
+RemoveArtist 12
+RemoveSong 41 58
+AddToSongCount 21 37 49
+GetArtistBestSong 22
+AddArtist 59
+GetRecommendedSongInPlace 18
+GetArtistBestSong 61
+AddToSongCount 60 11 23
+Init
+RemoveSong 30 22
+RemoveArtist 16
+GetArtistBestSong 7
+AddToSongCount 49 23 25
+AddSong 68 38
+AddToSongCount 39 69 50
+AddSong 28 -3
+Quit
+Init
+Quit
+GetRecommendedSongInPlace 4
+GetRecommendedSongInPlace 0
+RemoveArtist 12
+Quit
+GetRecommendedSongInPlace 23
+RemoveSong 33 15
+RemoveSong 30 39
+GetArtistBestSong 24
+RemoveSong 46 22
+Quit
+GetArtistBestSong 1
+AddToSongCount 2 25 35
+RemoveArtist 12
+AddArtist 60
+Init
+AddSong 53 65
+AddToSongCount 51 20 27
+RemoveSong 43 22
+RemoveSong -3 49
+Quit
+GetArtistBestSong 55
+Quit
+RemoveArtist 39
+Init
+AddSong 69 42
+GetArtistBestSong 51
+AddSong 16 2
+Init
+GetArtistBestSong 19
+AddToSongCount 44 19 53
+GetArtistBestSong 54
+RemoveSong 6 7
+GetArtistBestSong 14
+GetArtistBestSong 18
+AddToSongCount 17 60 40
+Init
+Quit
+Quit
+AddToSongCount 17 30 28
+GetArtistBestSong 51
+AddArtist 37
+Quit

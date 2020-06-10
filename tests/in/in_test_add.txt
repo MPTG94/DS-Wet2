@@ -1,0 +1,72 @@
+Quit
+Init
+Quit
+Init
+Init
+GetRecommendedSongInPlace 1 # FAIL
+GetRecommendedSongInPlace 0 # INVALID
+GetRecommendedSongInPlace -1 # INVALID
+AddArtist 123
+GetRecommendedSongInPlace 1 # FAIL
+AddArtist 123 # Fail already exists
+AddArtist 0 # Invalid Input
+AddArtist 456
+AddArtist 456 #Fail already exists
+AddSong 123 7
+GetRecommendedSongInPlace 1 (123,7)
+GetRecommendedSongInPlace 2 (123,7) #FAILED
+AddSong 123 7 #Fail already exists
+AddSong 456 7
+AddSong 0 4 # Invalid Input
+AddSong -1 4 # Invalid Input
+AddSong 3 0 # Invalid Input
+AddSong 3 -1 # Invalid Input
+AddSong 789 10 # Failure - Artist does not exist
+RemoveArtist 123 # Failure - Artist has songs
+RemoveArtist 0 # Invalid Input
+RemoveArtist 456 # Failure - Artist has songs
+RemoveSong 456 7
+RemoveArtist 456
+AddArtist 456
+AddSong 456 1
+AddToSongCount 123 4 5 #FAILED NO SONG
+GetArtistBestSong 123 # Song 4 has 5 streams
+GetRecommendedSongInPlace 3 # The songs are ranked (123,7) > (456,1)
+GetRecommendedSongInPlace 1 # The songs are ranked (123,7) > (456,1)
+GetRecommendedSongInPlace 2 # The songs are ranked (123,7) > (456,1)
+AddToSongCount 123 7 -1 #INVALID NO SONG
+AddSong 456 2
+AddSong 456 3
+AddSong 456 4
+AddSong 456 5
+GetRecommendedSongInPlace 1 # The songs are ranked (123,7) > (456,1) > (456,2) > (456,3)> (456,4) > (456,5)
+GetRecommendedSongInPlace 2 # The songs are ranked (123,7) > (456,1) > (456,2) > (456,3)> (456,4) > (456,5)
+GetRecommendedSongInPlace 3 # The songs are ranked (123,7) > (456,1) > (456,2) > (456,3)> (456,4) > (456,5)
+GetRecommendedSongInPlace 4 # The songs are ranked (123,7) > (456,1) > (456,2) > (456,3)> (456,4) > (456,5)
+GetRecommendedSongInPlace 5 # The songs are ranked (123,7) > (456,1) > (456,2) > (456,3)> (456,4) > (456,5)
+AddToSongCount 123 7 1
+GetRecommendedSongInPlace 1 # The songs are ranked (123,7) > (456,1) > (456,2) > (456,3)> (456,4) > (456,5)
+AddToSongCount 456 5 1
+GetRecommendedSongInPlace 1 # The songs are ranked (123,7) > (456,5) > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 2 # The songs are ranked (123,7) > (456,5) > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 3 # The songs are ranked (123,7) > (456,5) > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 4 # The songs are ranked (123,7) > (456,5) > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 5 # The songs are ranked (123,7) > (456,5) > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 6 # The songs are ranked (123,7) > (456,5) > (456,1) > (456,2) > (456,3)> (456,4)
+AddToSongCount 456 5 1
+GetRecommendedSongInPlace 1 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 2 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 3 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 4 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 5 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,2) > (456,3)> (456,4)
+GetRecommendedSongInPlace 6 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,2) > (456,3)> (456,4)
+AddToSongCount 456 2 2
+GetRecommendedSongInPlace 1 # The songs are ranked (456,2) > (456,5) > (123,7)  > (456,1) > (456,3)> (456,4)
+GetRecommendedSongInPlace 2 # The songs are ranked (456,2) > (456,5) > (123,7)  > (456,1) > (456,3)> (456,4)
+GetArtistBestSong 456 #2
+RemoveSong 456 2
+GetRecommendedSongInPlace 1 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,3)> (456,4)
+GetRecommendedSongInPlace 2 # The songs are ranked (456,5) > (123,7)  > (456,1) > (456,3)> (456,4)
+GetArtistBestSong 456 #5
+Quit
+Quit

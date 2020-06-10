@@ -119,35 +119,46 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
 
     Song *song = songNode->getData();
     int oldNumberOfPlays = song->getNumberOfPlays();
-    song->setNumberOfPlays(oldNumberOfPlays + count);
-    TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
-    artist->getSongsByPlaysTree().Remove(oldTwoKey);
-    TwoParamKey newTwoKey = TwoParamKey(oldNumberOfPlays + count, songID);
-    Song *nSongPlays = new Song(songID, artistID, oldNumberOfPlays + count, nullptr);
-    if (!nSongPlays) {
-        song->setNumberOfPlays(oldNumberOfPlays);
-        return ALLOCATION_ERROR;
-    }
-    artist->getSongsByPlaysTree().Insert(newTwoKey, nSongPlays);
-    if (!artist->getSongsByPlaysTree().Find(newTwoKey)) {
-        song->setNumberOfPlays(oldNumberOfPlays);
-        delete nSongPlays;
-        return ALLOCATION_ERROR;
-    }
 
+    if (artist->getNumberOfSongs() == 1) {
+        // we deleted the best song from the plays tree, and added a new one which is the best song
+        // We are adding plays to the only song of the artist
+        song->setNumberOfPlays(oldNumberOfPlays + count);
+        TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
+        RankTreeNode<TwoParamKey, Song> *songPlaysNode = artist->getSongsByPlaysTree().Find(oldTwoKey);
+        songPlaysNode->getData()->setNumberOfPlays(oldNumberOfPlays + count);
+    } else {
+        song->setNumberOfPlays(oldNumberOfPlays + count);
+        TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
+        artist->getSongsByPlaysTree().Remove(oldTwoKey);
+        TwoParamKey newTwoKey = TwoParamKey(oldNumberOfPlays + count, songID);
+        Song *nSongPlays = new Song(songID, artistID, oldNumberOfPlays + count, nullptr);
+        if (!nSongPlays) {
+            song->setNumberOfPlays(oldNumberOfPlays);
+            return ALLOCATION_ERROR;
+        }
+        artist->getSongsByPlaysTree().Insert(newTwoKey, nSongPlays);
+        if (!artist->getSongsByPlaysTree().Find(newTwoKey)) {
+            song->setNumberOfPlays(oldNumberOfPlays);
+            delete nSongPlays;
+            return ALLOCATION_ERROR;
+        }
+
+        if (artist->getBestSong()->getNumberOfPlays() <= oldNumberOfPlays + count) {
+            if (artist->getBestSong()->getNumberOfPlays() < oldNumberOfPlays + count) {
+                artist->setBestSong(song);
+            } else {
+                if (artist->getBestSong()->getSongId() > songID) {
+                    artist->setBestSong(song);
+                }
+            }
+        }
+    }
     ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
     songRankTree.Remove(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(oldNumberOfPlays + count, songID, artistID);
     songRankTree.Insert(newThreeKey);
-    if (artist->getBestSong()->getNumberOfPlays() <= oldNumberOfPlays + count) {
-        if (artist->getBestSong()->getNumberOfPlays() < oldNumberOfPlays + count) {
-            artist->setBestSong(song);
-        } else {
-            if (artist->getBestSong()->getSongId() > songID) {
-                artist->setBestSong(song);
-            }
-        }
-    }
+
     return SUCCESS;
 }
 
@@ -195,19 +206,20 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
     TwoParamKey songKey = TwoParamKey(0, songID);
     artist->getSongsByPlaysTree().Insert(songKey, nSongPlays);
     if (!artist->getSongsByPlaysTree().Find(songKey)) {
+        delete nSongPlays;
         artist->getSongsByIdTree().Remove(songID);
         return ALLOCATION_ERROR;
     }
 
     if (artist->getNumberOfSongs() == 0) {
         // This is the first song of the artist, so it is also it's best song.
-        artist->setBestSong(nSong);
+        artist->setBestSong(nSongPlays);
     } else {
         Song *oldBest = artist->getBestSong();
         if (oldBest->getNumberOfPlays() == 0 && oldBest->getSongId() > songID) {
             // The old best song has 0 plays just like the one we added, so according
             // to printing rules we need to set the new one as the best song.
-            artist->setBestSong(nSong);
+            artist->setBestSong(nSongPlays);
         }
     }
 

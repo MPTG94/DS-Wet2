@@ -1,0 +1,561 @@
+init done.
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetRecommendedSongInPlace: Artist 95 Song 19
+GetRecommendedSongInPlace: Artist 95 Song 13
+GetRecommendedSongInPlace: Artist 95 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 19
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 45 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 45 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 45 Song 7
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 85 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetRecommendedSongInPlace: Artist 95 Song 19
+GetRecommendedSongInPlace: Artist 95 Song 13
+GetRecommendedSongInPlace: Artist 95 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 19
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 45 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 45 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 45 Song 7
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 85 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetRecommendedSongInPlace: Artist 95 Song 19
+GetRecommendedSongInPlace: Artist 95 Song 13
+GetRecommendedSongInPlace: Artist 95 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 19
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 45 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 45 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 45 Song 7
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 85 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetRecommendedSongInPlace: Artist 95 Song 19
+GetRecommendedSongInPlace: Artist 95 Song 13
+GetRecommendedSongInPlace: Artist 95 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 19
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 45 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 45 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 45 Song 7
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 85 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 85 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+RemoveSong: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: FAILURE
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: FAILURE
+GetArtistBestSong: FAILURE
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+RemoveArtist: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: FAILURE
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: FAILURE
+GetArtistBestSong: FAILURE
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddSong: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+AddToSongCount: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 13
+GetArtistBestSong: 13
+GetRecommendedSongInPlace: Artist 811 Song 13
+GetRecommendedSongInPlace: Artist 911 Song 13
+GetRecommendedSongInPlace: Artist 1011 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 811 Song 19
+GetRecommendedSongInPlace: Artist 911 Song 19
+GetRecommendedSongInPlace: Artist 1011 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 811 Song 7
+GetRecommendedSongInPlace: Artist 911 Song 7
+GetRecommendedSongInPlace: Artist 1011 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+AddArtist: SUCCESS
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 19
+GetArtistBestSong: 13
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 7
+GetArtistBestSong: 13
+GetArtistBestSong: 13
+GetRecommendedSongInPlace: Artist 811 Song 13
+GetRecommendedSongInPlace: Artist 911 Song 13
+GetRecommendedSongInPlace: Artist 1011 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 7
+GetRecommendedSongInPlace: Artist 811 Song 19
+GetRecommendedSongInPlace: Artist 911 Song 19
+GetRecommendedSongInPlace: Artist 1011 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 7
+GetRecommendedSongInPlace: Artist 811 Song 7
+GetRecommendedSongInPlace: Artist 911 Song 7
+GetRecommendedSongInPlace: Artist 1011 Song 7
+GetRecommendedSongInPlace: Artist 55 Song 13
+GetRecommendedSongInPlace: Artist 55 Song 19
+GetRecommendedSongInPlace: Artist 65 Song 13
+GetRecommendedSongInPlace: Artist 65 Song 19
+GetRecommendedSongInPlace: Artist 35 Song 19
+GetRecommendedSongInPlace: Artist 75 Song 7
+GetRecommendedSongInPlace: Artist 35 Song 13
+GetRecommendedSongInPlace: Artist 75 Song 13
+GetRecommendedSongInPlace: Artist 35 Song 7
+GetRecommendedSongInPlace: Artist 75 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 19
+GetRecommendedSongInPlace: Artist 25 Song 13
+GetRecommendedSongInPlace: Artist 25 Song 7
+GetRecommendedSongInPlace: Artist 15 Song 19
+GetRecommendedSongInPlace: Artist 15 Song 13
+GetRecommendedSongInPlace: Artist 15 Song 7
+GetRecommendedSongInPlace: Artist 5 Song 19
+GetRecommendedSongInPlace: Artist 5 Song 13
+GetRecommendedSongInPlace: Artist 5 Song 7
+GetRecommendedSongInPlace: FAILURE
+quit done.

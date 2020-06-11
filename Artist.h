@@ -37,6 +37,8 @@ public:
 
     void setBestSong(Song *bestSong);
 
+    void compareNumberOfSongs();
+
     ~Artist() = default;
 
 

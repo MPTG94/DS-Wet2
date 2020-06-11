@@ -85,8 +85,11 @@ StatusType MusicManager::RemoveSong(int artistID, int songID) {
             } else {
                 RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
                 if (bestSongFromPlaysNode->getLeft()) {
+                    // The best song is currently the root of the tree, setting the new best song to be his left son
+                    // (will be fixed after rotations)
                     artist->setBestSong(bestSongFromPlaysNode->getLeft()->getData());
                 } else {
+                    // The best song is currently the right child of the root, setting the new best song to be his root.
                     artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
                 }
             }
@@ -97,8 +100,9 @@ StatusType MusicManager::RemoveSong(int artistID, int songID) {
         }
     }
 
+    TwoParamKey removedSongKey = TwoParamKey(song->getNumberOfPlays(), songID);
     artist->getSongsByIdTree().Remove(songID);
-    artist->getSongsByPlaysTree().Remove(songTwoKey);
+    artist->getSongsByPlaysTree().Remove(removedSongKey);
     int oldNumberOfSongsForArtist = artist->getNumberOfSongs();
     artist->setNumberOfSongs(oldNumberOfSongsForArtist - 1);
     numberOfSongs--;
@@ -111,6 +115,7 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
     }
 
     Artist *artist = artistHashTable.FindNode(artistID)->getData();
+    //artist->compareNumberOfSongs();
     TreeNode<Song> *songNode = artist->getSongsByIdTree().Find(songID);
     if (!songNode) {
         // The song doesn't exist
@@ -156,7 +161,7 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
     songRankTree.Remove(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(newNumberOfPlays, songID, artistID);
     songRankTree.Insert(newThreeKey);
-
+    //artist->compareNumberOfSongs();
     return SUCCESS;
 }
 

@@ -41,3 +41,13 @@ void Artist::setBestSong(Song *BestSong) {
     Artist::bestSong = BestSong;
 }
 
+void Artist::compareNumberOfSongs() {
+    if (!songsByPlaysTree.GetRoot()) {
+        return;
+    }
+    if (numberOfSongs != songsByPlaysTree.GetRoot()->getRank()) {
+        std::cout << "ERROR IN NUMBER OF SONGS, artistID: " << artistID << " Number of songs: " << numberOfSongs << " Rank of root: "
+                  << songsByPlaysTree.GetRoot()->getRank() << std::endl;
+    }
+}
+

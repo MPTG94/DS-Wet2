@@ -117,46 +117,44 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
         return FAILURE;
     }
 
-    Song *song = songNode->getData();
-    int oldNumberOfPlays = song->getNumberOfPlays();
+    Song *songFromId = songNode->getData();
+    int oldNumberOfPlays = songFromId->getNumberOfPlays();
+    int newNumberOfPlays = oldNumberOfPlays + count;
+    bool isBesPtrReplaced = false;
+    Song *currentBest = artist->getBestSong();
 
-    if (artist->getNumberOfSongs() == 1) {
-        // we deleted the best song from the plays tree, and added a new one which is the best song
-        // We are adding plays to the only song of the artist
-        song->setNumberOfPlays(oldNumberOfPlays + count);
-        TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
-        RankTreeNode<TwoParamKey, Song> *songPlaysNode = artist->getSongsByPlaysTree().Find(oldTwoKey);
-        songPlaysNode->getData()->setNumberOfPlays(oldNumberOfPlays + count);
-    } else {
-        song->setNumberOfPlays(oldNumberOfPlays + count);
-        TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
-        artist->getSongsByPlaysTree().Remove(oldTwoKey);
-        TwoParamKey newTwoKey = TwoParamKey(oldNumberOfPlays + count, songID);
-        Song *nSongPlays = new Song(songID, artistID, oldNumberOfPlays + count, nullptr);
-        if (!nSongPlays) {
-            song->setNumberOfPlays(oldNumberOfPlays);
-            return ALLOCATION_ERROR;
+    if (currentBest->getSongId() != songID) {
+        if (currentBest->getNumberOfPlays() < newNumberOfPlays) {
+            isBesPtrReplaced = true;
+        } else if (currentBest->getNumberOfPlays() == newNumberOfPlays && currentBest->getSongId() > songID) {
+            isBesPtrReplaced = true;
         }
-        artist->getSongsByPlaysTree().Insert(newTwoKey, nSongPlays);
-        if (!artist->getSongsByPlaysTree().Find(newTwoKey)) {
-            song->setNumberOfPlays(oldNumberOfPlays);
-            delete nSongPlays;
-            return ALLOCATION_ERROR;
-        }
-
-        if (artist->getBestSong()->getNumberOfPlays() <= oldNumberOfPlays + count) {
-            if (artist->getBestSong()->getNumberOfPlays() < oldNumberOfPlays + count) {
-                artist->setBestSong(song);
-            } else {
-                if (artist->getBestSong()->getSongId() > songID) {
-                    artist->setBestSong(song);
-                }
-            }
-        }
+    } else if (currentBest->getSongId() == songID) {
+        isBesPtrReplaced = true;
     }
+
+    songFromId->setNumberOfPlays(newNumberOfPlays);
+    TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
+    artist->getSongsByPlaysTree().Remove(oldTwoKey);
+    TwoParamKey newTwoKey = TwoParamKey(newNumberOfPlays, songID);
+    Song *nSongPlays = new Song(songID, artistID, newNumberOfPlays, nullptr);
+    if (!nSongPlays) {
+        songFromId->setNumberOfPlays(oldNumberOfPlays);
+        return ALLOCATION_ERROR;
+    }
+    artist->getSongsByPlaysTree().Insert(newTwoKey, nSongPlays);
+    if (!artist->getSongsByPlaysTree().Find(newTwoKey)) {
+        songFromId->setNumberOfPlays(oldNumberOfPlays);
+        delete nSongPlays;
+        return ALLOCATION_ERROR;
+    }
+    if (isBesPtrReplaced) {
+        artist->setBestSong(nSongPlays);
+    }
+
     ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
     songRankTree.Remove(oldThreeKey);
-    ThreeParamKey newThreeKey = ThreeParamKey(oldNumberOfPlays + count, songID, artistID);
+    ThreeParamKey newThreeKey = ThreeParamKey(newNumberOfPlays, songID, artistID);
     songRankTree.Insert(newThreeKey);
 
     return SUCCESS;

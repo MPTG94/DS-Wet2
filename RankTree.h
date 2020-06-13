@@ -111,6 +111,8 @@ public:
 
     void setParent(RankTreeNode<K, T> *ptr);
 
+    RankTreeNode<K, T> *findMaxNoRank();
+
     RankTreeNode<K, T> *findMax();
 
     void DeleteTreeData();
@@ -699,13 +701,13 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::findMin() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The maximal node
  */
-//template<class K, class T>
-//RankTreeNode<K, T> *RankTreeNode<K, T>::findMax() {
-//    if (right) {
-//        return right->findMax();
-//    }
-//    return this;
-//}
+template<class K, class T>
+RankTreeNode<K, T> *RankTreeNode<K, T>::findMaxNoRank() {
+    if (right) {
+        return right->findMax();
+    }
+    return this;
+}
 
 template<class K, class T>
 RankTreeNode<K, T> *RankTreeNode<K, T>::findMax() {

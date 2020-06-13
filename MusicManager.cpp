@@ -10,7 +10,6 @@ MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTre
 }
 
 StatusType MusicManager::AddArtist(int artistID) {
-
     Artist *nArtist = new Artist(artistID);
     if (artistHashTable.Insert(artistID, nArtist) == FAILURE) {
         // The artist already exist

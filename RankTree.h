@@ -336,6 +336,9 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::LeftRotate() {
         newRoot->right->updateNodeRank();
     }
     updateRebalancedNodeHeights(this, newRoot);
+//    if (newRoot->getParent()) {
+//        newRoot->parent->updateNodeRank();
+//    }
     return newRoot;
 }
 
@@ -443,6 +446,9 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::RightRotate() {
         newRoot->right->updateNodeRank();
     }
     updateRebalancedNodeHeights(this, newRoot);
+//    if (newRoot->getParent()) {
+//        newRoot->parent->updateNodeRank();
+//    }
     return newRoot;
 }
 
@@ -486,6 +492,9 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::DeleteAndReplaceNodeWithRightSuccessor()
     // node we need to delete
     this->SwapNodesParent(next);
     delete this;
+//    if (next->getParent()) {
+//        next->getParent()->rank = next->getParent()->rank - 1;
+//    }
     return next->Rebalance();
 }
 
@@ -712,7 +721,7 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::findMaxNoRank() {
 template<class K, class T>
 RankTreeNode<K, T> *RankTreeNode<K, T>::findMax() {
     if (right) {
-        RankTreeNode<K, T>* temp = right->findMax();;
+        RankTreeNode<K, T> *temp = right->findMax();
         this->updateNodeRank();
         return temp;
     }

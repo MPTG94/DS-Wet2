@@ -12523,7 +12523,7 @@ AddSong: SUCCESS
 AddArtist: FAILURE
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 12 Song 49
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddArtist: FAILURE
 RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 17 Song 38
@@ -12663,7 +12663,7 @@ GetRecommendedSongInPlace: Artist 18 Song 64
 GetArtistBestSong: 8
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddArtist: SUCCESS
 GetArtistBestSong: 9
 RemoveSong: FAILURE
@@ -12809,7 +12809,7 @@ RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 14 Song 23
 RemoveArtist: INVALID_INPUT
 AddSong: SUCCESS
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 RemoveSong: FAILURE
 AddArtist: FAILURE
 AddArtist: SUCCESS
@@ -13081,7 +13081,7 @@ GetArtistBestSong: 44
 RemoveSong: FAILURE
 GetArtistBestSong: 47
 RemoveSong: FAILURE
-GetArtistBestSong: 36
+GetArtistBestSong: 3
 GetArtistBestSong: 18
 GetRecommendedSongInPlace: Artist 10 Song 66
 GetArtistBestSong: 9
@@ -13536,7 +13536,7 @@ AddArtist: FAILURE
 AddSong: SUCCESS
 GetArtistBestSong: 2
 RemoveSong: FAILURE
-GetArtistBestSong: 36
+GetArtistBestSong: 3
 RemoveArtist: FAILURE
 GetArtistBestSong: 20
 AddArtist: FAILURE
@@ -13624,7 +13624,7 @@ GetRecommendedSongInPlace: Artist 10 Song 52
 AddToSongCount: FAILURE
 AddArtist: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 36
+GetArtistBestSong: 3
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveSong: FAILURE
@@ -14200,7 +14200,7 @@ AddArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 22 Song 58
-GetArtistBestSong: 25
+GetArtistBestSong: 3
 AddArtist: INVALID_INPUT
 RemoveArtist: FAILURE
 RemoveSong: FAILURE
@@ -14435,7 +14435,7 @@ GetArtistBestSong: 17
 AddArtist: FAILURE
 AddSong: FAILURE
 RemoveSong: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 3
 RemoveArtist: FAILURE
 GetArtistBestSong: 48
 AddSong: SUCCESS
@@ -14506,13 +14506,13 @@ GetArtistBestSong: 26
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 45 Song 29
 AddToSongCount: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 3
 RemoveSong: FAILURE
 AddToSongCount: FAILURE
 AddSong: SUCCESS
 AddToSongCount: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 3
 AddToSongCount: FAILURE
 AddToSongCount: FAILURE
 AddSong: SUCCESS
@@ -14549,7 +14549,7 @@ GetRecommendedSongInPlace: Artist 29 Song 16
 AddArtist: INVALID_INPUT
 AddSong: SUCCESS
 AddToSongCount: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 3
 RemoveArtist: FAILURE
 AddSong: SUCCESS
 RemoveSong: FAILURE
@@ -15162,7 +15162,7 @@ RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 6 Song 68
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 6 Song 68
-GetArtistBestSong: 19
+GetArtistBestSong: 3
 GetArtistBestSong: FAILURE
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 65 Song 31
@@ -15328,7 +15328,7 @@ AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 6 Song 68
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 14
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
 RemoveSong: FAILURE
 RemoveSong: FAILURE
@@ -15348,7 +15348,7 @@ GetArtistBestSong: 6
 AddToSongCount: INVALID_INPUT
 RemoveSong: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 14
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 39 Song 25
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
@@ -15739,7 +15739,7 @@ AddSong: INVALID_INPUT
 GetRecommendedSongInPlace: Artist 2 Song 9
 RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 1 Song 42
-GetArtistBestSong: 14
+GetArtistBestSong: 9
 GetArtistBestSong: 24
 RemoveSong: FAILURE
 AddToSongCount: FAILURE
@@ -16459,7 +16459,7 @@ RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 42 Song 20
 GetArtistBestSong: 24
 GetRecommendedSongInPlace: Artist 1 Song 41
-GetArtistBestSong: 14
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 3 Song 23
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
@@ -16796,7 +16796,7 @@ GetArtistBestSong: INVALID_INPUT
 RemoveArtist: FAILURE
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 39 Song 59
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 AddSong: FAILURE
 AddSong: SUCCESS
 AddSong: SUCCESS
@@ -16815,7 +16815,7 @@ AddArtist: FAILURE
 AddArtist: FAILURE
 RemoveSong: FAILURE
 AddToSongCount: SUCCESS
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 AddToSongCount: INVALID_INPUT
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 2 Song 29
@@ -17707,7 +17707,7 @@ AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 GetArtistBestSong: 37
 AddSong: SUCCESS
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 AddArtist: FAILURE
 GetArtistBestSong: INVALID_INPUT
 AddSong: SUCCESS
@@ -18053,7 +18053,7 @@ AddArtist: FAILURE
 AddArtist: FAILURE
 RemoveSong: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 28
+GetArtistBestSong: 18
 AddToSongCount: FAILURE
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
@@ -18063,10 +18063,10 @@ GetArtistBestSong: INVALID_INPUT
 AddToSongCount: INVALID_INPUT
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 GetArtistBestSong: 2
 AddToSongCount: FAILURE
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 AddArtist: FAILURE
 AddSong: FAILURE
 RemoveArtist: FAILURE
@@ -18105,7 +18105,7 @@ RemoveArtist: FAILURE
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 39 Song 59
-GetArtistBestSong: 28
+GetArtistBestSong: 18
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 6 Song 11
 RemoveSong: SUCCESS
@@ -18224,7 +18224,7 @@ GetRecommendedSongInPlace: Artist 30 Song 7
 GetRecommendedSongInPlace: Artist 69 Song 26
 GetArtistBestSong: 51
 AddSong: INVALID_INPUT
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 65 Song 4
 GetArtistBestSong: 61
 AddToSongCount: SUCCESS
@@ -18244,7 +18244,7 @@ GetRecommendedSongInPlace: Artist 46 Song 45
 AddToSongCount: FAILURE
 AddSong: SUCCESS
 RemoveArtist: FAILURE
-GetArtistBestSong: 28
+GetArtistBestSong: 18
 GetRecommendedSongInPlace: Artist 10 Song 15
 GetArtistBestSong: 18
 RemoveSong: FAILURE
@@ -18771,7 +18771,7 @@ RemoveArtist: FAILURE
 RemoveSong: FAILURE
 RemoveSong: FAILURE
 AddSong: INVALID_INPUT
-GetArtistBestSong: 10
+GetArtistBestSong: 9
 GetArtistBestSong: 64
 AddSong: SUCCESS
 AddToSongCount: INVALID_INPUT
@@ -20136,7 +20136,7 @@ GetArtistBestSong: 64
 AddSong: SUCCESS
 AddToSongCount: SUCCESS
 AddArtist: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddArtist: FAILURE
 AddArtist: FAILURE
 AddToSongCount: FAILURE
@@ -20476,7 +20476,7 @@ RemoveSong: FAILURE
 AddArtist: FAILURE
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddToSongCount: FAILURE
 RemoveSong: FAILURE
 GetArtistBestSong: 2
@@ -20897,7 +20897,7 @@ RemoveSong: INVALID_INPUT
 RemoveSong: FAILURE
 AddArtist: FAILURE
 AddSong: SUCCESS
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddToSongCount: FAILURE
 GetArtistBestSong: 24
 AddArtist: FAILURE
@@ -20923,7 +20923,7 @@ RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 GetArtistBestSong: 17
 GetArtistBestSong: 22
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 GetRecommendedSongInPlace: Artist 65 Song 18
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 53 Song 48
@@ -21810,7 +21810,7 @@ GetArtistBestSong: 36
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 69 Song 26
 GetRecommendedSongInPlace: Artist 15 Song 24
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 GetArtistBestSong: 33
 GetArtistBestSong: 34
 RemoveSong: FAILURE
@@ -22239,7 +22239,7 @@ RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 AddArtist: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddArtist: FAILURE
 AddArtist: FAILURE
 RemoveArtist: FAILURE
@@ -22302,7 +22302,7 @@ RemoveSong: SUCCESS
 AddArtist: FAILURE
 AddToSongCount: INVALID_INPUT
 RemoveSong: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddSong: SUCCESS
 RemoveSong: INVALID_INPUT
 GetArtistBestSong: 26
@@ -22427,7 +22427,7 @@ AddSong: SUCCESS
 AddArtist: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 49 Song 12
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 GetRecommendedSongInPlace: Artist 13 Song 36
 GetRecommendedSongInPlace: Artist 33 Song 54
 RemoveArtist: FAILURE
@@ -22884,7 +22884,7 @@ AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveSong: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddSong: SUCCESS
 RemoveArtist: FAILURE
 AddArtist: FAILURE
@@ -23675,7 +23675,7 @@ RemoveArtist: FAILURE
 RemoveSong: FAILURE
 RemoveSong: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 GetArtistBestSong: 4
 GetRecommendedSongInPlace: Artist 10 Song 33
 AddArtist: FAILURE
@@ -23793,7 +23793,7 @@ GetArtistBestSong: 21
 GetRecommendedSongInPlace: Artist 53 Song 22
 AddSong: SUCCESS
 GetArtistBestSong: 41
-GetArtistBestSong: 46
+GetArtistBestSong: 22
 AddArtist: INVALID_INPUT
 AddArtist: FAILURE
 RemoveSong: FAILURE
@@ -24478,7 +24478,7 @@ GetRecommendedSongInPlace: INVALID_INPUT
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 26
+GetArtistBestSong: 22
 AddToSongCount: FAILURE
 AddToSongCount: SUCCESS
 GetRecommendedSongInPlace: Artist 27 Song 35
@@ -24512,7 +24512,7 @@ GetRecommendedSongInPlace: Artist 53 Song 22
 GetRecommendedSongInPlace: Artist 68 Song 6
 GetArtistBestSong: 60
 GetRecommendedSongInPlace: Artist 28 Song 34
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 RemoveArtist: FAILURE
 RemoveArtist: INVALID_INPUT
 AddArtist: FAILURE
@@ -25208,7 +25208,7 @@ RemoveSong: FAILURE
 AddArtist: FAILURE
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddSong: INVALID_INPUT
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
@@ -26453,7 +26453,7 @@ AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 41 Song 4
 AddArtist: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddArtist: FAILURE
 AddSong: FAILURE
 AddSong: SUCCESS
@@ -26486,7 +26486,7 @@ AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveSong: FAILURE
@@ -26676,7 +26676,7 @@ AddToSongCount: INVALID_INPUT
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
 AddSong: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 GetArtistBestSong: 36
 AddArtist: FAILURE
 AddArtist: FAILURE
@@ -26779,7 +26779,7 @@ AddToSongCount: FAILURE
 AddToSongCount: SUCCESS
 AddSong: SUCCESS
 AddToSongCount: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 RemoveArtist: FAILURE
 GetArtistBestSong: 29
 RemoveArtist: FAILURE
@@ -27436,7 +27436,7 @@ GetArtistBestSong: 20
 RemoveSong: SUCCESS
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddToSongCount: SUCCESS
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
@@ -27685,7 +27685,7 @@ AddToSongCount: FAILURE
 GetArtistBestSong: 26
 AddArtist: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 65 Song 36
@@ -27765,7 +27765,7 @@ AddArtist: FAILURE
 RemoveSong: FAILURE
 RemoveSong: FAILURE
 GetArtistBestSong: 58
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 AddToSongCount: INVALID_INPUT
 GetArtistBestSong: INVALID_INPUT
 AddArtist: FAILURE
@@ -28035,7 +28035,7 @@ AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 45 Song 13
 AddToSongCount: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 GetArtistBestSong: 27
 RemoveSong: INVALID_INPUT
 GetArtistBestSong: 53
@@ -28588,7 +28588,7 @@ AddArtist: FAILURE
 AddToSongCount: SUCCESS
 GetRecommendedSongInPlace: Artist 61 Song 66
 GetRecommendedSongInPlace: Artist 40 Song 20
-GetArtistBestSong: 3
+GetArtistBestSong: 1
 RemoveArtist: FAILURE
 AddArtist: FAILURE
 AddArtist: FAILURE
@@ -29742,7 +29742,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 27 Song 32
 AddSong: SUCCESS
-GetArtistBestSong: 13
+GetArtistBestSong: 1
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
 GetArtistBestSong: 12
@@ -29953,7 +29953,7 @@ GetArtistBestSong: 47
 GetRecommendedSongInPlace: Artist 24 Song 53
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 27
+GetArtistBestSong: 61
 AddSong: SUCCESS
 AddSong: INVALID_INPUT
 GetArtistBestSong: 13
@@ -30243,7 +30243,7 @@ AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 17 Song 23
 AddSong: SUCCESS
 RemoveArtist: INVALID_INPUT
-GetArtistBestSong: 27
+GetArtistBestSong: 61
 GetArtistBestSong: 12
 RemoveSong: FAILURE
 GetArtistBestSong: INVALID_INPUT
@@ -30310,7 +30310,7 @@ RemoveSong: FAILURE
 RemoveArtist: FAILURE
 AddSong: FAILURE
 AddToSongCount: SUCCESS
-GetArtistBestSong: 27
+GetArtistBestSong: 61
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 AddArtist: FAILURE
@@ -30567,7 +30567,7 @@ AddToSongCount: FAILURE
 AddArtist: FAILURE
 AddArtist: FAILURE
 AddToSongCount: SUCCESS
-GetArtistBestSong: 27
+GetArtistBestSong: 61
 AddToSongCount: INVALID_INPUT
 RemoveSong: INVALID_INPUT
 GetRecommendedSongInPlace: Artist 31 Song 21
@@ -38987,7 +38987,7 @@ GetRecommendedSongInPlace: Artist 32 Song 36
 RemoveArtist: FAILURE
 AddToSongCount: INVALID_INPUT
 AddArtist: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 RemoveArtist: FAILURE
 AddToSongCount: SUCCESS
 AddToSongCount: SUCCESS
@@ -39005,7 +39005,7 @@ AddToSongCount: SUCCESS
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 1 Song 58
 GetRecommendedSongInPlace: Artist 57 Song 19
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 AddArtist: FAILURE
 AddArtist: FAILURE
 AddToSongCount: SUCCESS
@@ -39573,7 +39573,7 @@ AddArtist: FAILURE
 AddToSongCount: FAILURE
 GetArtistBestSong: 23
 AddSong: SUCCESS
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 RemoveArtist: FAILURE
 GetArtistBestSong: 61
 GetRecommendedSongInPlace: Artist 19 Song 24
@@ -41032,7 +41032,7 @@ RemoveArtist: FAILURE
 AddArtist: FAILURE
 AddSong: INVALID_INPUT
 GetRecommendedSongInPlace: Artist 14 Song 23
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 AddSong: FAILURE
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
@@ -41412,7 +41412,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 AddSong: SUCCESS
 RemoveArtist: FAILURE
 GetArtistBestSong: 24
@@ -41484,7 +41484,7 @@ RemoveSong: FAILURE
 RemoveSong: SUCCESS
 GetRecommendedSongInPlace: Artist 5 Song 26
 AddArtist: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 RemoveArtist: FAILURE
 AddToSongCount: SUCCESS
 AddArtist: FAILURE
@@ -41537,7 +41537,7 @@ GetArtistBestSong: 60
 GetRecommendedSongInPlace: Artist 12 Song 13
 GetRecommendedSongInPlace: Artist 62 Song 42
 RemoveSong: FAILURE
-GetArtistBestSong: 25
+GetArtistBestSong: 20
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 11 Song 35
 GetRecommendedSongInPlace: Artist 54 Song 59
@@ -42221,7 +42221,7 @@ AddToSongCount: FAILURE
 RemoveSong: SUCCESS
 AddArtist: INVALID_INPUT
 RemoveArtist: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 35
 GetRecommendedSongInPlace: Artist 12 Song 13
 AddToSongCount: FAILURE
 GetRecommendedSongInPlace: Artist 21 Song 55
@@ -42710,7 +42710,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 30 Song 48
 RemoveSong: SUCCESS
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddSong: SUCCESS
 GetArtistBestSong: 30
 AddSong: FAILURE
@@ -42909,7 +42909,7 @@ RemoveSong: SUCCESS
 AddSong: FAILURE
 GetArtistBestSong: INVALID_INPUT
 GetArtistBestSong: 59
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 GetRecommendedSongInPlace: Artist 53 Song 44
 GetRecommendedSongInPlace: Artist 53 Song 44
 AddSong: FAILURE
@@ -43326,7 +43326,7 @@ AddSong: INVALID_INPUT
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 GetArtistBestSong: 52
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 GetArtistBestSong: 59
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
@@ -43475,7 +43475,7 @@ RemoveSong: FAILURE
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 65 Song 21
 GetRecommendedSongInPlace: Artist 66 Song 10
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddToSongCount: INVALID_INPUT
 GetRecommendedSongInPlace: Artist 55 Song 36
 AddSong: FAILURE
@@ -43508,7 +43508,7 @@ GetRecommendedSongInPlace: Artist 28 Song 34
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 GetArtistBestSong: INVALID_INPUT
 GetArtistBestSong: 48
 AddToSongCount: FAILURE
@@ -43719,7 +43719,7 @@ GetArtistBestSong: 29
 RemoveArtist: FAILURE
 AddSong: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 35
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 AddArtist: FAILURE
@@ -43976,7 +43976,7 @@ RemoveSong: SUCCESS
 GetRecommendedSongInPlace: Artist 15 Song 22
 AddArtist: FAILURE
 AddArtist: INVALID_INPUT
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
@@ -44400,7 +44400,7 @@ AddSong: FAILURE
 AddToSongCount: FAILURE
 AddToSongCount: SUCCESS
 RemoveSong: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 35
 AddSong: SUCCESS
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
@@ -44712,7 +44712,7 @@ AddToSongCount: FAILURE
 AddToSongCount: INVALID_INPUT
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 49 Song 49
-GetArtistBestSong: 10
+GetArtistBestSong: 37
 AddSong: SUCCESS
 GetArtistBestSong: 26
 RemoveSong: FAILURE
@@ -44871,7 +44871,7 @@ RemoveSong: FAILURE
 AddSong: FAILURE
 AddArtist: FAILURE
 RemoveSong: FAILURE
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddArtist: FAILURE
 RemoveArtist: FAILURE
 AddArtist: FAILURE
@@ -44923,7 +44923,7 @@ RemoveSong: SUCCESS
 AddSong: SUCCESS
 GetArtistBestSong: 53
 AddArtist: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 35
 AddArtist: FAILURE
 RemoveArtist: FAILURE
 AddToSongCount: INVALID_INPUT
@@ -45249,7 +45249,7 @@ AddArtist: FAILURE
 AddSong: SUCCESS
 AddSong: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 22
+GetArtistBestSong: 20
 AddArtist: FAILURE
 RemoveSong: FAILURE
 RemoveSong: FAILURE
@@ -48565,7 +48565,7 @@ RemoveSong: FAILURE
 GetArtistBestSong: INVALID_INPUT
 AddToSongCount: SUCCESS
 RemoveArtist: FAILURE
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 RemoveArtist: FAILURE
 AddArtist: FAILURE
 RemoveSong: FAILURE
@@ -49823,7 +49823,7 @@ GetArtistBestSong: 28
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 4 Song 38
 AddToSongCount: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 52
 AddSong: SUCCESS
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 67 Song 51
@@ -51246,7 +51246,7 @@ GetRecommendedSongInPlace: INVALID_INPUT
 GetRecommendedSongInPlace: Artist 39 Song 27
 GetArtistBestSong: 47
 GetArtistBestSong: 34
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 GetRecommendedSongInPlace: Artist 65 Song 70
 AddSong: SUCCESS
 AddToSongCount: FAILURE
@@ -51427,7 +51427,7 @@ RemoveSong: FAILURE
 AddSong: FAILURE
 RemoveSong: INVALID_INPUT
 AddArtist: FAILURE
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 GetRecommendedSongInPlace: Artist 8 Song 22
 GetRecommendedSongInPlace: Artist 33 Song 61
 RemoveArtist: FAILURE
@@ -51984,7 +51984,7 @@ RemoveArtist: INVALID_INPUT
 RemoveSong: FAILURE
 GetArtistBestSong: 26
 AddArtist: FAILURE
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 36 Song 35
 AddArtist: FAILURE
@@ -52107,7 +52107,7 @@ RemoveSong: SUCCESS
 RemoveArtist: INVALID_INPUT
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 4 Song 38
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 GetArtistBestSong: 58
 AddArtist: FAILURE
 RemoveSong: SUCCESS
@@ -52116,7 +52116,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 AddSong: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
@@ -52226,7 +52226,7 @@ AddArtist: FAILURE
 AddSong: SUCCESS
 AddArtist: FAILURE
 RemoveSong: SUCCESS
-GetArtistBestSong: 28
+GetArtistBestSong: 20
 GetRecommendedSongInPlace: Artist 25 Song 15
 RemoveArtist: FAILURE
 AddSong: SUCCESS
@@ -52784,7 +52784,7 @@ AddSong: FAILURE
 GetArtistBestSong: 22
 GetArtistBestSong: 27
 RemoveArtist: FAILURE
-GetArtistBestSong: 68
+GetArtistBestSong: 61
 AddArtist: FAILURE
 AddArtist: INVALID_INPUT
 AddArtist: FAILURE
@@ -53055,7 +53055,7 @@ AddToSongCount: SUCCESS
 AddArtist: FAILURE
 AddToSongCount: FAILURE
 GetArtistBestSong: INVALID_INPUT
-GetArtistBestSong: 1
+GetArtistBestSong: 61
 GetRecommendedSongInPlace: Artist 21 Song 25
 GetArtistBestSong: 4
 GetRecommendedSongInPlace: Artist 55 Song 60
@@ -53861,7 +53861,7 @@ AddSong: SUCCESS
 RemoveSong: FAILURE
 AddSong: INVALID_INPUT
 AddSong: SUCCESS
-GetArtistBestSong: 1
+GetArtistBestSong: 61
 AddArtist: FAILURE
 AddToSongCount: SUCCESS
 RemoveArtist: FAILURE
@@ -54206,7 +54206,7 @@ GetRecommendedSongInPlace: Artist 33 Song 61
 GetArtistBestSong: 7
 AddArtist: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 1
+GetArtistBestSong: 61
 RemoveArtist: FAILURE
 RemoveSong: FAILURE
 AddToSongCount: SUCCESS
@@ -57669,7 +57669,7 @@ AddToSongCount: SUCCESS
 AddToSongCount: INVALID_INPUT
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 29
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
@@ -57849,7 +57849,7 @@ RemoveArtist: INVALID_INPUT
 AddSong: INVALID_INPUT
 RemoveSong: FAILURE
 GetArtistBestSong: 54
-GetArtistBestSong: 48
+GetArtistBestSong: 29
 AddArtist: FAILURE
 AddToSongCount: SUCCESS
 AddToSongCount: SUCCESS
@@ -58605,7 +58605,7 @@ AddArtist: FAILURE
 RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 60 Song 22
 AddArtist: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 29
 GetRecommendedSongInPlace: Artist 17 Song 18
 AddSong: SUCCESS
 AddToSongCount: INVALID_INPUT
@@ -58929,7 +58929,7 @@ AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 16 Song 13
 AddArtist: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 29
 RemoveSong: SUCCESS
 AddToSongCount: SUCCESS
 AddArtist: FAILURE
@@ -60146,10 +60146,10 @@ RemoveSong: SUCCESS
 AddToSongCount: FAILURE
 AddSong: FAILURE
 GetArtistBestSong: 57
-GetArtistBestSong: 48
+GetArtistBestSong: 29
 GetRecommendedSongInPlace: Artist 1 Song 61
 AddToSongCount: FAILURE
-GetArtistBestSong: 48
+GetArtistBestSong: 29
 AddSong: FAILURE
 GetRecommendedSongInPlace: Artist 13 Song 69
 GetArtistBestSong: 56
@@ -61870,12 +61870,12 @@ AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 9 Song 69
 GetRecommendedSongInPlace: Artist 65 Song 1
 AddArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 28 Song 34
 GetRecommendedSongInPlace: Artist 49 Song 7
 AddToSongCount: FAILURE
 RemoveSong: SUCCESS
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 64 Song 38
 AddSong: FAILURE
 AddArtist: INVALID_INPUT
@@ -62374,7 +62374,7 @@ GetArtistBestSong: 52
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 AddArtist: FAILURE
 AddArtist: FAILURE
 AddToSongCount: FAILURE
@@ -63766,7 +63766,7 @@ RemoveSong: FAILURE
 GetArtistBestSong: 70
 GetRecommendedSongInPlace: Artist 14 Song 23
 AddToSongCount: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 58 Song 8
 GetRecommendedSongInPlace: Artist 57 Song 20
 AddToSongCount: INVALID_INPUT
@@ -64078,7 +64078,7 @@ AddToSongCount: INVALID_INPUT
 RemoveArtist: FAILURE
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
@@ -64095,7 +64095,7 @@ GetArtistBestSong: 34
 AddArtist: INVALID_INPUT
 AddSong: FAILURE
 GetArtistBestSong: 34
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetArtistBestSong: 60
 RemoveSong: SUCCESS
 RemoveSong: SUCCESS
@@ -64218,7 +64218,7 @@ RemoveSong: INVALID_INPUT
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
 GetArtistBestSong: 56
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 AddSong: FAILURE
 AddSong: FAILURE
 AddArtist: FAILURE
@@ -64353,7 +64353,7 @@ AddSong: SUCCESS
 GetArtistBestSong: 47
 AddArtist: FAILURE
 GetArtistBestSong: 33
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
 GetArtistBestSong: 11
 RemoveArtist: FAILURE
@@ -64420,7 +64420,7 @@ RemoveSong: FAILURE
 RemoveSong: FAILURE
 AddArtist: FAILURE
 RemoveSong: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
@@ -64482,14 +64482,14 @@ AddArtist: FAILURE
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 27 Song 60
 RemoveArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 RemoveSong: FAILURE
 AddSong: SUCCESS
 AddSong: SUCCESS
 AddArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveSong: SUCCESS
 GetRecommendedSongInPlace: Artist 28 Song 29
 AddSong: FAILURE
@@ -64777,7 +64777,7 @@ AddSong: FAILURE
 AddSong: SUCCESS
 AddToSongCount: FAILURE
 GetArtistBestSong: 26
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 GetArtistBestSong: 61
@@ -65434,7 +65434,7 @@ GetRecommendedSongInPlace: Artist 25 Song 58
 GetRecommendedSongInPlace: Artist 31 Song 34
 GetArtistBestSong: 34
 AddSong: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetArtistBestSong: 10
 AddToSongCount: FAILURE
 AddToSongCount: SUCCESS
@@ -65623,7 +65623,7 @@ AddToSongCount: FAILURE
 AddArtist: FAILURE
 AddSong: SUCCESS
 RemoveSong: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetArtistBestSong: 10
 RemoveArtist: FAILURE
 AddToSongCount: SUCCESS
@@ -66574,7 +66574,7 @@ AddToSongCount: SUCCESS
 AddToSongCount: FAILURE
 AddSong: FAILURE
 GetArtistBestSong: 22
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 42 Song 69
 RemoveSong: SUCCESS
@@ -67018,7 +67018,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 30 Song 7
 AddSong: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
@@ -67553,7 +67553,7 @@ RemoveArtist: FAILURE
 GetArtistBestSong: 41
 RemoveSong: FAILURE
 GetArtistBestSong: 32
-GetArtistBestSong: 65
+GetArtistBestSong: 53
 AddToSongCount: SUCCESS
 GetRecommendedSongInPlace: Artist 2 Song 68
 RemoveArtist: FAILURE
@@ -67722,7 +67722,7 @@ RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 GetRecommendedSongInPlace: Artist 10 Song 32
 AddArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 9
 GetArtistBestSong: 48
 RemoveSong: FAILURE
 RemoveArtist: FAILURE
@@ -67754,7 +67754,7 @@ AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 22 Song 52
 GetArtistBestSong: 69
 AddSong: SUCCESS
-GetArtistBestSong: 65
+GetArtistBestSong: 53
 AddToSongCount: FAILURE
 AddSong: FAILURE
 RemoveSong: INVALID_INPUT
@@ -68864,7 +68864,7 @@ AddSong: SUCCESS
 GetRecommendedSongInPlace: Artist 26 Song 45
 GetRecommendedSongInPlace: Artist 17 Song 18
 GetArtistBestSong: 26
-GetArtistBestSong: 70
+GetArtistBestSong: 1
 RemoveArtist: FAILURE
 GetArtistBestSong: 20
 AddSong: SUCCESS
@@ -69058,7 +69058,7 @@ AddToSongCount: SUCCESS
 RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 28 Song 34
 AddArtist: FAILURE
-GetArtistBestSong: 70
+GetArtistBestSong: 1
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
@@ -69433,7 +69433,7 @@ AddSong: FAILURE
 RemoveArtist: FAILURE
 AddArtist: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 65
+GetArtistBestSong: 53
 AddArtist: FAILURE
 RemoveArtist: FAILURE
 GetArtistBestSong: 47
@@ -69718,7 +69718,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 AddToSongCount: SUCCESS
 RemoveSong: FAILURE
-GetArtistBestSong: 65
+GetArtistBestSong: 53
 RemoveArtist: FAILURE
 AddArtist: FAILURE
 GetArtistBestSong: 22
@@ -70103,7 +70103,7 @@ AddSong: SUCCESS
 AddSong: FAILURE
 GetArtistBestSong: 6
 RemoveArtist: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
@@ -70117,7 +70117,7 @@ RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 55 Song 60
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 RemoveSong: SUCCESS
 AddSong: FAILURE
 AddSong: SUCCESS
@@ -70708,7 +70708,7 @@ AddToSongCount: SUCCESS
 AddSong: FAILURE
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 GetArtistBestSong: 34
 AddArtist: FAILURE
 RemoveSong: INVALID_INPUT
@@ -71253,7 +71253,7 @@ AddToSongCount: FAILURE
 AddToSongCount: SUCCESS
 AddToSongCount: FAILURE
 GetRecommendedSongInPlace: Artist 35 Song 20
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 AddToSongCount: FAILURE
 AddToSongCount: FAILURE
 AddArtist: FAILURE
@@ -71606,7 +71606,7 @@ GetRecommendedSongInPlace: Artist 51 Song 11
 AddSong: SUCCESS
 RemoveSong: FAILURE
 AddArtist: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 RemoveSong: SUCCESS
 AddArtist: FAILURE
 GetArtistBestSong: INVALID_INPUT
@@ -71707,7 +71707,7 @@ GetArtistBestSong: 33
 GetArtistBestSong: 60
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 AddArtist: FAILURE
 AddToSongCount: INVALID_INPUT
 RemoveArtist: FAILURE
@@ -72153,7 +72153,7 @@ GetArtistBestSong: 2
 GetRecommendedSongInPlace: Artist 30 Song 7
 AddToSongCount: SUCCESS
 AddToSongCount: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 RemoveSong: INVALID_INPUT
 AddSong: FAILURE
 AddArtist: INVALID_INPUT
@@ -72963,9 +72963,9 @@ GetRecommendedSongInPlace: Artist 33 Song 8
 RemoveSong: SUCCESS
 RemoveSong: SUCCESS
 GetRecommendedSongInPlace: Artist 35 Song 20
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 RemoveArtist: FAILURE
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 41 Song 56
 RemoveSong: SUCCESS
 GetRecommendedSongInPlace: INVALID_INPUT
@@ -73156,7 +73156,7 @@ GetRecommendedSongInPlace: Artist 15 Song 22
 GetRecommendedSongInPlace: Artist 32 Song 22
 AddToSongCount: FAILURE
 AddToSongCount: SUCCESS
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 GetRecommendedSongInPlace: Artist 1 Song 47
 GetArtistBestSong: 69
 AddSong: FAILURE
@@ -73292,7 +73292,7 @@ AddToSongCount: FAILURE
 RemoveSong: INVALID_INPUT
 AddSong: SUCCESS
 RemoveArtist: INVALID_INPUT
-GetArtistBestSong: 24
+GetArtistBestSong: 9
 AddToSongCount: SUCCESS
 RemoveArtist: FAILURE
 AddArtist: FAILURE
@@ -79930,7 +79930,7 @@ AddSong: FAILURE
 RemoveArtist: FAILURE
 GetArtistBestSong: 13
 AddSong: INVALID_INPUT
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 AddSong: SUCCESS
 AddArtist: FAILURE
 RemoveArtist: FAILURE
@@ -80317,7 +80317,7 @@ GetRecommendedSongInPlace: Artist 1 Song 47
 AddSong: SUCCESS
 AddToSongCount: SUCCESS
 RemoveSong: FAILURE
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 AddArtist: FAILURE
 AddArtist: FAILURE
 GetArtistBestSong: 18
@@ -80577,7 +80577,7 @@ GetRecommendedSongInPlace: Artist 6 Song 60
 RemoveArtist: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 23 Song 34
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 17 Song 18
@@ -80835,7 +80835,7 @@ RemoveArtist: FAILURE
 AddSong: FAILURE
 GetArtistBestSong: 45
 GetArtistBestSong: 43
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 RemoveSong: FAILURE
 RemoveSong: FAILURE
 AddArtist: FAILURE
@@ -81196,7 +81196,7 @@ GetRecommendedSongInPlace: Artist 53 Song 22
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 RemoveSong: SUCCESS
-GetArtistBestSong: 8
+GetArtistBestSong: 37
 RemoveSong: INVALID_INPUT
 AddArtist: FAILURE
 GetArtistBestSong: 43
@@ -81434,9 +81434,9 @@ AddArtist: FAILURE
 AddToSongCount: FAILURE
 GetRecommendedSongInPlace: Artist 67 Song 38
 AddSong: SUCCESS
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 GetArtistBestSong: 5
-GetArtistBestSong: 8
+GetArtistBestSong: 37
 RemoveArtist: FAILURE
 GetArtistBestSong: 22
 GetRecommendedSongInPlace: Artist 67 Song 3
@@ -81502,7 +81502,7 @@ RemoveSong: INVALID_INPUT
 GetRecommendedSongInPlace: Artist 25 Song 15
 GetArtistBestSong: 66
 RemoveSong: SUCCESS
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 GetRecommendedSongInPlace: Artist 34 Song 8
 GetRecommendedSongInPlace: Artist 63 Song 66
 AddArtist: FAILURE
@@ -81834,7 +81834,7 @@ RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 AddArtist: INVALID_INPUT
 RemoveSong: SUCCESS
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 RemoveArtist: INVALID_INPUT
 GetArtistBestSong: 9
 RemoveArtist: FAILURE
@@ -81932,7 +81932,7 @@ GetRecommendedSongInPlace: Artist 6 Song 60
 RemoveSong: FAILURE
 AddSong: SUCCESS
 AddToSongCount: FAILURE
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 RemoveArtist: INVALID_INPUT
 RemoveSong: SUCCESS
 AddSong: INVALID_INPUT
@@ -83572,7 +83572,7 @@ AddArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 6 Song 11
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 GetRecommendedSongInPlace: Artist 6 Song 60
 RemoveArtist: FAILURE
 GetArtistBestSong: 34
@@ -83829,7 +83829,7 @@ GetRecommendedSongInPlace: Artist 65 Song 9
 AddSong: SUCCESS
 GetArtistBestSong: 4
 GetRecommendedSongInPlace: Artist 10 Song 46
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 RemoveArtist: INVALID_INPUT
 RemoveArtist: FAILURE
 GetArtistBestSong: 20
@@ -84027,7 +84027,7 @@ GetRecommendedSongInPlace: Artist 28 Song 29
 AddArtist: FAILURE
 RemoveSong: SUCCESS
 AddArtist: FAILURE
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 AddSong: FAILURE
 RemoveArtist: FAILURE
 AddArtist: FAILURE
@@ -84118,7 +84118,7 @@ RemoveArtist: FAILURE
 RemoveSong: FAILURE
 GetArtistBestSong: 10
 RemoveSong: SUCCESS
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 AddSong: FAILURE
 AddToSongCount: SUCCESS
 GetRecommendedSongInPlace: Artist 43 Song 6
@@ -84892,7 +84892,7 @@ GetArtistBestSong: 15
 RemoveArtist: FAILURE
 AddToSongCount: FAILURE
 RemoveArtist: FAILURE
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 AddSong: SUCCESS
 GetArtistBestSong: 46
 RemoveSong: SUCCESS
@@ -85551,7 +85551,7 @@ AddToSongCount: INVALID_INPUT
 GetArtistBestSong: 22
 AddSong: INVALID_INPUT
 RemoveSong: INVALID_INPUT
-GetArtistBestSong: 70
+GetArtistBestSong: 52
 RemoveArtist: FAILURE
 GetArtistBestSong: 7
 RemoveSong: FAILURE
@@ -85755,7 +85755,7 @@ AddArtist: FAILURE
 RemoveArtist: FAILURE
 AddSong: FAILURE
 GetRecommendedSongInPlace: Artist 50 Song 3
-GetArtistBestSong: 70
+GetArtistBestSong: 52
 AddSong: INVALID_INPUT
 RemoveArtist: INVALID_INPUT
 RemoveArtist: FAILURE
@@ -86363,11 +86363,11 @@ GetArtistBestSong: INVALID_INPUT
 AddToSongCount: FAILURE
 RemoveSong: FAILURE
 GetRecommendedSongInPlace: Artist 42 Song 69
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 GetRecommendedSongInPlace: Artist 43 Song 6
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 1 Song 19
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 GetRecommendedSongInPlace: Artist 7 Song 42
 GetRecommendedSongInPlace: Artist 67 Song 3
 RemoveArtist: FAILURE
@@ -86386,7 +86386,7 @@ RemoveSong: INVALID_INPUT
 AddSong: INVALID_INPUT
 RemoveArtist: FAILURE
 GetRecommendedSongInPlace: Artist 67 Song 7
-GetArtistBestSong: 9
+GetArtistBestSong: 34
 GetRecommendedSongInPlace: Artist 40 Song 55
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 68 Song 37
@@ -86641,7 +86641,7 @@ AddToSongCount: SUCCESS
 GetRecommendedSongInPlace: Artist 25 Song 15
 GetArtistBestSong: 48
 AddToSongCount: INVALID_INPUT
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 RemoveSong: FAILURE
 AddToSongCount: SUCCESS
 AddToSongCount: SUCCESS
@@ -87280,7 +87280,7 @@ AddArtist: FAILURE
 GetArtistBestSong: 63
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 48 Song 37
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 RemoveArtist: FAILURE
 RemoveSong: SUCCESS
 RemoveSong: FAILURE
@@ -87467,7 +87467,7 @@ AddArtist: INVALID_INPUT
 RemoveSong: FAILURE
 AddToSongCount: SUCCESS
 AddSong: INVALID_INPUT
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 RemoveArtist: FAILURE
 AddSong: SUCCESS
 GetRecommendedSongInPlace: INVALID_INPUT
@@ -88640,7 +88640,7 @@ RemoveArtist: FAILURE
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 63 Song 30
 AddArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 AddSong: SUCCESS
 AddSong: FAILURE
 RemoveArtist: FAILURE
@@ -88761,7 +88761,7 @@ RemoveSong: FAILURE
 AddArtist: FAILURE
 RemoveSong: SUCCESS
 RemoveArtist: FAILURE
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 RemoveSong: SUCCESS
 RemoveSong: SUCCESS
 GetRecommendedSongInPlace: Artist 5 Song 19
@@ -88820,7 +88820,7 @@ AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 5 Song 19
 GetArtistBestSong: 6
 GetArtistBestSong: 19
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 AddToSongCount: SUCCESS
 GetRecommendedSongInPlace: Artist 19 Song 53
 GetArtistBestSong: 50
@@ -89066,7 +89066,7 @@ GetRecommendedSongInPlace: Artist 35 Song 20
 AddToSongCount: SUCCESS
 AddArtist: FAILURE
 GetRecommendedSongInPlace: Artist 20 Song 36
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 AddSong: INVALID_INPUT
 RemoveSong: FAILURE
 AddArtist: FAILURE
@@ -89368,7 +89368,7 @@ AddArtist: FAILURE
 AddSong: SUCCESS
 GetArtistBestSong: 53
 GetRecommendedSongInPlace: Artist 7 Song 59
-GetArtistBestSong: 7
+GetArtistBestSong: 34
 RemoveSong: INVALID_INPUT
 RemoveSong: SUCCESS
 RemoveSong: FAILURE

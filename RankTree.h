@@ -329,7 +329,7 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::LeftRotate() {
         newRoot->left->updateNodeHeight();
         newRoot->left->updateNodeRank();
     }
-    if (newRoot->right){
+    if (newRoot->right) {
         newRoot->right->updateNodeHeight();
         newRoot->right->updateNodeRank();
     }
@@ -436,7 +436,7 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::RightRotate() {
         newRoot->left->updateNodeHeight();
         newRoot->left->updateNodeRank();
     }
-    if (newRoot->right){
+    if (newRoot->right) {
         newRoot->right->updateNodeHeight();
         newRoot->right->updateNodeRank();
     }
@@ -699,11 +699,22 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::findMin() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The maximal node
  */
+//template<class K, class T>
+//RankTreeNode<K, T> *RankTreeNode<K, T>::findMax() {
+//    if (right) {
+//        return right->findMax();
+//    }
+//    return this;
+//}
+
 template<class K, class T>
 RankTreeNode<K, T> *RankTreeNode<K, T>::findMax() {
     if (right) {
-        return right->findMax();
+        RankTreeNode<K, T>* temp = right->findMax();;
+        this->updateNodeRank();
+        return temp;
     }
+    this->rank = this->rank - 1;
     return this;
 }
 

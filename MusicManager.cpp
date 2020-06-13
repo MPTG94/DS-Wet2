@@ -73,35 +73,40 @@ StatusType MusicManager::RemoveSong(int artistID, int songID) {
     ThreeParamKey songKey = ThreeParamKey(song->getNumberOfPlays(), songID, artistID);
     songRankTree.Remove(songKey);
 
-    Song *bestSong = artist->getBestSong();
-    TwoParamKey songTwoKey = TwoParamKey(bestSong->getNumberOfPlays(), songID);
-    if (bestSong->getSongId() == songID) {
-        if (artist->getNumberOfSongs() <= 2) {
-            // The tree has either 1 or two nodes
-            if (artist->getNumberOfSongs() == 1) {
-                // The song we are deleting was the only song for this artist, marking best song as empty
-                artist->setBestSong(nullptr);
-            } else {
-                RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
-                if (bestSongFromPlaysNode->getLeft()) {
-                    // The best song is currently the root of the tree, setting the new best song to be his left son
-                    // (will be fixed after rotations)
-                    artist->setBestSong(bestSongFromPlaysNode->getLeft()->getData());
-                } else {
-                    // The best song is currently the right child of the root, setting the new best song to be his root.
-                    artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
-                }
-            }
-        } else {
-            // The artist has other songs so now a new song needs to be marked as the artists' best song
-            RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
-            artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
-        }
-    }
+//    Song *bestSong = artist->getBestSong();
+//    TwoParamKey songTwoKey = TwoParamKey(bestSong->getNumberOfPlays(), songID);
+//    if (bestSong->getSongId() == songID) {
+//        if (artist->getNumberOfSongs() <= 2) {
+//            // The tree has either 1 or two nodes
+//            if (artist->getNumberOfSongs() == 1) {
+//                // The song we are deleting was the only song for this artist, marking best song as empty
+//                artist->setBestSong(nullptr);
+//            } else {
+//                RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
+//                if (bestSongFromPlaysNode->getLeft()) {
+//                    // The best song is currently the root of the tree, setting the new best song to be his left son
+//                    // (will be fixed after rotations)
+//                    artist->setBestSong(bestSongFromPlaysNode->getLeft()->getData());
+//                } else {
+//                    // The best song is currently the right child of the root, setting the new best song to be his root.
+//                    artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
+//                }
+//            }
+//        } else {
+//            // The artist has other songs so now a new song needs to be marked as the artists' best song
+//            RankTreeNode<TwoParamKey, Song> *bestSongFromPlaysNode = artist->getSongsByPlaysTree().Find(songTwoKey);
+//            artist->setBestSong(bestSongFromPlaysNode->getParent()->getData());
+//        }
+//    }
 
     TwoParamKey removedSongKey = TwoParamKey(song->getNumberOfPlays(), songID);
     artist->getSongsByIdTree().Remove(songID);
     artist->getSongsByPlaysTree().Remove(removedSongKey);
+    if (artist->getNumberOfSongs() == 1) {
+        artist->setBestSong(nullptr);
+    } else {
+        artist->setBestSong(artist->getSongsByPlaysTree().GetRoot()->findMaxNoRank()->getData());
+    }
     int oldNumberOfSongsForArtist = artist->getNumberOfSongs();
     artist->setNumberOfSongs(oldNumberOfSongsForArtist - 1);
     numberOfSongs--;
@@ -124,18 +129,18 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
     Song *songFromId = songNode->getData();
     int oldNumberOfPlays = songFromId->getNumberOfPlays();
     int newNumberOfPlays = oldNumberOfPlays + count;
-    bool isBesPtrReplaced = false;
-    Song *currentBest = artist->getBestSong();
-
-    if (currentBest->getSongId() != songID) {
-        if (currentBest->getNumberOfPlays() < newNumberOfPlays) {
-            isBesPtrReplaced = true;
-        } else if (currentBest->getNumberOfPlays() == newNumberOfPlays && currentBest->getSongId() > songID) {
-            isBesPtrReplaced = true;
-        }
-    } else if (currentBest->getSongId() == songID) {
-        isBesPtrReplaced = true;
-    }
+//    bool isBesPtrReplaced = false;
+//    Song *currentBest = artist->getBestSong();
+//
+//    if (currentBest->getSongId() != songID) {
+//        if (currentBest->getNumberOfPlays() < newNumberOfPlays) {
+//            isBesPtrReplaced = true;
+//        } else if (currentBest->getNumberOfPlays() == newNumberOfPlays && currentBest->getSongId() > songID) {
+//            isBesPtrReplaced = true;
+//        }
+//    } else if (currentBest->getSongId() == songID) {
+//        isBesPtrReplaced = true;
+//    }
 
     songFromId->setNumberOfPlays(newNumberOfPlays);
     TwoParamKey oldTwoKey = TwoParamKey(oldNumberOfPlays, songID);
@@ -152,9 +157,11 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
         delete nSongPlays;
         return ALLOCATION_ERROR;
     }
-    if (isBesPtrReplaced) {
-        artist->setBestSong(nSongPlays);
-    }
+//    if (isBesPtrReplaced) {
+//        artist->setBestSong(nSongPlays);
+//    }
+
+    artist->setBestSong(artist->getSongsByPlaysTree().GetRoot()->findMaxNoRank()->getData());
 
     ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
     songRankTree.Remove(oldThreeKey);
@@ -168,12 +175,14 @@ StatusType MusicManager::GetArtistBestSong(int artistID, int *songID) {
     if (numberOfArtists <= 0 || artistHashTable.Find(artistID) != SUCCESS) {
         return FAILURE;
     }
-
+    
     Artist *artist = artistHashTable.FindNode(artistID)->getData();
     if (artist->getNumberOfSongs() == 0) {
         return FAILURE;
     }
 
+//    RankTreeNode<TwoParamKey, Song> *foundMax = artist->getSongsByPlaysTree().GetRoot()->findMaxNoRank();
+//    *songID = foundMax->getData()->getSongId();
     *songID = artist->getBestSong()->getSongId();
     return SUCCESS;
 }
@@ -217,12 +226,13 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
         // This is the first song of the artist, so it is also it's best song.
         artist->setBestSong(nSongPlays);
     } else {
-        Song *oldBest = artist->getBestSong();
-        if (oldBest->getNumberOfPlays() == 0 && oldBest->getSongId() > songID) {
-            // The old best song has 0 plays just like the one we added, so according
-            // to printing rules we need to set the new one as the best song.
-            artist->setBestSong(nSongPlays);
-        }
+        artist->setBestSong(artist->getSongsByPlaysTree().GetRoot()->findMaxNoRank()->getData());
+//        Song *oldBest = artist->getBestSong();
+//        if (oldBest->getNumberOfPlays() == 0 && oldBest->getSongId() > songID) {
+//            // The old best song has 0 plays just like the one we added, so according
+//            // to printing rules we need to set the new one as the best song.
+//            artist->setBestSong(nSongPlays);
+//        }
     }
 
     if (AddSongToRankTree(artistID, songID, nSong) == ALLOCATION_ERROR) {

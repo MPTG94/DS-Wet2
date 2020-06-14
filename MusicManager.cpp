@@ -4,7 +4,7 @@
 
 #include "MusicManager.h"
 
-MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTree(RankTree<ThreeParamKey, int>()), numberOfSongs(0),
+MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTree(RankTreeSingle<ThreeParamKey, int>()), numberOfSongs(0),
                                numberOfArtists(0) {
 
 }
@@ -254,10 +254,10 @@ StatusType MusicManager::AddSongToRankTree(int artistID, int songID, Song *nSong
     ThreeParamKey songKey = ThreeParamKey(0, songID, artistID);
     songRankTree.Insert(songKey, nullptr);
 //    songRankTree.RankSanityCheck();
-    RankTreeNode<ThreeParamKey, int> *nRankedSong = songRankTree.Find(songKey);
+    RankTreeSingleNode<ThreeParamKey, int> *nRankedSong = songRankTree.Find(songKey);
     if (!nRankedSong) {
         return ALLOCATION_ERROR;
     }
-    nSong->setPtrToRankedSong(nRankedSong);
+    //nSong->setPtrToRankedSong(nRankedSong);
     return SUCCESS;
 }

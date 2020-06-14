@@ -9,13 +9,13 @@
 #include "library2.h"
 #include "HashTable.h"
 #include "Artist.h"
-#include "RankTree.h"
+#include "RankTreeSingle.h"
 #include "ThreeParamKey.h"
 
 class MusicManager {
 private:
     HashTable<Artist> artistHashTable;
-    RankTree<ThreeParamKey, int> songRankTree;
+    RankTreeSingle<ThreeParamKey, int> songRankTree;
     int numberOfSongs;
     int numberOfArtists;
 public:

@@ -124,6 +124,8 @@ public:
     static void FillKeysInOrder(RankTreeNode<K, T> *root, K &key);
 
     ~RankTreeNode();
+
+    void RankSanity();
 };
 
 /**
@@ -165,6 +167,24 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::Rebalance() {
     return this;
 }
 
+template<class K, class T>
+void RankTreeNode<K, T>::RankSanity() {
+    int leftRank = 0;
+    int rightRank = 0;
+
+    if (left) {
+        left->RankSanity();
+        leftRank = left->rank;
+    }
+    if (right) {
+        right->RankSanity();
+        rightRank = right->rank;
+    }
+    if (rank != 1+leftRank+rightRank) {
+        std::cout << "ERROR IN TREE RANK" << std::endl;
+    }
+}
+
 /**
  * Calculates the balance factor of the current node
  * @tparam T Pointer to dynamically allocated object of type T
@@ -195,6 +215,7 @@ template<class K, class T>
 void RankTreeNode<K, T>::SwapNodesParent(RankTreeNode<K, T> *replacement) {
     if (replacement) {
         replacement->parent = this->parent;
+        replacement->updateNodeHeight();
     }
     if (getParent()) {
         if (getParent()->getLeft() && getParent()->getLeft()->getKey() == getKey()) {
@@ -202,6 +223,7 @@ void RankTreeNode<K, T>::SwapNodesParent(RankTreeNode<K, T> *replacement) {
         } else {
             this->parent->right = replacement;
         }
+        getParent()->updateNodeHeight();
     }
 }
 
@@ -350,8 +372,20 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::LeftRotate() {
  */
 template<class K, class T>
 void RankTreeNode<K, T>::updateRebalancedNodeHeights(RankTreeNode<K, T> *origin, RankTreeNode<K, T> *newRoot) {
+    if (origin->right) {
+        origin->right->updateNodeHeight();
+    }
+    if (origin->left) {
+        origin->left->updateNodeHeight();
+    }
     origin->updateNodeHeight();
     origin->updateNodeRank();
+    if (newRoot->right) {
+        newRoot->right->updateNodeHeight();
+    }
+    if (newRoot->left) {
+        newRoot->left->updateNodeHeight();
+    }
     newRoot->updateNodeHeight();
     newRoot->updateNodeRank();
 }
@@ -464,6 +498,10 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::DeleteAndReplaceNodeWithLeftSuccessor() 
         next->parent->right = next->left;
         if (next->getLeft()) {
             next->left->parent = next->parent;
+            if (next->left->parent) {
+                next->left->parent->updateNodeHeight();
+                next->left->parent->updateNodeRank();
+            }
         }
         // might need to be reversed
         this->left->parent = next;
@@ -477,6 +515,7 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::DeleteAndReplaceNodeWithLeftSuccessor() 
         this->right->parent = next;
     }
     delete this;
+    next->updateNodeHeight();
     return next->Rebalance();
 }
 
@@ -713,7 +752,7 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::findMin() {
 template<class K, class T>
 RankTreeNode<K, T> *RankTreeNode<K, T>::findMaxNoRank() {
     if (right) {
-        return right->findMax();
+        return right->findMaxNoRank();
     }
     return this;
 }
@@ -723,9 +762,11 @@ RankTreeNode<K, T> *RankTreeNode<K, T>::findMax() {
     if (right) {
         RankTreeNode<K, T> *temp = right->findMax();
         this->updateNodeRank();
+        this->updateNodeHeight();
         return temp;
     }
     this->rank = this->rank - 1;
+    this->height = 0;
     return this;
 }
 
@@ -998,6 +1039,8 @@ public:
     bool IsRootNull();
 
     ~RankTree();
+
+    void RankSanityCheck();
 };
 
 /**
@@ -1214,6 +1257,13 @@ template<class K, class T>
 void RankTree<K, T>::PrintTreeWithRanks() {
     if (root) {
         root->PrintTreeInOrderWithRanks();
+    }
+}
+
+template<class K, class T>
+void RankTree<K, T>::RankSanityCheck() {
+    if (root) {
+        root->RankSanity();
     }
 }
 

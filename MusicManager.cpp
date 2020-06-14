@@ -72,6 +72,7 @@ StatusType MusicManager::RemoveSong(int artistID, int songID) {
     Song *song = songNode->getData();
     ThreeParamKey songKey = ThreeParamKey(song->getNumberOfPlays(), songID, artistID);
     songRankTree.Remove(songKey);
+//    songRankTree.RankSanityCheck();
 
 //    Song *bestSong = artist->getBestSong();
 //    TwoParamKey songTwoKey = TwoParamKey(bestSong->getNumberOfPlays(), songID);
@@ -163,10 +164,12 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
 
     artist->setBestSong(artist->getSongsByPlaysTree().GetRoot()->findMaxNoRank()->getData());
 
+//    songRankTree.RankSanityCheck();
     ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
     songRankTree.Remove(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(newNumberOfPlays, songID, artistID);
     songRankTree.Insert(newThreeKey);
+//    songRankTree.RankSanityCheck();
     //artist->compareNumberOfSongs();
     return SUCCESS;
 }
@@ -250,6 +253,7 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
 StatusType MusicManager::AddSongToRankTree(int artistID, int songID, Song *nSong) {
     ThreeParamKey songKey = ThreeParamKey(0, songID, artistID);
     songRankTree.Insert(songKey, nullptr);
+//    songRankTree.RankSanityCheck();
     RankTreeNode<ThreeParamKey, int> *nRankedSong = songRankTree.Find(songKey);
     if (!nRankedSong) {
         return ALLOCATION_ERROR;

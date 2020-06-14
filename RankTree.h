@@ -81,6 +81,8 @@ public:
 
     RankTreeNode<K, T> *DeleteNode();
 
+    void updateHeightRecurse();
+
     void updateNodeHeight();
 
     void updateNodeRank();
@@ -997,6 +999,19 @@ void RankTreeNode<K, T>::PrintTreeInOrderWithRanks() {
     if (right) {
         right->PrintTreeInOrderWithRanks();
     }
+}
+
+template<class K, class T>
+void RankTreeNode<K, T>::updateHeightRecurse() {
+    if (left) {
+        left->updateHeightRecurse();
+    }
+    if (right) {
+        right->updateHeightRecurse();
+    }
+    int leftHeight = getLeftChildHeight();
+    int rightHeight = getRightChildHeight();
+    height = 1 + max(leftHeight, rightHeight);
 }
 
 

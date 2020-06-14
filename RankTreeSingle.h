@@ -10,60 +10,45 @@
 #include <iostream>
 
 using std::max;
-using std::ceil;
-using std::log2;
-using std::pow;
 
 /**
  * Generic Template Class for a RankTreeSingleNode
  * Made Specifically for use as a balanced AVL tree node meant to store dynamic
  * user data
  */
-template<class K, class T>
+template<class K>
 class RankTreeSingleNode {
 private:
     K key;
-    T *data;
     int height = 1;
     int rank = 1;
-    RankTreeSingleNode<K, T> *left = nullptr;
-    RankTreeSingleNode<K, T> *right = nullptr;
-    RankTreeSingleNode<K, T> *parent = nullptr;
+    RankTreeSingleNode<K> *left = nullptr;
+    RankTreeSingleNode<K> *right = nullptr;
 
-    RankTreeSingleNode<K, T> *Rebalance();
+    static RankTreeSingleNode<K> *Rebalance(RankTreeSingleNode<K> *node);
 
     int getBalanceFactor();
 
-    void SwapNodesParent(RankTreeSingleNode<K, T> *replacement);
+    static RankTreeSingleNode<K> *StaticLeftRotate(RankTreeSingleNode<K> *node);
 
-    RankTreeSingleNode<K, T> *LeftRightRotate();
-
-    RankTreeSingleNode<K, T> *RightLeftRotate();
-
-    void updateRotatedRootParent(RankTreeSingleNode<K, T> *previousRoot, RankTreeSingleNode<K, T> *newRoot);
-
-    RankTreeSingleNode<K, T> *LeftRotate();
-
-    RankTreeSingleNode<K, T> *RightRotate();
+    static RankTreeSingleNode<K> *StaticRightRotate(RankTreeSingleNode<K> *node);
 
 public:
-    RankTreeSingleNode(K key, T *nData = nullptr, RankTreeSingleNode *parent = nullptr, RankTreeSingleNode *left = nullptr, RankTreeSingleNode *right = nullptr);
+    RankTreeSingleNode(K key, RankTreeSingleNode *left = nullptr, RankTreeSingleNode *right = nullptr);
 
     K getKey();
-
-    T *getData();
-
-    void removeDataPointer();
 
     int getHeight();
 
     int getRank();
 
-    static K FindNodeByRank(RankTreeSingleNode<K, T> *root, int searchRank);
+    static K FindNodeByRank(RankTreeSingleNode<K> *root, int searchRank);
 
     void PrintTreeInOrderWithRanks();
 
     int getNodeBalanceFactor();
+
+    static int getBalance(RankTreeSingleNode<K> *node);
 
     int getLeftChildRank();
 
@@ -73,13 +58,13 @@ public:
 
     int getRightChildHeight();
 
-    RankTreeSingleNode<K, T> *findMin();
+    static RankTreeSingleNode<K> *findMin(RankTreeSingleNode<K> *node);
 
-    RankTreeSingleNode<K, T> *Insert(K nodeKey, T *nodeData = nullptr, RankTreeSingleNode<K, T> *result = nullptr);
+    static RankTreeSingleNode<K> *Insert(RankTreeSingleNode<K> *tempRoot, K nodeKey);
 
-    RankTreeSingleNode<K, T> *Remove(K nodeKey);
+    RankTreeSingleNode<K> *Remove(K nodeKey);
 
-    RankTreeSingleNode<K, T> *DeleteNode();
+    static RankTreeSingleNode<K> *DeleteNode(RankTreeSingleNode<K> *tempRoot, K nodeKey);
 
     void updateHeightRecurse();
 
@@ -87,43 +72,19 @@ public:
 
     void updateNodeRank();
 
-    RankTreeSingleNode<K, T> *DeleteAndReplaceNodeWithLeftSuccessor();
+    RankTreeSingleNode<K> *Find(K searchKey);
 
-    RankTreeSingleNode<K, T> *DeleteAndReplaceNodeWithRightSuccessor();
+    RankTreeSingleNode<K> *getNext();
 
-    int FillNodesWithArrDataInOrder(T **&array, int size, int index);
+    RankTreeSingleNode<K> *getLeft();
 
-    int FillArrayWithNodesInOrder(RankTreeSingleNode<K, T> **&array, int size, int index);
+    RankTreeSingleNode<K> *getRight();
 
-    void updateRebalancedNodeHeights(RankTreeSingleNode<K, T> *origin, RankTreeSingleNode<K, T> *newRoot);
+    RankTreeSingleNode<K> *findMaxNoRank();
 
-    RankTreeSingleNode<K, T> *Find(K searchKey);
-
-    RankTreeSingleNode<K, T> *getNext();
-
-    RankTreeSingleNode<K, T> *getLeft();
-
-    void setLeft(RankTreeSingleNode<K, T> *ptr);
-
-    RankTreeSingleNode<K, T> *getRight();
-
-    void setRight(RankTreeSingleNode<K, T> *ptr);
-
-    RankTreeSingleNode<K, T> *getParent();
-
-    void setParent(RankTreeSingleNode<K, T> *ptr);
-
-    RankTreeSingleNode<K, T> *findMaxNoRank();
-
-    RankTreeSingleNode<K, T> *findMax();
+    RankTreeSingleNode<K> *findMax();
 
     void DeleteTreeData();
-
-    static void CreateCompleteBinaryTree(RankTreeSingleNode<K, T> *root, int treeLevel, int currentLevel);
-
-    static void RemoveExtraNodes(RankTreeSingleNode<K, T> *root, int &numberOfNodesToRemove);
-
-    static void FillKeysInOrder(RankTreeSingleNode<K, T> *root, K &key);
 
     ~RankTreeSingleNode();
 
@@ -142,35 +103,31 @@ public:
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The new root of the subtree after rebalancing
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Rebalance() {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::Rebalance(RankTreeSingleNode<K> *node) {
     // Getting the balance factor of the current node
-    int balance = getBalanceFactor();
+    int balance = node->getBalanceFactor();
 
-    if (balance < -1) {
-        // The tree is right heavy
-        int rightSubtreeBalance = getRight()->getBalanceFactor();
-        if (rightSubtreeBalance > 0) {
-            return RightLeftRotate();
+    if (balance > 1) {
+        int leftSubtreeBalance = node->left->getBalanceFactor();
+        if (leftSubtreeBalance > 0) {
+            node = StaticLeftRotate(node);
         } else {
-            return RightRotate();
+            node = StaticLeftRightRotate(node);
         }
-
-    } else if (balance > 1) {
-        // The tree is left heavy
-        int leftSubtreeBalance = getLeft()->getBalanceFactor();
-        if (leftSubtreeBalance >= 0) {
-            return LeftRotate();
+    } else if (balance < -1) {
+        int rightSubtreeBalance = node->right->getBalanceFactor();
+        if (rightSubtreeBalance > 0) {
+            node = StaticRightLeftRotate(node);
         } else {
-            return LeftRightRotate();
+            node = StaticRightRotate(node);
         }
     }
-
-    return this;
+    return node;
 }
 
-template<class K, class T>
-void RankTreeSingleNode<K, T>::RankSanity() {
+template<class K>
+void RankTreeSingleNode<K>::RankSanity() {
     int leftRank = 0;
     int rightRank = 0;
 
@@ -182,7 +139,7 @@ void RankTreeSingleNode<K, T>::RankSanity() {
         right->RankSanity();
         rightRank = right->rank;
     }
-    if (rank != 1+leftRank+rightRank) {
+    if (rank != 1 + leftRank + rightRank) {
         std::cout << "ERROR IN TREE RANK" << std::endl;
     }
 }
@@ -192,49 +149,27 @@ void RankTreeSingleNode<K, T>::RankSanity() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The balance factor of the current node
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getBalanceFactor() {
+template<class K>
+int RankTreeSingleNode<K>::getBalanceFactor() {
     updateNodeHeight();
     updateNodeRank();
     int leftHeight = 0;
     int rightHeight = 0;
-    if (getRight()) {
-        rightHeight = getRight()->height;
+    if (right) {
+        rightHeight = right->height;
     }
-    if (getLeft()) {
-        leftHeight = getLeft()->height;
+    if (left) {
+        leftHeight = left->height;
     }
     return leftHeight - rightHeight;
-}
-
-/**
- * Updates the pointers of the "next in line" node in order to make sure proper linkage
- * of the subtree after deletion
- * @tparam T Pointer to dynamically allocated object of type T
- * @param replacement The successor node
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::SwapNodesParent(RankTreeSingleNode<K, T> *replacement) {
-    if (replacement) {
-        replacement->parent = this->parent;
-        replacement->updateNodeHeight();
-    }
-    if (getParent()) {
-        if (getParent()->getLeft() && getParent()->getLeft()->getKey() == getKey()) {
-            this->parent->left = replacement;
-        } else {
-            this->parent->right = replacement;
-        }
-        getParent()->updateNodeHeight();
-    }
 }
 
 /**
  * Updates the height of the node based on it's children
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::updateNodeHeight() {
+template<class K>
+void RankTreeSingleNode<K>::updateNodeHeight() {
     int leftHeight = getLeftChildHeight();
     int rightHeight = getRightChildHeight();
     height = 1 + max(leftHeight, rightHeight);
@@ -245,8 +180,8 @@ void RankTreeSingleNode<K, T>::updateNodeHeight() {
  * @tparam K Class for node key comparisons
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::updateNodeRank() {
+template<class K>
+void RankTreeSingleNode<K>::updateNodeRank() {
     int leftRank = getLeftChildRank();
     int rightRank = getRightChildRank();
     rank = 1 + leftRank + rightRank;
@@ -257,8 +192,8 @@ void RankTreeSingleNode<K, T>::updateNodeRank() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The rank of the left child
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getLeftChildRank() {
+template<class K>
+int RankTreeSingleNode<K>::getLeftChildRank() {
     if (left) {
         return left->rank;
     }
@@ -270,8 +205,8 @@ int RankTreeSingleNode<K, T>::getLeftChildRank() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The rank of the right child
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getRightChildRank() {
+template<class K>
+int RankTreeSingleNode<K>::getRightChildRank() {
     if (right) {
         return right->rank;
     }
@@ -283,8 +218,8 @@ int RankTreeSingleNode<K, T>::getRightChildRank() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The height of the left child
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getLeftChildHeight() {
+template<class K>
+int RankTreeSingleNode<K>::getLeftChildHeight() {
     if (left) {
         return left->height;
     }
@@ -296,100 +231,12 @@ int RankTreeSingleNode<K, T>::getLeftChildHeight() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The height of the right child
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getRightChildHeight() {
+template<class K>
+int RankTreeSingleNode<K>::getRightChildHeight() {
     if (right) {
         return right->height;
     }
     return 0;
-}
-
-/**
- * Performs a left right rotation based on AVL tree rotation algorithms
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the rotated subtree
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::LeftRightRotate() {
-    if (left) {
-        left->RightRotate();
-    }
-    return this->LeftRotate();
-}
-
-/**
- * Performs a right left rotation based on AVL tree rotation algorithms
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the rotated subtree
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::RightLeftRotate() {
-    if (right) {
-        right->LeftRotate();
-    }
-    return this->RightRotate();
-}
-
-/**
- * Performs a left rotation based on AVL tree rotation algorithms
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the rotated subtree
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::LeftRotate() {
-    RankTreeSingleNode<K, T> *newRoot = left;
-    left = left->right;
-    if (left) {
-        left->parent = this;
-    }
-    // Moving newRoot to the place of "this"
-    newRoot->right = this;
-    newRoot->parent = this->parent;
-    if (this->getParent()) {
-        // Checking if newRoot is a right child or left child of the original parent
-        updateRotatedRootParent(this, newRoot);
-    }
-    this->parent = newRoot;
-    // Updating node heights after switches
-    if (newRoot->left) {
-        newRoot->left->updateNodeHeight();
-        newRoot->left->updateNodeRank();
-    }
-    if (newRoot->right) {
-        newRoot->right->updateNodeHeight();
-        newRoot->right->updateNodeRank();
-    }
-    updateRebalancedNodeHeights(this, newRoot);
-//    if (newRoot->getParent()) {
-//        newRoot->parent->updateNodeRank();
-//    }
-    return newRoot;
-}
-
-/**
- * Updates the height of nodes that were the core components of a rebalance
- * @tparam T Pointer to dynamically allocated object of type T
- * @param origin The original root of the subtree
- * @param newRoot The new root of the subtree
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::updateRebalancedNodeHeights(RankTreeSingleNode<K, T> *origin, RankTreeSingleNode<K, T> *newRoot) {
-    if (origin->right) {
-        origin->right->updateNodeHeight();
-    }
-    if (origin->left) {
-        origin->left->updateNodeHeight();
-    }
-    origin->updateNodeHeight();
-    origin->updateNodeRank();
-    if (newRoot->right) {
-        newRoot->right->updateNodeHeight();
-    }
-    if (newRoot->left) {
-        newRoot->left->updateNodeHeight();
-    }
-    newRoot->updateNodeHeight();
-    newRoot->updateNodeRank();
 }
 
 /**
@@ -401,152 +248,132 @@ void RankTreeSingleNode<K, T>::updateRebalancedNodeHeights(RankTreeSingleNode<K,
  * @param result A pointer to save a reference to the new node in
  * @return The new root of the rebalanced tree after insert
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Insert(K nodeKey, T *nodeData, RankTreeSingleNode<K, T> *result) {
-    // Search for the right place to insert the node
-    if (nodeKey > getKey()) {
-        // The node will be a right child of this node
-        if (!right) {
-            // Found the correct spot to insert the node
-            right = new RankTreeSingleNode(nodeKey, nodeData, this);
-            // Saving the new object to the result pointer for future retrieval
-            result = right;
-        } else {
-            // Need to continue searching for the right spot of the new node
-            right->Insert(nodeKey, nodeData, result);
-        }
-    } else if (nodeKey < getKey()) {
-        // The node will be a left child of this node
-        if (!left) {
-            // Found the correct spot to insert the node
-            left = new RankTreeSingleNode(nodeKey, nodeData, this);
-            // Saving the new object to the result pointer for future retrieval
-            result = left;
-        } else {
-            // Need to continue searching for the right spot of the new node
-            left->Insert(nodeKey, nodeData, result);
-        }
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::Insert(RankTreeSingleNode<K> *tempRoot, K nodeKey) {
+    if (!tempRoot) {
+        tempRoot = new RankTreeSingleNode(nodeKey);
+        return tempRoot;
+    } else if (tempRoot->key > nodeKey) {
+        tempRoot->left = Insert(tempRoot->left, nodeKey);
+//        tempRoot = Rebalance(tempRoot);
+    } else if (tempRoot->key < nodeKey) {
+        tempRoot->right = Insert(tempRoot->right, nodeKey);
+//        tempRoot = Rebalance(tempRoot);
+    }
+    tempRoot->updateNodeHeight();
+    tempRoot->updateNodeRank();
+    int balance = getBalance(tempRoot);
+//    int balance = tempRoot->getBalanceFactor();
+
+    if (balance > 1 && nodeKey < tempRoot->left->key) {
+        return StaticRightRotate(tempRoot);
+    }
+
+    if (balance < -1 && nodeKey > tempRoot->right->key) {
+        return StaticLeftRotate(tempRoot);
+    }
+
+    if (balance > 1 && nodeKey > tempRoot->left->key) {
+        tempRoot->left = StaticLeftRotate(tempRoot->left);
+        return StaticRightRotate(tempRoot);
+    }
+
+    if (balance < -1 && nodeKey < tempRoot->right->key) {
+        tempRoot->right = StaticRightRotate(tempRoot->right);
+        return StaticLeftRotate(tempRoot);
+    }
+    return tempRoot;
+}
+
+template<class K>
+int RankTreeSingleNode<K>::getBalance(RankTreeSingleNode<K> *tempRoot) {
+    if (tempRoot == NULL)
+        return 0;
+    return tempRoot->getLeftChildHeight() - tempRoot->getRightChildHeight();
+}
+
+/**
+ * Insert a new node to the subtree tree and returns the new root of the subtree
+ * after rotations and rebalance
+ * @tparam T Pointer to dynamically allocated object of type T
+ * @param nodeKey The key of the new node
+ * @param nodeData The data object of the new node
+ * @param result A pointer to save a reference to the new node in
+ * @return The new root of the rebalanced tree after insert
+ */
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::DeleteNode(RankTreeSingleNode<K> *tempRoot, K nodeKey) {
+    if (!tempRoot) {
+        return tempRoot;
+    }
+
+    if (nodeKey < tempRoot->key) {
+        tempRoot->left = DeleteNode(tempRoot->left, nodeKey);
+    } else if (nodeKey > tempRoot->key) {
+        tempRoot->right = DeleteNode(tempRoot->right, nodeKey);
     } else {
-        // The input key already exists in the tree, returning nullptr without
-        // modifying the tree or the input data
-        return nullptr;
-    }
-    // Rebalancing tree after insertion
-    return Rebalance();
-}
+        if (tempRoot->left == nullptr || tempRoot->right == nullptr) {
+            RankTreeSingleNode<K> *temp = tempRoot->left ? tempRoot->left : tempRoot->right;
 
-/**
- * Updates the parent of a new rotated subtree root
- * @tparam T Pointer to dynamically allocated object of type T
- * @param previousRoot The old root of the subtree
- * @param newRoot The new root of the subtree
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::updateRotatedRootParent(RankTreeSingleNode<K, T> *previousRoot, RankTreeSingleNode<K, T> *newRoot) {
-    // Checking if newRoot is a right child or left child of the original parent
-    if (previousRoot->getParent()->getLeft() && previousRoot->getParent()->getLeft()->getKey() == previousRoot->getKey()) {
-        previousRoot->parent->left = newRoot;
-    } else {
-        previousRoot->parent->right = newRoot;
-    }
-}
-
-/**
- * Performs a right rotation based on AVL tree rotation algorithms
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the rotated subtree
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::RightRotate() {
-    RankTreeSingleNode<K, T> *newRoot = right;
-    right = right->left;
-    if (right) {
-        right->parent = this;
-    }
-    // Moving newRoot to the place of "this"
-    newRoot->left = this;
-    newRoot->parent = this->parent;
-    if (this->getParent()) {
-        // Checking if newRoot is a right child or left child of the original parent
-        updateRotatedRootParent(this, newRoot);
-    }
-
-    this->parent = newRoot;
-    // Updating node heights after switches
-    if (newRoot->left) {
-        newRoot->left->updateNodeHeight();
-        newRoot->left->updateNodeRank();
-    }
-    if (newRoot->right) {
-        newRoot->right->updateNodeHeight();
-        newRoot->right->updateNodeRank();
-    }
-    updateRebalancedNodeHeights(this, newRoot);
-//    if (newRoot->getParent()) {
-//        newRoot->parent->updateNodeRank();
-//    }
-    return newRoot;
-}
-
-/**
- * Replaces a node that is targeted for delete with it's leftmost successor
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the node's subtree after it's removal
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::DeleteAndReplaceNodeWithLeftSuccessor() {
-    RankTreeSingleNode<K, T> *next = left->findMax();
-    if (left->getRight()) {
-        next->parent->right = next->left;
-        if (next->getLeft()) {
-            next->left->parent = next->parent;
-            if (next->left->parent) {
-                next->left->parent->updateNodeHeight();
-                next->left->parent->updateNodeRank();
+            if (temp == nullptr) {
+                temp = tempRoot;
+                tempRoot = nullptr;
+            } else {
+                tempRoot->key = temp->key;
             }
+            delete temp;
+        } else {
+            RankTreeSingleNode<K> *temp = findMin(tempRoot->right);
+
+            tempRoot->key = temp->key;
+
+            tempRoot->right = DeleteNode(tempRoot->right, temp->key);
         }
-        // might need to be reversed
-        this->left->parent = next;
-        next->left = this->left;
     }
-    // Performing pointer and parent swap between the next node and the
-    // node we need to delete
-    this->SwapNodesParent(next);
-    next->right = this->right;
-    if (this->getRight()) {
-        this->right->parent = next;
+
+    if (tempRoot == nullptr) {
+        return tempRoot;
     }
-    delete this;
-    next->updateNodeHeight();
-    return next->Rebalance();
+
+    tempRoot->updateNodeHeight();
+    tempRoot->updateNodeRank();
+
+    int balance = getBalance(tempRoot);
+//    int balance = tempRoot->getBalanceFactor();
+    int leftBalance = getBalance(tempRoot->left);
+    int rightBalance = getBalance(tempRoot->right);
+
+    if (balance > 1 && leftBalance >= 0) {
+        // LL case
+        return StaticRightRotate(tempRoot);
+    }
+
+    if (balance > 1 && leftBalance < 0) {
+        // LR case
+        tempRoot->left = StaticLeftRotate(tempRoot->left);
+        return StaticRightRotate(tempRoot);
+    }
+
+    if (balance < -1 && rightBalance <= 0) {
+        // RR case
+        return StaticLeftRotate(tempRoot);
+    }
+
+    if (balance < -1 && rightBalance > 0) {
+        // RL case
+        tempRoot->right = StaticRightRotate(tempRoot->right);
+        return StaticLeftRotate(tempRoot);
+    }
+    return tempRoot;
 }
 
-/**
- * Replaces a node that is targeted for delete with it's right successor
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the node's subtree after it's removal
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::DeleteAndReplaceNodeWithRightSuccessor() {
-    RankTreeSingleNode<K, T> *next = this->right;
-    // Performing pointer and parent swap between the next node and the
-    // node we need to delete
-    this->SwapNodesParent(next);
-    delete this;
-//    if (next->getParent()) {
-//        next->getParent()->rank = next->getParent()->rank - 1;
-//    }
-    return next->Rebalance();
-}
-
-template<class K, class T>
-RankTreeSingleNode<K, T>::RankTreeSingleNode(K key, T *nData, RankTreeSingleNode *parent, RankTreeSingleNode *left, RankTreeSingleNode *right):
-        key(key), data(nData) {
+template<class K>
+RankTreeSingleNode<K>::RankTreeSingleNode(K key, RankTreeSingleNode *left, RankTreeSingleNode *right):
+        key(key) {
     height = 1;
     rank = 1;
     this->left = left;
     this->right = right;
-    this->parent = parent;
 };
 
 /**
@@ -554,22 +381,9 @@ RankTreeSingleNode<K, T>::RankTreeSingleNode(K key, T *nData, RankTreeSingleNode
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The key of the tree node
  */
-template<class K, class T>
-K RankTreeSingleNode<K, T>::getKey() {
+template<class K>
+K RankTreeSingleNode<K>::getKey() {
     return key;
-}
-
-/**
- * Returns the stored data object in the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The data stored in the tree node
- */
-template<class K, class T>
-T *RankTreeSingleNode<K, T>::getData() {
-    if (data) {
-        return data;
-    }
-    return nullptr;
 }
 
 /**
@@ -577,8 +391,8 @@ T *RankTreeSingleNode<K, T>::getData() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The height of the tree node
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getHeight() {
+template<class K>
+int RankTreeSingleNode<K>::getHeight() {
     return height;
 }
 
@@ -588,8 +402,8 @@ int RankTreeSingleNode<K, T>::getHeight() {
  * also marks every deleted node as nullptr
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::DeleteTreeData() {
+template<class K>
+void RankTreeSingleNode<K>::DeleteTreeData() {
     if (left) {
         left->DeleteTreeData();
         delete left;
@@ -602,38 +416,13 @@ void RankTreeSingleNode<K, T>::DeleteTreeData() {
     }
 }
 
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::getNext() {
-    RankTreeSingleNode<K, T> *current = this;
-    if (current->getRight() != nullptr) {
-        // This node has a right child, which means if we follow the branch
-        // once to the right and then all the way to the left, we will find the
-        // correct following child
-        RankTreeSingleNode<K, T> *rightOfCurrent = current->getRight();
-        return rightOfCurrent->findMin();
-    } else {
-        RankTreeSingleNode<K, T> *parent = current->getParent();
-        while (parent != nullptr) {
-            RankTreeSingleNode<K, T> *child = parent->getLeft();
-            if (child && child->getKey() == current->getKey()) {
-                // The node we started with is the left child of the current parent,
-                // which means the parent is the next node in the tree.
-                return parent;
-            }
-            current = parent;
-            parent = current->getParent();
-        }
-        return parent;
-    }
-}
-
 /**
  * Returns the balance factor of the node
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The balance factor of the tree node
  */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getNodeBalanceFactor() {
+template<class K>
+int RankTreeSingleNode<K>::getNodeBalanceFactor() {
     return getBalanceFactor();
 }
 
@@ -643,13 +432,8 @@ int RankTreeSingleNode<K, T>::getNodeBalanceFactor() {
  * (does not delete child nodes)
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-RankTreeSingleNode<K, T>::~RankTreeSingleNode() {
-    if (data) {
-        delete data;
-        data = nullptr;
-    }
-}
+template<class K>
+RankTreeSingleNode<K>::~RankTreeSingleNode() = default;
 
 /**
  * Searches for a tree node with the input key and returns a pointer to it
@@ -657,8 +441,8 @@ RankTreeSingleNode<K, T>::~RankTreeSingleNode() {
  * @param searchKey The key of the node to search for
  * @return A pointer to the tree node if it is found, nullptr otherwise
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Find(K searchKey) {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::Find(K searchKey) {
     if (getKey() > searchKey) {
         // The node we are looking for is a left child of this node
         if (left) {
@@ -685,8 +469,8 @@ RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Find(K searchKey) {
  * @param nodeKey The key of the node to remove
  * @return The new root of the subtree after removal of the node
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Remove(K nodeKey) {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::Remove(K nodeKey) {
     // Searching for the node to remove
     if (nodeKey > getKey()) {
         // The delete target is a right child of the current node
@@ -712,38 +496,18 @@ RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Remove(K nodeKey) {
 }
 
 /**
- * Deletes the node from the tree, returns the new root of the node's subtree
- * after it's removal
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The new root of the node's subtree after it's removal
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::DeleteNode() {
-    // Search for the next node to act as subtree root
-    if (left) {
-        return DeleteAndReplaceNodeWithLeftSuccessor();
-    } else if (right) {
-        return DeleteAndReplaceNodeWithRightSuccessor();
-    } else {
-        // The node we want to delete has no leafs, so it's subtree will remain empty
-        // after deletion.
-        this->SwapNodesParent(nullptr);
-        delete this;
-        return nullptr;
-    }
-}
-
-/**
  * Finds the minimal node from this point downward in the tree
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The minimal node
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::findMin() {
-    if (left) {
-        return left->findMin();
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::findMin(RankTreeSingleNode<K> *node) {
+    RankTreeSingleNode<K> *current = node;
+
+    while (current->left != nullptr) {
+        current = current->left;
     }
-    return this;
+    return current;
 }
 
 /**
@@ -751,18 +515,18 @@ RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::findMin() {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return The maximal node
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::findMaxNoRank() {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::findMaxNoRank() {
     if (right) {
         return right->findMaxNoRank();
     }
     return this;
 }
 
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::findMax() {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::findMax() {
     if (right) {
-        RankTreeSingleNode<K, T> *temp = right->findMax();
+        RankTreeSingleNode<K> *temp = right->findMax();
         this->updateNodeRank();
         this->updateNodeHeight();
         return temp;
@@ -772,204 +536,13 @@ RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::findMax() {
     return this;
 }
 
-/**
- * Returns the left child of the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The left child of the node
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::getLeft() {
-    return left;
-}
-
-/**
- * Sets the left child of the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @param ptr The new left child of the node
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::setLeft(RankTreeSingleNode<K, T> *ptr) {
-    left = ptr;
-}
-
-/**
- * Returns the right child of the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The right child of the node
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::getRight() {
-    return right;
-}
-
-/**
- * Sets the right child of the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @param ptr The new right child of the node
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::setRight(RankTreeSingleNode<K, T> *ptr) {
-    right = ptr;
-}
-
-/**
- * Returns the parent of the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @return The parent of the node
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::getParent() {
-    return parent;
-}
-
-/**
- * Sets the parent of the node
- * @tparam T Pointer to dynamically allocated object of type T
- * @param ptr The new parent of the node
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::setParent(RankTreeSingleNode<K, T> *ptr) {
-    parent = ptr;
-}
-
-/**
- * Removes the reference to the data of the node
- * @tparam T Pointer to dynamically allocated object of type T
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::removeDataPointer() {
-    data = nullptr;
-}
-
-template<class K, class T>
-int RankTreeSingleNode<K, T>::FillNodesWithArrDataInOrder(T **&array, int size, int index) {
-    // Insert on left
-    if (this->left) {
-        index = this->left->FillNodesWithArrDataInOrder(array, size, index);
-    }
-
-    // Insert on root
-    data = array[key];
-    index++;
-
-    // Insert on right
-    if (this->right) {
-        index = this->right->FillNodesWithArrDataInOrder(array, size, index);
-    }
-    return index;
-}
-
-/**
- * Fills an array with pointers to the RankTreeSingleNodes of the tree
- * Array should be as large as the tree
- * @tparam T Pointer to dynamically allocated object of type T
- * @param array The array to fill with tree nodes
- * @param size The size of the array
- * @param index The current insertion position
- * @return The next index to insert values to the array
- */
-template<class K, class T>
-int RankTreeSingleNode<K, T>::FillArrayWithNodesInOrder(RankTreeSingleNode<K, T> **&array, int size, int index) {
-    // Scan left
-    if (this->left) {
-        index = this->left->FillArrayWithNodesInOrder(array, size, index);
-    }
-
-    // Scan root
-    array[index++] = this;
-
-    // Scan right
-    if (this->right) {
-        index = this->right->FillArrayWithNodesInOrder(array, size, index);
-    }
-    return index;
-}
-
-/**
- * Creates a complete binary tree according to the current tree level
- * relative to the full height of the tree
- * @tparam T Pointer to dynamically allocated object of type T
- * @param root The root to create children for
- * @param treeLevel The total level the tree should reach
- * @param currentLevel The current level of the tree
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::CreateCompleteBinaryTree(RankTreeSingleNode<K, T> *root, int treeLevel, int currentLevel) {
-    // Checking if we created all necessary tree levels
-    if (treeLevel <= currentLevel) {
-        // We finished creating all new levels of the tree
-        return;
-    }
-    root->left = new RankTreeSingleNode<K, T>(0, nullptr, root);
-    root->right = new RankTreeSingleNode<K, T>(0, nullptr, root);
-    CreateCompleteBinaryTree(root->left, treeLevel, currentLevel + 1);
-    CreateCompleteBinaryTree(root->right, treeLevel, currentLevel + 1);
-    // Updating root height
-    root->updateNodeHeight();
-    root->updateNodeRank();
-}
-
-/**
- * Removes unnecessary nodes from a Complete Binary Tree
- * @tparam T Pointer to dynamically allocated object of type T
- * @param root The root of the current subtree
- * @param numberOfNodesToRemove The number of nodes left to remove
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::RemoveExtraNodes(RankTreeSingleNode<K, T> *root, int &numberOfNodesToRemove) {
-    // Checking if we need to continue removing nodes
-    if (numberOfNodesToRemove == 0 || !root) {
-        // We removed all the nodes we needed or we reached the end of the tree
-        // scan so we shouldn't perform anymore actions
-        return;
-    }
-    // Removing nodes in reverse in order, only from the bottom level of the tree
-    RemoveExtraNodes(root->right, numberOfNodesToRemove);
-    if (root->left == nullptr && root->right == nullptr) {
-        if (root->parent) {
-            // Setting the child of parent as nullptr to avoid segfault
-            if (root->parent->left == root) {
-                root->parent->left = nullptr;
-            } else {
-                root->parent->right = nullptr;
-            }
-        }
-        numberOfNodesToRemove--;
-        delete root;
-        return;
-    }
-    RemoveExtraNodes(root->left, numberOfNodesToRemove);
-    root->updateNodeHeight();
-    root->updateNodeRank();
-}
-
-/**
- * Fills the nodes of the tree with keys using in order scan
- * @tparam T Pointer to dynamically allocated object of type T
- * @param root The root of the current subtree
- * @param key The current node's key
- */
-template<class K, class T>
-void RankTreeSingleNode<K, T>::FillKeysInOrder(RankTreeSingleNode<K, T> *root, K &key) {
-    // We reached an empty node, no need to assign key
-    if (!root) {
-        return;
-    }
-    // Filling keys in the left part of the tree
-    FillKeysInOrder(root->left, key);
-    // Setting current node's key
-    root->key = key++;
-    // Filling keys in the right part of the tree
-    FillKeysInOrder(root->right, key);
-}
-
-template<class K, class T>
-int RankTreeSingleNode<K, T>::getRank() {
+template<class K>
+int RankTreeSingleNode<K>::getRank() {
     return rank;
 }
 
-template<class K, class T>
-K RankTreeSingleNode<K, T>::FindNodeByRank(RankTreeSingleNode<K, T> *root, int searchRank) {
+template<class K>
+K RankTreeSingleNode<K>::FindNodeByRank(RankTreeSingleNode<K> *root, int searchRank) {
     if (root->right) {
         if (root->right->rank == searchRank - 1) {
             return root->key;
@@ -989,8 +562,8 @@ K RankTreeSingleNode<K, T>::FindNodeByRank(RankTreeSingleNode<K, T> *root, int s
     }
 }
 
-template<class K, class T>
-void RankTreeSingleNode<K, T>::PrintTreeInOrderWithRanks() {
+template<class K>
+void RankTreeSingleNode<K>::PrintTreeInOrderWithRanks() {
     if (left) {
         left->PrintTreeInOrderWithRanks();
     }
@@ -1001,8 +574,8 @@ void RankTreeSingleNode<K, T>::PrintTreeInOrderWithRanks() {
     }
 }
 
-template<class K, class T>
-void RankTreeSingleNode<K, T>::updateHeightRecurse() {
+template<class K>
+void RankTreeSingleNode<K>::updateHeightRecurse() {
     if (left) {
         left->updateHeightRecurse();
     }
@@ -1014,38 +587,61 @@ void RankTreeSingleNode<K, T>::updateHeightRecurse() {
     height = 1 + max(leftHeight, rightHeight);
 }
 
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::StaticLeftRotate(RankTreeSingleNode<K> *node) {
+    RankTreeSingleNode<K> *y = node->right;
+    RankTreeSingleNode<K> *T2 = y->left;
+
+    y->left = node;
+    node->right = T2;
+
+    node->updateNodeHeight();
+    node->updateNodeRank();
+    y->updateNodeHeight();
+    y->updateNodeRank();
+    return y;
+}
+
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingleNode<K>::StaticRightRotate(RankTreeSingleNode<K> *node) {
+    RankTreeSingleNode<K> *x = node->left;
+    RankTreeSingleNode<K> *T2 = x->right;
+
+    x->right = node;
+    node->left = T2;
+
+    node->updateNodeHeight();
+    node->updateNodeRank();
+
+    x->updateNodeHeight();
+    x->updateNodeRank();
+    return x;
+}
+
 
 /**
  * Generic Template Class for an AVL Tree
  * Stores and organizes AVL tree nodes meant to store dynamic user data
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
+template<class K>
 class RankTreeSingle {
-    RankTreeSingleNode<K, T> *root;
+    RankTreeSingleNode<K> *root;
 
 public:
     RankTreeSingle();
 
-    RankTreeSingle(int numberOfNodes);
-
-    RankTreeSingleNode<K, T> *GetRoot();
+    RankTreeSingleNode<K> *GetRoot();
 
     void MarkRootAsNullptr();
 
     void MarkRootDataAsNullptr();
 
-    void FillRankTreeSingleNodesWithArrData(T **&array, int size, int index = 0);
-
-    void FillArrWithNodesInOrder(RankTreeSingleNode<K, T> **&array, int size, int index = 0);
-
-    RankTreeSingleNode<K, T> *Find(K key);
+    RankTreeSingleNode<K> *Find(K key);
 
     K FindByRank(int searchRank);
 
-    void Insert(K key, T *data = nullptr);
-
-    RankTreeSingleNode<K, T> *InsertGetBack(K key, T *data);
+    void Insert(K key);
 
     void PrintTreeWithRanks();
 
@@ -1068,8 +664,8 @@ public:
  * Creates an empty AVL Tree to store nodes with type T
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-RankTreeSingle<K, T>::RankTreeSingle(): root(nullptr) {};
+template<class K>
+RankTreeSingle<K>::RankTreeSingle(): root(nullptr) {};
 
 
 /**
@@ -1077,8 +673,8 @@ RankTreeSingle<K, T>::RankTreeSingle(): root(nullptr) {};
  * @tparam T Pointer to dynamically allocated object of type T
  * @return A pointer to the root of the tree
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::GetRoot() {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingle<K>::GetRoot() {
     if (root) {
         return root;
     }
@@ -1091,8 +687,8 @@ RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::GetRoot() {
  * @param key The key of the node to find
  * @return A pointer to the node if it's found in the tree, nullptr otherwise
  */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::Find(K key) {
+template<class K>
+RankTreeSingleNode<K> *RankTreeSingle<K>::Find(K key) {
     if (!root) {
         return nullptr;
     }
@@ -1109,35 +705,15 @@ RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::Find(K key) {
  * @param key The key of the new node
  * @param data The data of the new node
  */
-template<class K, class T>
-void RankTreeSingle<K, T>::Insert(K key, T *data) {
-    if (!root) {
-        // The tree is empty, inserting the new node as the root
-        root = new RankTreeSingleNode<K, T>(key, data);
-    } else {
-        root = root->Insert(key, data);
-    }
-}
-
-/**
- * Insert a new node to the subtree tree and returns a pointer to the new node
- * @tparam T Pointer to dynamically allocated object of type T
- * @param key The key of the new node
- * @param data The data object of the new node
- * @param result A pointer to save a reference to the new node in
- * @return A pointer to the newely inserted ndoe
- */
-template<class K, class T>
-RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::InsertGetBack(K key, T *data) {
-    if (!root) {
-        // The tree is empty, inserting the new node as the root
-        root = new RankTreeSingleNode<K, T>(key, data);
-        return root;
-    } else {
-        RankTreeSingleNode<K, T> *result = nullptr;
-        root = root->Insert(key, data, result);
-        return result;
-    }
+template<class K>
+void RankTreeSingle<K>::Insert(K key) {
+    root = RankTreeSingleNode<K>::Insert(root, key);
+//    if (!root) {
+//        // The tree is empty, inserting the new node as the root
+//        root = new RankTreeSingleNode<K>(key);
+//    } else {
+//        root = root->Insert(key);
+//    }
 }
 
 /**
@@ -1145,11 +721,12 @@ RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::InsertGetBack(K key, T *data) {
  * @tparam T Pointer to dynamically allocated object of type T
  * @param key The key of the node to remove
  */
-template<class K, class T>
-void RankTreeSingle<K, T>::Remove(K key) {
-    if (root) {
-        root = root->Remove(key);
-    }
+template<class K>
+void RankTreeSingle<K>::Remove(K key) {
+    root = RankTreeSingleNode<K>::DeleteNode(root, key);
+//    if (root) {
+//        root = root->DeleteNode(key);
+//    }
 }
 
 /**
@@ -1157,8 +734,8 @@ void RankTreeSingle<K, T>::Remove(K key) {
  * @tparam T Pointer to dynamically allocated object of type T
  * @return True if the root of the tree is a nullptr, False otherwiese
  */
-template<class K, class T>
-bool RankTreeSingle<K, T>::IsRootNull() {
+template<class K>
+bool RankTreeSingle<K>::IsRootNull() {
     return (root == nullptr);
 }
 
@@ -1166,8 +743,8 @@ bool RankTreeSingle<K, T>::IsRootNull() {
  * Marks the root of the tree as nullptr
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-void RankTreeSingle<K, T>::MarkRootAsNullptr() {
+template<class K>
+void RankTreeSingle<K>::MarkRootAsNullptr() {
     root = nullptr;
 }
 
@@ -1175,8 +752,8 @@ void RankTreeSingle<K, T>::MarkRootAsNullptr() {
  * Marks the data of the root of the tree as nullptr
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-void RankTreeSingle<K, T>::MarkRootDataAsNullptr() {
+template<class K>
+void RankTreeSingle<K>::MarkRootDataAsNullptr() {
     root->removeDataPointer();
 }
 
@@ -1185,8 +762,8 @@ void RankTreeSingle<K, T>::MarkRootDataAsNullptr() {
  * and then sets the root of the tree to nullptr
  * @tparam T Pointer to dynamically allocated object of type T
  */
-template<class K, class T>
-RankTreeSingle<K, T>::~RankTreeSingle() {
+template<class K>
+RankTreeSingle<K>::~RankTreeSingle() {
     if (root) {
         root->DeleteTreeData();
         delete root;
@@ -1194,89 +771,20 @@ RankTreeSingle<K, T>::~RankTreeSingle() {
     }
 }
 
-/**
- * Fills the tree nodes with data pointer of type T taken from
- * the input array, the array is ordered so every node's correct data is in
- * the cell whose index is it's key
- * @tparam T Pointer to dynamically allocated object of type T
- * @param array The array to fill with tree nodes
- * @param size The size of the array
- * @param index The current insertion position
- */
-template<class K, class T>
-void RankTreeSingle<K, T>::FillRankTreeSingleNodesWithArrData(T **&array, int size, int index) {
-    if (!root) {
-        // Tree is empty, no nodes to save data in
-        return;
-    }
-    index = 0;
-    root->FillNodesWithArrDataInOrder(array, size, index);
+template<class K>
+K RankTreeSingle<K>::FindByRank(int searchRank) {
+    return RankTreeSingleNode<K>::FindNodeByRank(root, searchRank);
 }
 
-/**
- * Fills an array with pointers to the RankTreeSingleNodes of the tree
- * Array should be as large as the tree
- * @tparam T Pointer to dynamically allocated object of type T
- * @param array The array to fill with tree nodes
- * @param size The size of the array
- * @param index The current insertion position
- */
-template<class K, class T>
-void RankTreeSingle<K, T>::FillArrWithNodesInOrder(RankTreeSingleNode<K, T> **&array, int size, int index) {
-    if (!root) {
-        // Tree is empty, no nodes to get back
-        return;
-    }
-    index = 0;
-    root->FillArrayWithNodesInOrder(array, size, index);
-}
-
-/**
- * Creates a new almost complete binary tree according to the input parameters
- * @tparam T Pointer to dynamically allocated object of type T
- * @param root The key of the trees' root
- * @param maxHeight The height ot the trees' root
- * @param maxNode the key of the highest node
- */
-template<class K, class T>
-RankTreeSingle<K, T>::RankTreeSingle(int numberOfNodes) {
-    // Calculating the height of the tree
-    int treeLevel = ceil(log2(numberOfNodes));
-    if (treeLevel == log2(numberOfNodes)) {
-        // The number of nodes is a power of two, need to increase it by one
-        // to create a real complete binary tree
-        treeLevel++;
-    }
-    // Creating the root of the complete tree
-    root = new RankTreeSingleNode<K, T>(0, nullptr, nullptr);
-    RankTreeSingleNode<K, T>::CreateCompleteBinaryTree(root, treeLevel, 1);
-
-    // After creating the complete binary tree, we need to remove extra nodes
-    // that are unnecessary
-    int numberOfNodesToRemove = (int) (pow(2, treeLevel) - 1) - numberOfNodes;
-    if (treeLevel != 0) {
-        // The tree has more than one floor, meaning we need to remove a few of
-        // the nodes
-        RankTreeSingleNode<K, T>::RemoveExtraNodes(root, numberOfNodesToRemove);
-    }
-    K key = K();
-    RankTreeSingleNode<K, T>::FillKeysInOrder(root, key);
-}
-
-template<class K, class T>
-K RankTreeSingle<K, T>::FindByRank(int searchRank) {
-    return RankTreeSingleNode<K, T>::FindNodeByRank(root, searchRank);
-}
-
-template<class K, class T>
-void RankTreeSingle<K, T>::PrintTreeWithRanks() {
+template<class K>
+void RankTreeSingle<K>::PrintTreeWithRanks() {
     if (root) {
         root->PrintTreeInOrderWithRanks();
     }
 }
 
-template<class K, class T>
-void RankTreeSingle<K, T>::RankSanityCheck() {
+template<class K>
+void RankTreeSingle<K>::RankSanityCheck() {
     if (root) {
         root->RankSanity();
     }

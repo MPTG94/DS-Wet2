@@ -4,7 +4,7 @@
 
 #include "MusicManager.h"
 
-MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTree(RankTreeSingle<ThreeParamKey, int>()), numberOfSongs(0),
+MusicManager::MusicManager() : artistHashTable(HashTable<Artist>()), songRankTree(AVLRankTree<ThreeParamKey, int>()), numberOfSongs(0),
                                numberOfArtists(0) {
 
 }
@@ -168,7 +168,7 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
     ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
     songRankTree.Remove(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(newNumberOfPlays, songID, artistID);
-    songRankTree.Insert(newThreeKey);
+    songRankTree.Insert(newThreeKey, 0);
 //    songRankTree.RankSanityCheck();
     //artist->compareNumberOfSongs();
     return SUCCESS;
@@ -252,12 +252,12 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
 
 StatusType MusicManager::AddSongToRankTree(int artistID, int songID, Song *nSong) {
     ThreeParamKey songKey = ThreeParamKey(0, songID, artistID);
-    songRankTree.Insert(songKey, nullptr);
+    songRankTree.Insert(songKey, 0);
 //    songRankTree.RankSanityCheck();
-    RankTreeSingleNode<ThreeParamKey, int> *nRankedSong = songRankTree.Find(songKey);
-    if (!nRankedSong) {
-        return ALLOCATION_ERROR;
-    }
+//    AVLRankTree<ThreeParamKey>::Node* nRankedSong = songRankTree.getByKey(songKey);
+//    if (!nRankedSong) {
+//        return ALLOCATION_ERROR;
+//    }
     //nSong->setPtrToRankedSong(nRankedSong);
     return SUCCESS;
 }

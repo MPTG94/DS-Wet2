@@ -47,7 +47,8 @@ private:
     RankTreeSingleNode<K, T> *RightRotate();
 
 public:
-    RankTreeSingleNode(K key, T *nData = nullptr, RankTreeSingleNode *parent = nullptr, RankTreeSingleNode *left = nullptr, RankTreeSingleNode *right = nullptr);
+    RankTreeSingleNode(K key, T *nData = nullptr, RankTreeSingleNode *parent = nullptr, RankTreeSingleNode *left = nullptr,
+                       RankTreeSingleNode *right = nullptr);
 
     K getKey();
 
@@ -128,6 +129,30 @@ public:
     ~RankTreeSingleNode();
 
     void RankSanity();
+
+    static RankTreeSingleNode<K, T> *RightRotateNew(RankTreeSingleNode<K, T> *node);
+    static RankTreeSingleNode<K, T> *LeftRotateNew(RankTreeSingleNode<K, T> *node);
+    static RankTreeSingleNode<K, T> *LeftRightRotateNew(RankTreeSingleNode<K, T> *node);
+    static RankTreeSingleNode<K, T> *RightLeftRotateNew(RankTreeSingleNode<K, T> *node);
+
+    static RankTreeSingleNode<K, T> *RemoveNode(RankTreeSingleNode<K, T> * node);
+
+    RankTreeSingleNode<K, T>& operator=(const RankTreeSingleNode<K, T>& other) {
+        key = other.key;
+        data = other.data;
+        height = other.height;
+        rank = other.rank;
+        parent = other.parent;
+        left = other.left;
+        right = other.right;
+        return *this;
+    }
+
+    static void Swapperino(RankTreeSingleNode<K, T> *target1, RankTreeSingleNode<K, T> * target2);
+
+    static RankTreeSingleNode<K, T> *FindNext(RankTreeSingleNode<K, T> *source);
+
+    static RankTreeSingleNode<K, T> *RebalanceCopy(RankTreeSingleNode<K, T> *node);
 };
 
 /**
@@ -146,27 +171,48 @@ template<class K, class T>
 RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Rebalance() {
     // Getting the balance factor of the current node
     int balance = getBalanceFactor();
-
+    RankTreeSingleNode<K, T> * temp = this;
     if (balance < -1) {
         // The tree is right heavy
         int rightSubtreeBalance = getRight()->getBalanceFactor();
         if (rightSubtreeBalance > 0) {
-            return RightLeftRotate();
-        } else {
-            return RightRotate();
+            temp = RightRotateNew(right);
         }
-
+        temp = LeftRotateNew(this);
     } else if (balance > 1) {
         // The tree is left heavy
         int leftSubtreeBalance = getLeft()->getBalanceFactor();
-        if (leftSubtreeBalance >= 0) {
-            return LeftRotate();
-        } else {
-            return LeftRightRotate();
+        if (leftSubtreeBalance < 0) {
+            temp = LeftRotateNew(this->left);
         }
+        temp = RightRotateNew(this);
     }
 
-    return this;
+    return temp;
+}
+
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::RebalanceCopy(RankTreeSingleNode<K, T> * node) {
+    // Getting the balance factor of the current node
+    int balance = node->getBalanceFactor();
+    RankTreeSingleNode<K, T> * temp = node;
+    if (balance < -1) {
+        // The tree is right heavy
+        int rightSubtreeBalance = node->getRight()->getBalanceFactor();
+        if (rightSubtreeBalance > 0) {
+            temp = RightRotateNew(node->right);
+        }
+        temp = LeftRotateNew(node);
+    } else if (balance > 1) {
+        // The tree is left heavy
+        int leftSubtreeBalance = node->getLeft()->getBalanceFactor();
+        if (leftSubtreeBalance < 0) {
+            temp = LeftRotateNew(node->left);
+        }
+        temp = RightRotateNew(node);
+    }
+
+    return temp;
 }
 
 template<class K, class T>
@@ -182,7 +228,7 @@ void RankTreeSingleNode<K, T>::RankSanity() {
         right->RankSanity();
         rightRank = right->rank;
     }
-    if (rank != 1+leftRank+rightRank) {
+    if (rank != 1 + leftRank + rightRank) {
         std::cout << "ERROR IN TREE RANK" << std::endl;
     }
 }
@@ -302,6 +348,74 @@ int RankTreeSingleNode<K, T>::getRightChildHeight() {
         return right->height;
     }
     return 0;
+}
+
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::RightRotateNew(RankTreeSingleNode<K, T> *node) {
+    if (!node) {
+        return nullptr;
+    }
+
+    RankTreeSingleNode<K, T> *leftSon = node->left;
+    RankTreeSingleNode<K, T> *tempParent = node->parent;
+    node->left = leftSon->right;
+    if (node->left) {
+        leftSon->right->parent = node;
+    }
+    node->parent = leftSon;
+    leftSon->right = node;
+
+    if (!tempParent) {
+        leftSon->parent = nullptr;
+    } else {
+        if (tempParent->left->key == node->key) {
+            tempParent->left = leftSon;
+        } else {
+            tempParent->right = leftSon;
+        }
+        leftSon->parent = tempParent;
+    }
+
+    node->updateNodeHeight();
+    node->updateNodeRank();
+    leftSon->updateNodeHeight();
+    leftSon->updateNodeRank();
+    return leftSon;
+}
+
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::LeftRotateNew(RankTreeSingleNode<K, T> *node) {
+    if (!node) {
+        return nullptr;
+    }
+
+    RankTreeSingleNode<K, T> *rightSon = node->right;
+    RankTreeSingleNode<K, T> *tempParent = node->parent;
+
+    node->right = rightSon->left;
+    if (node->right) {
+        rightSon->left->parent = node;
+    }
+
+    node->parent = rightSon;
+    rightSon->left = node;
+
+    if (!tempParent) {
+        rightSon->parent = nullptr;
+    } else {
+        if (tempParent->left->key == node->key) {
+            tempParent->left = rightSon;
+        } else {
+            tempParent->right = rightSon;
+        }
+        rightSon->parent = tempParent;
+    }
+
+    node->updateNodeHeight();
+    node->updateNodeRank();
+    rightSon->updateNodeHeight();
+    rightSon->updateNodeRank();
+    return rightSon;
 }
 
 /**
@@ -432,7 +546,7 @@ RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::Insert(K nodeKey, T *nodeDat
         return nullptr;
     }
     // Rebalancing tree after insertion
-    return Rebalance();
+    return RebalanceCopy(this);
 }
 
 /**
@@ -732,6 +846,114 @@ RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::DeleteNode() {
         return nullptr;
     }
 }
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::RemoveNode(RankTreeSingleNode<K, T> * node) {
+    RankTreeSingleNode<K, T> * tempParent = node->parent;
+    if (!node->right && !node->left) {
+        // The node we need to delete is a leaf.
+        if (tempParent->right->key == node->key) {
+            // deleting the right son
+            tempParent->right = nullptr;
+        } else {
+            // deleting left son
+            tempParent->left = nullptr;
+        }
+        delete node;
+        RankTreeSingleNode<K, T> *nRoot = tempParent;
+        if (tempParent) {
+            nRoot->updateNodeHeight();
+            nRoot->updateNodeRank();
+        }
+        while (tempParent) {
+            tempParent->updateNodeHeight();
+            tempParent->updateNodeRank();
+            tempParent = RebalanceCopy(tempParent);
+            nRoot = tempParent;
+            if (!tempParent->parent) {
+                break;
+            }
+            tempParent = tempParent->parent;
+        }
+        return nRoot;
+    } else if (!node->right && node->left && !node->left->left) {
+        // The node we need to delete has one left son.
+        RankTreeSingleNode<K, T> *tempSon = node->left;
+        Swapperino(node, node->left);
+        node->parent = tempParent;
+        node->left = nullptr;
+        delete tempSon;
+    } else if (node->right && !node->left && !node->right->right) {
+        // The node we need to delete has one right son.
+        RankTreeSingleNode<K, T> *tempSon = node->right;
+        Swapperino(node, node->right);
+        node->parent = tempParent;
+        node->right = nullptr;
+        delete tempSon;
+    } else {
+        // The node we need to delete has two sons.
+        RankTreeSingleNode<K, T> * nextNode = FindNext(node);
+        node->key = nextNode->key;
+        node->data = nextNode->data;
+        return RemoveNode(nextNode);
+    }
+
+    RankTreeSingleNode<K, T> * nRoot = node;
+    if (node) {
+        nRoot->updateNodeHeight();
+        nRoot->updateNodeRank();
+    }
+    while (tempParent) {
+        tempParent->updateNodeHeight();
+        tempParent->updateNodeRank();
+        tempParent = RebalanceCopy(tempParent);
+        nRoot = tempParent;
+        if (!tempParent->parent) {
+            break;
+        }
+        tempParent = tempParent->parent;
+    }
+    return nRoot;
+//    // Search for the next node to act as subtree root
+//    if (left) {
+//        return DeleteAndReplaceNodeWithLeftSuccessor();
+//    } else if (right) {
+//        return DeleteAndReplaceNodeWithRightSuccessor();
+//    } else {
+//        // The node we want to delete has no leafs, so it's subtree will remain empty
+//        // after deletion.
+//        this->SwapNodesParent(nullptr);
+//        delete this;
+//        return nullptr;
+//    }
+}
+
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::FindNext(RankTreeSingleNode<K, T> * source) {
+    if (source->right) {
+        source = source->right;
+        while(source->left) {
+            source = source->left;
+        }
+        return source;
+    } else if (source->parent && source->parent->left->key == source->key) {
+        return source->parent;
+    } else if (source->parent && source->parent->right->key == source->key) {
+        K temp = source->key;
+        while (source->parent->key < temp) {
+            source = source->parent;
+        }
+        source = source->parent;
+        return source;
+    }
+    return nullptr;
+}
+
+template<class K, class T>
+void RankTreeSingleNode<K, T>::Swapperino(RankTreeSingleNode<K, T> *target1, RankTreeSingleNode<K, T> * target2) {
+    RankTreeSingleNode<K, T> temp = *target1;
+    (*target1).operator=(*target2);
+    (*target2).operator=(temp);
+}
 
 /**
  * Finds the minimal node from this point downward in the tree
@@ -1014,6 +1236,18 @@ void RankTreeSingleNode<K, T>::updateHeightRecurse() {
     height = 1 + max(leftHeight, rightHeight);
 }
 
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::LeftRightRotateNew(RankTreeSingleNode<K, T> *node) {
+    node->left = RightRotateNew(node->left);
+    return LeftRotateNew(node);
+}
+
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingleNode<K, T>::RightLeftRotateNew(RankTreeSingleNode<K, T> *node) {
+    node->right = LeftRotateNew(node->right);
+    return RightRotateNew(node);
+}
+
 
 /**
  * Generic Template Class for an AVL Tree
@@ -1056,6 +1290,8 @@ public:
     ~RankTreeSingle();
 
     void RankSanityCheck();
+
+    RankTreeSingleNode<K, T> *RemoveNew(K key);
 };
 
 /**
@@ -1280,6 +1516,16 @@ void RankTreeSingle<K, T>::RankSanityCheck() {
     if (root) {
         root->RankSanity();
     }
+}
+
+template<class K, class T>
+RankTreeSingleNode<K, T> *RankTreeSingle<K, T>::RemoveNew(K key) {
+    RankTreeSingleNode<K, T> * target = root->Find(key);
+    if (!target) {
+        return nullptr;
+    }
+    root = RankTreeSingleNode<K, T>::RemoveNode(target);
+    return root;
 }
 
 #endif //WET2_RANKTREESINGLE_H

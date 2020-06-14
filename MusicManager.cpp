@@ -71,7 +71,7 @@ StatusType MusicManager::RemoveSong(int artistID, int songID) {
 
     Song *song = songNode->getData();
     ThreeParamKey songKey = ThreeParamKey(song->getNumberOfPlays(), songID, artistID);
-    songRankTree.Remove(songKey);
+    songRankTree.RemoveNew(songKey);
 //    songRankTree.RankSanityCheck();
 
 //    Song *bestSong = artist->getBestSong();
@@ -166,7 +166,7 @@ StatusType MusicManager::AddToSongCount(int artistID, int songID, int count) {
 
 //    songRankTree.RankSanityCheck();
     ThreeParamKey oldThreeKey = ThreeParamKey(oldNumberOfPlays, songID, artistID);
-    songRankTree.Remove(oldThreeKey);
+    songRankTree.RemoveNew(oldThreeKey);
     ThreeParamKey newThreeKey = ThreeParamKey(newNumberOfPlays, songID, artistID);
     songRankTree.Insert(newThreeKey);
 //    songRankTree.RankSanityCheck();

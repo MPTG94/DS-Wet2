@@ -11,12 +11,11 @@
 #include "Artist.h"
 #include "RankTreeSingle.h"
 #include "ThreeParamKey.h"
-#include "Test.h"
 
 class MusicManager {
 private:
     HashTable<Artist> artistHashTable;
-    AVLRankTree<ThreeParamKey, int> songRankTree;
+    RankTreeSingle<ThreeParamKey> songRankTree;
     int numberOfSongs;
     int numberOfArtists;
 public:

@@ -132,7 +132,7 @@ StatusType MusicManager::GetArtistBestSong(int artistID, int *songID) {
     if (numberOfArtists <= 0 || artistHashTable.Find(artistID) != SUCCESS) {
         return FAILURE;
     }
-    
+
     Artist *artist = artistHashTable.FindNode(artistID)->getData();
     if (artist->getNumberOfSongs() == 0) {
         return FAILURE;

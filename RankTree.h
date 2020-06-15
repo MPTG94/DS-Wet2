@@ -182,7 +182,7 @@ void RankTreeNode<K, T>::RankSanity() {
         right->RankSanity();
         rightRank = right->rank;
     }
-    if (rank != 1+leftRank+rightRank) {
+    if (rank != 1 + leftRank + rightRank) {
         std::cout << "ERROR IN TREE RANK" << std::endl;
     }
 }

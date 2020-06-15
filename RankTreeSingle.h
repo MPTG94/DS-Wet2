@@ -386,7 +386,7 @@ void RankTreeSingle<K>::LeftLeftRotate(Node *node) {
     }
     leftChild->parent = parent;
 
-    Node* tempChild = node->left;
+    Node *tempChild = node->left;
     Node *leftRightChild = tempChild->right;
     // node-child relation
     leftChild->right = node;
@@ -423,7 +423,7 @@ void RankTreeSingle<K>::RightRightRotate(Node *node) {
     }
     rightChild->parent = parent;
 
-    Node* tempChild = node->right;
+    Node *tempChild = node->right;
     Node *rightLeftChild = tempChild->left;
     // node-child relation
     rightChild->left = node;

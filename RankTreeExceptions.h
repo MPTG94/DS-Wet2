@@ -2,8 +2,8 @@
 // Created by Mor on 14/06/2020.
 //
 
-#ifndef WET2_AVLEXCEPTIONS_H
-#define WET2_AVLEXCEPTIONS_H
+#ifndef WET2_RANKTREEEXCEPTIONS_H
+#define WET2_RANKTREEEXCEPTIONS_H
 
 #include <iostream>
 #include <exception>
@@ -23,11 +23,4 @@ public:
     }
 };
 
-class IllegalInput:public exception {
-public:
-    const char* what() {
-        return "The input was wrong. Please try harder.\n";
-    }
-};
-
-#endif //WET2_AVLEXCEPTIONS_H
+#endif //WET2_RANKTREEEXCEPTIONS_H

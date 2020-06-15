@@ -7,7 +7,7 @@
 
 #include <iostream>
 
-#include "AVLExceptions.h"
+#include "RankTreeExceptions.h"
 
 template<class K>
 class RankTreeSingle {

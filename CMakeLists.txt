@@ -12,4 +12,4 @@ set(CMAKE_CXX_STANDARD 11)
 
 add_definitions(${GCC_COVERAGE_COMPILE_FLAGS})
 
-add_executable(wet2 main2.cpp library2.h library2.cpp library2.cpp MusicManager.cpp MusicManager.h HashTable.h List.h ThreeParamKey.cpp ThreeParamKey.h Tree.h RankTree.h Artist.cpp Artist.h Song.cpp Song.h TwoParamKey.cpp TwoParamKey.h RankTreeSingle.h AVLExceptions.h)
+add_executable(wet2 main2.cpp library2.h library2.cpp library2.cpp MusicManager.cpp MusicManager.h HashTable.h List.h ThreeParamKey.cpp ThreeParamKey.h Tree.h RankTree.h Artist.cpp Artist.h Song.cpp Song.h TwoParamKey.cpp TwoParamKey.h RankTreeSingle.h RankTreeExceptions.h)

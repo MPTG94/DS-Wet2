@@ -35,6 +35,18 @@ private:
             return leftHeight - rightHeight;
         }
 
+        /**
+        * Finds The successor node in the subtree
+        * @return A pointer to the node
+        */
+        Node *GetNextNode() {
+            Node *current = this->right;
+            while (current->left) {
+                current = current->left;
+            }
+            return current;
+        }
+
         Node() : key(K(1, 1, 1)), height(1), rank(1) {
 
         }
@@ -44,14 +56,14 @@ private:
          * @param searchRank The rank of the node to find
          * @return The node
          */
-        Node *getNodeByRank(int searchRank) {
+        Node *GetNodeByRank(int searchRank) {
             if (this->right) {
                 if (this->right->rank == searchRank - 1) {
                     return this;
                 } else if (this->right->rank > searchRank - 1) {
-                    return this->right->getNodeByRank(searchRank);
+                    return this->right->GetNodeByRank(searchRank);
                 } else {
-                    return this->left->getNodeByRank(searchRank - this->right->rank - 1);
+                    return this->left->GetNodeByRank(searchRank - this->right->rank - 1);
                 }
             } else if (this->left) {
                 if (searchRank == 1) {
@@ -64,6 +76,7 @@ private:
             }
         }
     };
+
     Node *root;
 
     void RemoveNode(Node *node);
@@ -72,19 +85,19 @@ private:
 
     void UpdateRanksGoingUp(Node *node);
 
-    void balance(Node *node);
+    void Rebalance(Node *node);
 
-    void llRotation(Node *node);
+    void LeftLeftRotate(Node *node);
 
-    void rrRotation(Node *node);
+    void RightRightRotate(Node *node);
 
-    void rlRotation(Node *node);
+    void RightLeftRotate(Node *node);
 
-    void lrRotation(Node *node);
+    void LeftRightRotate(Node *node);
 
-    Node *getNode(K key);
+    Node *GetNode(K key);
 
-    Node *getNodeByRank(int searchRank);
+    Node *GetNodeByRank(int searchRank);
 
     void ParentPointTo(Node *child, Node *newChild);
 
@@ -101,34 +114,42 @@ public:
 
     K FindByRank(int searchRank);
 
-    K getByKey(K key);
-
-    bool DoesExist(K key);
+    bool Find(K key);
 
 };
 
-/********************************* Public Functions *******************************/
-
+/**
+ * Creates a new rank tree
+ * @tparam K Key object of type T
+ */
 template<class K>
 RankTreeSingle<K>::RankTreeSingle() {
     root = nullptr;
 }
 
+/**
+ * Deletes the tree
+ * @tparam K Key object of type T
+ */
 template<class K>
 RankTreeSingle<K>::~RankTreeSingle() {
-    // release allocated memory
+    // call recursive tree deletion
     DeleteTree(root);
     root = nullptr;
 }
 
-// Time complexity: O(log(n))
+/**
+ * Insert a new node with the input key to the tree
+ * @tparam K Key object of type T
+ * @param key The key of the new node
+ */
 template<class K>
 void RankTreeSingle<K>::Insert(K key) {
-    if (DoesExist(key)) {
+    if (Find(key)) {
         throw KeyAlreadyExist();
     }
 
-    // Create the node
+    // Creates a new node
     Node *new_node = new Node();
     new_node->height = 1;
     new_node->rank = 1;
@@ -137,27 +158,27 @@ void RankTreeSingle<K>::Insert(K key) {
     new_node->parent = nullptr;
     new_node->key = key;
 
-    // choose where to add the node and add it.
     if (root == nullptr) {
-        // tree is empty
+        // The new node is the first node in the tree
         root = new_node;
         return;
-    } else { // tree is not empty.
+    } else {
+        // There are already nodes in the tree.
         Node *current = root;
         Node *parent = nullptr;
 
         while ((current != nullptr) && (current->key != key)) {
             parent = current;
             if (key < current->key) {
-                // left subtree
+                // Node needs to be inserted on the left.
                 current = current->left;
             } else {
-                // right subtree
+                // Node needs to be inserted on the right.
                 current = current->right;
             }
         }
 
-        // add to tree
+        // Adding the node
         if (key < parent->key) {
             parent->left = new_node;
         } else {
@@ -167,86 +188,88 @@ void RankTreeSingle<K>::Insert(K key) {
 
         UpdateHeightsGoingUp(new_node);
         UpdateRanksGoingUp(new_node);
-        this->balance(new_node);
+        this->Rebalance(new_node);
 
         return;
     }
 }
 
-// Time complexity: O(log(n))
+/**
+ * Finds a node to remove by key and then deletes it
+ * @tparam K Key object of type T
+ * @param key The key of the node to remove
+ */
 template<class K>
 void RankTreeSingle<K>::Remove(K key) {
-    Node *node = getNode(key);
+    Node *node = GetNode(key);
     if (node)
         RemoveNode(node);
 }
 
-// Time complexity: log(n)
+/**
+ * Searches for a node with a given key and returns true if found
+ * @tparam K Key object of type T
+ * @param key THe key of the node to find
+ * @return True if found, false otherwise
+ */
 template<class K>
-K RankTreeSingle<K>::getByKey(K key) {
-    Node *node = getNode(key);
-    if (!node) {
-        return K(-1, -1, -1);
-    }
-    return node->key;
+bool RankTreeSingle<K>::Find(K key) {
+    return (GetNode(key) != nullptr);
 }
 
-// Time complexity: log(n)
-template<class K>
-bool RankTreeSingle<K>::DoesExist(K key) {
-    return (getNode(key) != nullptr);
-}
-
-/********************************* Private Functions *******************************/
+/**
+ * Deletes a given node from the tree
+ * @tparam K Key object of type T
+ * @param node The node to delete
+ */
 template<class K>
 void RankTreeSingle<K>::RemoveNode(Node *node) {
     if (!(node->left) && !(node->right)) {
-        // if leaf
+        // Node to remove is a leaf, removing it from it's parent and rebalancing
         ParentPointTo(node, nullptr);
         if (node->parent) {
             UpdateHeightsGoingUp(node->parent);
             UpdateRanksGoingUp(node->parent);
-            this->balance(node->parent);
+            this->Rebalance(node->parent);
         }
         delete node;
         return;
     } else if (!(node->left) && (node->right)) {
-        // if only right child
+        // Node only has a right child
         ParentPointTo(node, node->right);
         node->right->parent = node->parent;
 
         if (node->parent) {
             UpdateHeightsGoingUp(node->parent);
             UpdateRanksGoingUp(node->parent);
-            this->balance(node->parent);
+            this->Rebalance(node->parent);
         }
         delete node;
         return;
     } else if ((node->left) && !(node->right)) {
-        // if only left child
+        // Node only has a left child
         ParentPointTo(node, node->left);
         node->left->parent = node->parent;
 
         if (node->parent) {
             UpdateHeightsGoingUp(node->parent);
             UpdateRanksGoingUp(node->parent);
-            this->balance(node->parent);
+            this->Rebalance(node->parent);
         }
         delete node;
         return;
     } else {
-        // if node has 2 childrens
-        // find new root for subtree
-        Node *current = node->right;
-        while (current->left)
-            current = current->left;
+        // Node has 2 children
+        // Finding the new root of the subtree
+        Node *current = node->GetNextNode();
 
         // switch current and node.
         K backupK = current->key;
         current->key = node->key;
         node->key = backupK;
 
-        RemoveNode(current); // recursive call. will happen only once, because now node doesn't have 2 children.
+        // Calling remove on the old node of the new subtree root.
+        RemoveNode(current);
     }
 }
 
@@ -293,33 +316,42 @@ void RankTreeSingle<K>::UpdateRanksGoingUp(Node *node) {
     }
 }
 
+/**
+ * Rebalances the tree from a given node upward
+ * @tparam K Key object of type T
+ * @param node The node to check balance for
+ */
 template<class K>
-void RankTreeSingle<K>::balance(Node *node) {
+void RankTreeSingle<K>::Rebalance(Node *node) {
     int balanceFactor = node->GetBalanceFactor();
     if (balanceFactor >= 2) {
-        // left Heavy
+        // Node is left heavy
         if (node->left->GetBalanceFactor() >= 0) {
-            llRotation(node);
+            LeftLeftRotate(node);
         } else {
-            lrRotation(node);
+            LeftRightRotate(node);
         }
     } else if (balanceFactor <= -2) {
-        // left Heavy
+        // Node is right heavy
         if (node->right->GetBalanceFactor() > 0) {
-            rlRotation(node);
+            RightLeftRotate(node);
         } else {
-            rrRotation(node);
+            RightRightRotate(node);
         }
     }
 
     if (node->parent) {
-        balance(node->parent);
+        Rebalance(node->parent);
     }
 }
 
-// node: the node with the |balance|>=2
+/**
+ * Performs left left rotation
+ * @tparam K Key object of type T
+ * @param node The unbalanced node
+ */
 template<class K>
-void RankTreeSingle<K>::llRotation(Node *node) {
+void RankTreeSingle<K>::LeftLeftRotate(Node *node) {
     Node *parent = node->parent;
     Node *lChild = node->left;
 
@@ -341,9 +373,13 @@ void RankTreeSingle<K>::llRotation(Node *node) {
     UpdateRanksGoingUp(node);
 }
 
-// node: the node with the |balance|>=2
+/**
+ * Performs right right rotation
+ * @tparam K Key object of type T
+ * @param node The unbalanced node
+ */
 template<class K>
-void RankTreeSingle<K>::rrRotation(Node *node) {
+void RankTreeSingle<K>::RightRightRotate(Node *node) {
     Node *parent = node->parent;
     Node *rChild = node->right;
 
@@ -365,38 +401,67 @@ void RankTreeSingle<K>::rrRotation(Node *node) {
     UpdateRanksGoingUp(node);
 }
 
-// node: the node with the |balance|>=2
+/**
+ * Performs left right rotation
+ * @tparam K Key object of type T
+ * @param node The unbalanced node
+ */
 template<class K>
-void RankTreeSingle<K>::lrRotation(Node *node) {
-    rrRotation(node->left);
-    llRotation(node);
+void RankTreeSingle<K>::LeftRightRotate(Node *node) {
+    RightRightRotate(node->left);
+    LeftLeftRotate(node);
 }
 
-// node: the node with the |balance|>=2
+/**
+ * Performs right left rotation
+ * @tparam K Key object of type T
+ * @param node The unbalanced node
+ */
 template<class K>
-void RankTreeSingle<K>::rlRotation(Node *node) {
-    llRotation(node->right);
-    rrRotation(node);
+void RankTreeSingle<K>::RightLeftRotate(Node *node) {
+    LeftLeftRotate(node->right);
+    RightRightRotate(node);
 }
 
+/**
+ * Finds a node with a given key
+ * @tparam K Key object of type T
+ * @param key The key of the node to find
+ * @return A pointer to the node
+ */
 template<class K>
-typename RankTreeSingle<K>::Node *RankTreeSingle<K>::getNode(K key) {
+typename RankTreeSingle<K>::Node *RankTreeSingle<K>::GetNode(K key) {
     Node *current = root;
-    while ((current != nullptr) && (current->key != key)) { // while wasn't placed yet
-        if (key < current->key) { // left subtree
+    while ((current != nullptr) && (current->key != key)) {
+        // Iterate until node is found
+        if (key < current->key) {
+            // Node is in the left subtree
             current = current->left;
-        } else { // right subtree
+        } else {
+            // Node is in the right subtree
             current = current->right;
         }
     }
     return current;
 }
 
+/**
+ * Returns a node with the given rank
+ * @tparam K Key object of type T
+ * @param searchRank The rank of the node
+ * @return A node with the given rank
+ */
 template<class K>
-typename RankTreeSingle<K>::Node *RankTreeSingle<K>::getNodeByRank(int searchRank) {
-    return root->getNodeByRank(searchRank);
+typename RankTreeSingle<K>::Node *RankTreeSingle<K>::GetNodeByRank(int searchRank) {
+    return root->GetNodeByRank(searchRank);
 }
 
+/**
+ * Switches the child of a parent node for rotation
+ * @tparam K Key object of type T
+ * @param child The old child of the node
+ * @param newChild The new child of the node
+ */
 template<class K>
 void RankTreeSingle<K>::ParentPointTo(Node *child, Node *newChild) {
     if (child->parent == nullptr)
@@ -411,9 +476,11 @@ void RankTreeSingle<K>::ParentPointTo(Node *child, Node *newChild) {
     }
 }
 
-/************************************* Recursions ***********************************/
-
-// destroying the array, post order
+/**
+ * Deletes the tree in post order traversal
+ * @tparam K Key object of type T
+ * @param node The node to start deleting from
+ */
 template<class K>
 void RankTreeSingle<K>::DeleteTree(Node *node) {
     if (node == nullptr)
@@ -423,9 +490,15 @@ void RankTreeSingle<K>::DeleteTree(Node *node) {
     delete node;
 }
 
+/**
+ * Returns the key of a node with a given rank
+ * @tparam K Key object of type T
+ * @param searchRank The rank of the node
+ * @return The key of the node
+ */
 template<class K>
 K RankTreeSingle<K>::FindByRank(int searchRank) {
-    Node *temp = getNodeByRank(searchRank);
+    Node *temp = GetNodeByRank(searchRank);
     if (!temp) {
         throw KeyDoesNotExist();
     }

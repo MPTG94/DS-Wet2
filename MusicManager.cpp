@@ -198,8 +198,7 @@ StatusType MusicManager::AddSongToArtist(int artistID, int songID, Artist *artis
 StatusType MusicManager::AddSongToRankTree(int artistID, int songID, Song *nSong) {
     ThreeParamKey songKey = ThreeParamKey(0, songID, artistID);
     songRankTree.Insert(songKey);
-    ThreeParamKey tempKey = songRankTree.getByKey(songKey);
-    if (tempKey.getSongId() == -1) {
+    if (!songRankTree.Find(songKey)) {
         return ALLOCATION_ERROR;
     }
     return SUCCESS;

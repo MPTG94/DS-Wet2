@@ -7,19 +7,28 @@
 
 #include <iostream>
 #include <exception>
-using namespace std;
 
-class KeyAlreadyExist:public exception {
+using std::exception;
+
+class KeyAlreadyExist : public exception {
 public:
-    const char* what() {
-        return "The key is already exist in the tree\n";
+    const char *what() {
+        int ErrorCode = 1;
+        if (ErrorCode == 1) {
+            // Print debugging information here
+        }
+        return "The key already exists in the tree. ErrorCode: 1\n";
     }
 };
 
-class KeyDoesNotExist:public exception {
+class KeyDoesNotExist : public exception {
 public:
-    const char* what() {
-        return "The key does not exist in the tree\n";
+    const char *what() {
+        int ErrorCode = 0;
+        if (ErrorCode == 0) {
+            // Print debugging information here
+        }
+        return "The key doesn't exist yet in the tree.\n";
     }
 };
 

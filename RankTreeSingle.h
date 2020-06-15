@@ -21,21 +21,6 @@ private:
         Node *parent;
 
         /**
-         * Calculates the balance factor of a node
-         * @return The balance factor.
-         */
-        int GetBalanceFactor() {
-            int leftHeight = 0, rightHeight = 0;
-            if (left) {
-                leftHeight = left->height;
-            }
-            if (right) {
-                rightHeight = right->height;
-            }
-            return leftHeight - rightHeight;
-        }
-
-        /**
         * Finds The successor node in the subtree
         * @return A pointer to the node
         */
@@ -47,8 +32,37 @@ private:
             return current;
         }
 
-        Node() : key(K(1, 1, 1)), height(1), rank(1) {
+        Node() : key(K(1, 1, 1)), height(1), rank(1), left(nullptr), right(nullptr), parent(nullptr) {
 
+        }
+
+        Node(K key) : key(key), height(1), rank(1), left(nullptr), right(nullptr), parent(nullptr) {
+
+        }
+
+        /**
+         * Calculates the balance factor of a node
+         * @return The balance factor.
+         */
+        int GetBalanceFactor() {
+            int rightHeight = 0;
+            if (right) {
+                rightHeight = right->GetHeight();
+            }
+
+            int leftHeight = 0;
+            if (left) {
+                leftHeight = left->GetHeight();
+            }
+            return leftHeight - rightHeight;
+        }
+
+        /**
+         * Gets the height of the node
+         * @return The height of the node
+         */
+        int GetHeight() {
+            return height;
         }
 
         /**
@@ -83,23 +97,29 @@ private:
 
     void UpdateHeightsGoingUp(Node *node);
 
+    void ParentPointTo(Node *child, Node *newChild);
+
     void UpdateRanksGoingUp(Node *node);
 
-    void Rebalance(Node *node);
+    Node *GetNodeByRank(int searchRank);
 
     void LeftLeftRotate(Node *node);
+
+    Node *getNodeRight();
 
     void RightRightRotate(Node *node);
 
     void RightLeftRotate(Node *node);
 
+    Node *getNodeLeft();
+
     void LeftRightRotate(Node *node);
 
     Node *GetNode(K key);
 
-    Node *GetNodeByRank(int searchRank);
+    Node *getNodeParent();
 
-    void ParentPointTo(Node *child, Node *newChild);
+    void Rebalance(Node *node);
 
     void DeleteTree(Node *node);
 
@@ -150,47 +170,46 @@ void RankTreeSingle<K>::Insert(K key) {
     }
 
     // Creates a new node
-    Node *new_node = new Node();
-    new_node->height = 1;
-    new_node->rank = 1;
-    new_node->left = nullptr;
-    new_node->right = nullptr;
-    new_node->parent = nullptr;
-    new_node->key = key;
+    Node *nNode = new Node(key);
 
     if (root == nullptr) {
         // The new node is the first node in the tree
-        root = new_node;
+        root = nNode;
         return;
     } else {
         // There are already nodes in the tree.
         Node *current = root;
         Node *parent = nullptr;
 
-        while ((current != nullptr) && (current->key != key)) {
+        while ((current) && (key != current->key)) {
             parent = current;
-            if (key < current->key) {
-                // Node needs to be inserted on the left.
-                current = current->left;
-            } else {
+            if (current && key > current->key) {
                 // Node needs to be inserted on the right.
                 current = current->right;
+            } else {
+                // Node needs to be inserted on the left.
+                current = current->left;
             }
         }
 
         // Adding the node
-        if (key < parent->key) {
-            parent->left = new_node;
+        bool inserted = false;
+        if (parent != nullptr && key > parent->key) {
+            parent->right = nNode;
         } else {
-            parent->right = new_node;
+            parent->left = nNode;
         }
-        new_node->parent = parent;
+        nNode->parent = parent;
 
-        UpdateHeightsGoingUp(new_node);
-        UpdateRanksGoingUp(new_node);
-        this->Rebalance(new_node);
+        inserted = true;
 
-        return;
+        if (inserted) {
+            // Print debugging information here
+        }
+
+        UpdateHeightsGoingUp(nNode);
+        UpdateRanksGoingUp(nNode);
+        this->Rebalance(nNode);
     }
 }
 
@@ -224,34 +243,34 @@ bool RankTreeSingle<K>::Find(K key) {
  */
 template<class K>
 void RankTreeSingle<K>::RemoveNode(Node *node) {
-    if (!(node->left) && !(node->right)) {
+    if (node->left == nullptr && node->right == nullptr) {
         // Node to remove is a leaf, removing it from it's parent and rebalancing
         ParentPointTo(node, nullptr);
-        if (node->parent) {
+        if (node->parent != nullptr) {
             UpdateHeightsGoingUp(node->parent);
             UpdateRanksGoingUp(node->parent);
             this->Rebalance(node->parent);
         }
         delete node;
         return;
-    } else if (!(node->left) && (node->right)) {
+    } else if (node->left == nullptr && node->right != nullptr) {
         // Node only has a right child
         ParentPointTo(node, node->right);
         node->right->parent = node->parent;
 
-        if (node->parent) {
+        if (node->parent != nullptr) {
             UpdateHeightsGoingUp(node->parent);
             UpdateRanksGoingUp(node->parent);
             this->Rebalance(node->parent);
         }
         delete node;
         return;
-    } else if ((node->left) && !(node->right)) {
+    } else if (node->left != nullptr && node->right == nullptr) {
         // Node only has a left child
         ParentPointTo(node, node->left);
         node->left->parent = node->parent;
 
-        if (node->parent) {
+        if (node->parent != nullptr) {
             UpdateHeightsGoingUp(node->parent);
             UpdateRanksGoingUp(node->parent);
             this->Rebalance(node->parent);
@@ -264,9 +283,9 @@ void RankTreeSingle<K>::RemoveNode(Node *node) {
         Node *current = node->GetNextNode();
 
         // switch current and node.
-        K backupK = current->key;
+        K keyBackup = current->key;
         current->key = node->key;
-        node->key = backupK;
+        node->key = keyBackup;
 
         // Calling remove on the old node of the new subtree root.
         RemoveNode(current);
@@ -281,16 +300,15 @@ void RankTreeSingle<K>::RemoveNode(Node *node) {
 template<class K>
 void RankTreeSingle<K>::UpdateHeightsGoingUp(Node *node) {
     Node *current = node;
-    while (current != nullptr) {
+    while (current) {
         int leftHeight = 0, rightHeight = 0;
-        if (current->left) {
-            leftHeight = current->left->height;
-        }
-        if (current->right) {
+        if (current->right != nullptr) {
             rightHeight = current->right->height;
         }
-        current->height =
-                ((leftHeight > rightHeight) ? leftHeight : rightHeight) + 1;
+        if (current->left != nullptr) {
+            leftHeight = current->left->height;
+        }
+        current->height = max(leftHeight, rightHeight) + 1;
         current = current->parent;
     }
 }
@@ -303,13 +321,13 @@ void RankTreeSingle<K>::UpdateHeightsGoingUp(Node *node) {
 template<class K>
 void RankTreeSingle<K>::UpdateRanksGoingUp(Node *node) {
     Node *current = node;
-    while (current != nullptr) {
+    while (current) {
         int leftRank = 0, rightRank = 0;
-        if (current->left) {
-            leftRank = current->left->rank;
-        }
-        if (current->right) {
+        if (current->right != nullptr) {
             rightRank = current->right->rank;
+        }
+        if (current->left != nullptr) {
+            leftRank = current->left->rank;
         }
         current->rank = leftRank + rightRank + 1;
         current = current->parent;
@@ -324,19 +342,19 @@ void RankTreeSingle<K>::UpdateRanksGoingUp(Node *node) {
 template<class K>
 void RankTreeSingle<K>::Rebalance(Node *node) {
     int balanceFactor = node->GetBalanceFactor();
-    if (balanceFactor >= 2) {
-        // Node is left heavy
-        if (node->left->GetBalanceFactor() >= 0) {
-            LeftLeftRotate(node);
-        } else {
-            LeftRightRotate(node);
-        }
-    } else if (balanceFactor <= -2) {
+    if (balanceFactor <= -2) {
         // Node is right heavy
         if (node->right->GetBalanceFactor() > 0) {
             RightLeftRotate(node);
         } else {
             RightRightRotate(node);
+        }
+    } else if (balanceFactor >= 2) {
+        // Node is left heavy
+        if (node->left->GetBalanceFactor() >= 0) {
+            LeftLeftRotate(node);
+        } else {
+            LeftRightRotate(node);
         }
     }
 
@@ -353,20 +371,30 @@ void RankTreeSingle<K>::Rebalance(Node *node) {
 template<class K>
 void RankTreeSingle<K>::LeftLeftRotate(Node *node) {
     Node *parent = node->parent;
-    Node *lChild = node->left;
+    Node *leftChild = node->left;
 
     // parent-node relation
-    ParentPointTo(node, lChild);
-    lChild->parent = parent;
+    if (!node->parent)
+        root = leftChild;
+    else {
+        if (node->parent->left == node) {
+            node->parent->left = leftChild;
+        } else {
+            node->parent->right = leftChild;
+        }
 
-    Node *lrChild = node->left->right;
+    }
+    leftChild->parent = parent;
+
+    Node* tempChild = node->left;
+    Node *leftRightChild = tempChild->right;
     // node-child relation
-    lChild->right = node;
-    node->parent = lChild;
+    leftChild->right = node;
+    node->parent = leftChild;
     // restore lost chain
-    node->left = lrChild;
-    if (lrChild) {
-        lrChild->parent = node;
+    node->left = leftRightChild;
+    if (leftRightChild != nullptr) {
+        leftRightChild->parent = node;
     }
 
     UpdateHeightsGoingUp(node);
@@ -381,20 +409,29 @@ void RankTreeSingle<K>::LeftLeftRotate(Node *node) {
 template<class K>
 void RankTreeSingle<K>::RightRightRotate(Node *node) {
     Node *parent = node->parent;
-    Node *rChild = node->right;
+    Node *rightChild = node->right;
 
     // parent-node relation
-    ParentPointTo(node, rChild);
-    rChild->parent = parent;
+    if (!node->parent)
+        root = rightChild;
+    else {
+        if (node->parent->left == node) {
+            node->parent->left = rightChild;
+        } else {
+            node->parent->right = rightChild;
+        }
+    }
+    rightChild->parent = parent;
 
-    Node *rlChild = node->right->left;
+    Node* tempChild = node->right;
+    Node *rightLeftChild = tempChild->left;
     // node-child relation
-    rChild->left = node;
-    node->parent = rChild;
+    rightChild->left = node;
+    node->parent = rightChild;
     // restore lost chain
-    node->right = rlChild;
-    if (rlChild) {
-        rlChild->parent = node;
+    node->right = rightLeftChild;
+    if (rightLeftChild != nullptr) {
+        rightLeftChild->parent = node;
     }
 
     UpdateHeightsGoingUp(node);
@@ -432,7 +469,7 @@ void RankTreeSingle<K>::RightLeftRotate(Node *node) {
 template<class K>
 typename RankTreeSingle<K>::Node *RankTreeSingle<K>::GetNode(K key) {
     Node *current = root;
-    while ((current != nullptr) && (current->key != key)) {
+    while ((current) && (key != current->key)) {
         // Iterate until node is found
         if (key < current->key) {
             // Node is in the left subtree
@@ -464,7 +501,7 @@ typename RankTreeSingle<K>::Node *RankTreeSingle<K>::GetNodeByRank(int searchRan
  */
 template<class K>
 void RankTreeSingle<K>::ParentPointTo(Node *child, Node *newChild) {
-    if (child->parent == nullptr)
+    if (!child->parent)
         root = newChild;
     else {
         if (child->parent->left == child) {
@@ -483,7 +520,7 @@ void RankTreeSingle<K>::ParentPointTo(Node *child, Node *newChild) {
  */
 template<class K>
 void RankTreeSingle<K>::DeleteTree(Node *node) {
-    if (node == nullptr)
+    if (!node)
         return;
     DeleteTree(node->left);
     DeleteTree(node->right);
